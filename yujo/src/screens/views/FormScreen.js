@@ -1,9 +1,11 @@
-import logo from '../logo.svg';
+import logo from '../../logo.svg';
 import '../styles/FormScreen.style.css';
+import Header from "../../components/views/Header";
 
 function FormScreen() {
   return (
     <div className="App">
+      <Header />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

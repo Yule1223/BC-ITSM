@@ -1,4 +1,3 @@
-import '../styles/FormScreen.style.css';
 import FormScreen from "../views/FormScreen";
 
 function FormScreenController() {

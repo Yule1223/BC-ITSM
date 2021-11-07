@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import App from './controllers/FormScreenController';
+import App from './screens/controllers/FormScreenController';
 
 test('renders learn react link', () => {
   render(<App />);
