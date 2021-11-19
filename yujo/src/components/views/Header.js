@@ -8,11 +8,8 @@ function Header() {
       <nav className="navbar navbar-light bg-info fixed-top p-1">
           <a className="navbar-brand text-dark" href="#">
               <img src={logo} width="30" height="30"
-                   className="d-inline-block align-top" alt="" />Yujo
+                   className="d-inline-block align-top" alt="" />Slink
           </a>
-          <Link to="/form">
-              <button type="button" className="btn btn-dark">Formulario</button>
-          </Link>
       </nav>
   );
 }

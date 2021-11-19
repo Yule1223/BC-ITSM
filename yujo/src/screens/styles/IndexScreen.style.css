@@ -3,12 +3,12 @@
 }
 
 .App-logo-1 {
-  height: 40vw;
+  height: 30vw;
   pointer-events: none;
 }
 
 .App-logo-2 {
-  height: 20vw;
+  height: 6vw;
   pointer-events: none;
   position: absolute;
 }
@@ -41,4 +41,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.typed {
+  padding-top: 15vh;
+  font-size: calc(10px + 4vmin);
+  color: white;
+}
+
+.btn-index {
+  margin-top: 3vh;
+  background-color: #0DCAF0 !important;
+  border: #0DCAF0 !important;
 }
