@@ -1,7 +1,5 @@
 import '../styles/Header.style.css';
-import "bootstrap/dist/css/bootstrap.min.css";
 import logo from '../../img/logo.svg';
-import {Link} from "react-router-dom";
 
 function Header() {
   return (

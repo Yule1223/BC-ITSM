@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import background_logo from '../../img/blockchain-background.svg';
 import logo from '../../img/Slink-without-background.svg';
 import '../styles/IndexScreen.style.css';
