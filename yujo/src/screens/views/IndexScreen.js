@@ -21,15 +21,15 @@ function IndexScreen() {
                   }}
                   onInit={(typewriter) => {
                       typewriter
-                          .typeString("Abrir Tu SLA AHORA")
+                          .typeString("Open Your SLA NOW")
                           .pauseFor(300)
-                          .deleteChars(5)
+                          .deleteChars(3)
                           .pauseFor(1000)
-                          .typeString("En <strong>BlockChain</strong>")
+                          .typeString("In <strong>BlockChain</strong>")
                           .start();
                   }}/></div>
           <Link to="/form">
-              <button type="button" className="btn-index btn btn-light"><strong>¡LO QUIERO!</strong></button>
+              <button type="button" className="btn-index btn btn-light"><strong>I WANT IT!</strong></button>
           </Link>
       </header>
     </div>

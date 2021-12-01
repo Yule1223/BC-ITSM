@@ -651,7 +651,7 @@ function FormScreen() {
                             {/*First row*/}
                             <>
                                 <Form.Label>SLA Duration</Form.Label>
-                                <Form.Range/>
+                                <Form.Range min={0} max={100}/>
                             </>
                             {/*Second row*/}
                             <Form.Group className="mb-3" controlId="formCoveredService">
