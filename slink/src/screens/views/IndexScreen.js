@@ -5,6 +5,7 @@ import '../styles/IndexScreen.style.css';
 import Header from "../../components/views/Header";
 import Typewriter from "typewriter-effect";
 import {Link} from "react-router-dom";
+import strings from "../../strings";
 
 function IndexScreen() {
   return (
@@ -21,15 +22,15 @@ function IndexScreen() {
                   }}
                   onInit={(typewriter) => {
                       typewriter
-                          .typeString("Open Your SLA NOW")
+                          .typeString(strings.openYourSLANow1 + ' ' + strings.openYourSLANow2)
                           .pauseFor(300)
-                          .deleteChars(3)
+                          .deleteChars(strings.openYourSLANow2.length)
                           .pauseFor(1000)
-                          .typeString("In <strong>BlockChain</strong>")
+                          .typeString(strings.openYourSLANow3)
                           .start();
                   }}/></div>
           <Link to="/form">
-              <button type="button" className="btn-index btn btn-light"><strong>I WANT IT!</strong></button>
+              <button type="button" className="btn-index btn btn-light"><strong>{strings.iWantIt}</strong></button>
           </Link>
       </header>
     </div>
