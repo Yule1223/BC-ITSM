@@ -1,7 +1,7 @@
 import '../styles/Header.style.css';
 import logo from '../../img/logo.svg';
 
-function Header() {
+function eader() {
   return (
       <nav className="navbar navbar-light bg-info fixed-top p-1">
           <a className="navbar-brand text-dark" href="/">
