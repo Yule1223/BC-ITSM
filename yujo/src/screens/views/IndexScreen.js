@@ -9,7 +9,6 @@ import {Link} from "react-router-dom";
 function IndexScreen() {
   return (
     <div className="App bg-info">
-      <Header />
       <header className="App-header">
           <img src={background_logo} className="App-logo-1" alt="logo" />
           <img src={logo} className="App-logo-2" alt="logo" />
