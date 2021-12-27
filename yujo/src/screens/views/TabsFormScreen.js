@@ -1,5 +1,5 @@
 import '../styles/TabsFormScreen.style.css';
-import {Nav, Tab, Tabs} from "react-bootstrap";
+import {Tab, Tabs} from "react-bootstrap";
 import {useState} from "react";
 
 function TabsFormScreen(props) {

@@ -2,11 +2,10 @@ import '../styles/Header.style.css';
 import logo from '../../img/logo.svg';
 import {injected} from "../wallets/Connectors";
 import {useWeb3React} from "@web3-react/core";
-import strings from "../../strings";
 import {Button} from "react-bootstrap";
 
 function Header() {
-    const {active, account, library, connector, activate, deactivate } = useWeb3React()
+    const {active, activate, deactivate } = useWeb3React()
 
     async function connect() {
         try {

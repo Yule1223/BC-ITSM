@@ -2,10 +2,10 @@ import '../styles/FormScreen.style.css';
 import Header from "../../components/views/Header";
 import TabsFormScreen from "./TabsFormScreen";
 import {Button, Col, FloatingLabel, Form, Row} from "react-bootstrap";
-import {isValidElement, useState} from "react";
+import {useState} from "react";
 import strings from "../../strings";
 import DatePicker from 'sassy-datepicker';
-import {BsHouseFill, BsBuilding, BsHeadset, BsShop, BsTelephone, BsFillPersonFill} from "react-icons/bs";
+import {BsHouseFill, BsBuilding, BsHeadset, BsShop, BsTelephone} from "react-icons/bs";
 
 function FormScreen() {
     const [validated, setValidated] = useState(false);
