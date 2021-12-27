@@ -2,6 +2,8 @@ import '../styles/Header.style.css';
 import logo from '../../img/logo.svg';
 import {injected} from "../wallets/Connectors";
 import {useWeb3React} from "@web3-react/core";
+import strings from "../../strings";
+import {Button} from "react-bootstrap";
 
 function Header() {
     const {active, account, library, connector, activate, deactivate } = useWeb3React()
@@ -28,9 +30,7 @@ function Header() {
                 <img src={logo} width="30" height="30"
                      className="d-inline-block align-top" alt=""/>Slink
             </a>
-            <button onClick={connect}>Connect to MetaMask</button>
-            {active ? <span>Connected with <b>{account}</b></span> : <span>Not connected</span>}
-            <button onClick={disconnect}>Disconnect</button>
+            {active ? <Button onClick={disconnect} variant="danger">Disconnect from MetaMask</Button> : <Button onClick={connect} variant="success">Connect to MetaMask</Button>}
         </nav>
     );
 }

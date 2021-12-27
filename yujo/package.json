@@ -16,8 +16,11 @@
     "react-bootstrap": "^2.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
+    "react-mailto": "^0.4.0",
     "react-router-dom": "^6.0.1",
     "react-scripts": "4.0.3",
+    "react-select": "^5.2.1",
     "typewriter-effect": "^2.18.2",
     "web-vitals": "^2.1.2",
     "web3": "^1.6.1"
@@ -48,6 +51,7 @@
   },
   "devDependencies": {
     "react-localization": "^1.0.17",
+    "sassy-datepicker": "^0.6.1",
     "semantic-ui-react": "^2.0.4"
   }
 }
