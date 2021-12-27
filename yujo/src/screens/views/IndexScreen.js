@@ -2,14 +2,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import background_logo from '../../img/blockchain-background.svg';
 import logo from '../../img/Slink-without-background.svg';
 import '../styles/IndexScreen.style.css';
-import Header from "../../components/views/Header";
 import Typewriter from "typewriter-effect";
 import {Link} from "react-router-dom";
+import strings from "../../strings";
 
 function IndexScreen() {
   return (
     <div className="App bg-info">
-      <header className="App-header">
+      <section className="App-header">
           <img src={background_logo} className="App-logo-1" alt="logo" />
           <img src={logo} className="App-logo-2" alt="logo" />
           <div className="typed">
@@ -20,17 +20,17 @@ function IndexScreen() {
                   }}
                   onInit={(typewriter) => {
                       typewriter
-                          .typeString("Open Your SLA NOW")
+                          .typeString(strings.openYourSLANow1 + ' ' + strings.openYourSLANow2)
                           .pauseFor(300)
-                          .deleteChars(3)
+                          .deleteChars(strings.openYourSLANow2.length)
                           .pauseFor(1000)
-                          .typeString("In <strong>BlockChain</strong>")
+                          .typeString(strings.openYourSLANow3)
                           .start();
                   }}/></div>
           <Link to="/form">
-              <button type="button" className="btn-index btn btn-light"><strong>I WANT IT!</strong></button>
+              <button type="button" className="btn-index btn btn-light">{strings.iWantIt}</button>
           </Link>
-      </header>
+      </section>
     </div>
   );
 }
