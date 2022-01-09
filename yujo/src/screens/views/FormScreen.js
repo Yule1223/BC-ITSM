@@ -376,7 +376,7 @@ function FormScreen() {
                                         <span
                                             style={{textDecorationLine: 'underline'}}> Technical Support Service</span>
                                         <span className='d-block'><b>Tel.</b> 911 460 032</span>
-                                        <b>Email:</b><a href='mailto:david.pascual@slink.com'> supportTeam@slink.com</a>
+                                        <b>Email: </b><a href='mailto:david.pascual@slink.com'>supportTeam@slink.com</a>
                                     </Form.Label>
                                     {/*Operation Centre*/}
                                     <Form.Label className='d-block'>
@@ -395,25 +395,24 @@ function FormScreen() {
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formProviderSecondColumn">
                                     {/*FirstName*/}
-                                    <Form.Group as={Col} controlId="formFirstName">
-                                        <Form.Label>{strings.formInformationFirstName}*</Form.Label>
-                                        <Form.Control required type="text"
-                                                      placeholder={strings.formInformationFirstNamePlaceHolder}/>
-                                        <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="invalid">
-                                            {strings.formInformationFirstNameError}
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
+                                    <Form.Label>{strings.formInformationFirstName}*</Form.Label>
+                                    <Form.Control required type="text"
+                                                  placeholder={strings.formInformationFirstNamePlaceHolder}/>
                                     {/*LastName*/}
-                                    <Form.Group as={Col} controlId="formLastName">
-                                        <Form.Label>{strings.formInformationLastName}*</Form.Label>
-                                        <Form.Control required type="text"
-                                                      placeholder={strings.formInformationLastNamePlaceHolder}/>
-                                        <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
-                                        <Form.Control.Feedback type="invalid">
-                                            {strings.formInformationLastNameError}
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
+                                    <Form.Label className="mt-3">{strings.formInformationLastName}*</Form.Label>
+                                    <Form.Control required type="text"
+                                                  placeholder={strings.formInformationLastNamePlaceHolder}/>
+                                    {/*Email*/}
+                                    <Form.Label className="mt-3">{strings.formSLASpecificationContactEmail}*</Form.Label>
+                                    <Form.Control required type="text"
+                                                  placeholder={strings.formSLASpecificationContactEmailPlaceHolder}/>
+                                    {/*Subject*/}
+                                    <Form.Label className="mt-3">{strings.formInformationSubject}*</Form.Label>
+                                    <Form.Control required type="text"
+                                                  placeholder={strings.formInformationSubjectPlaceHolder}/>
+                                    {/*Service level*/}
+                                    <Form.Label className="mt-3">{strings.formInformationMessage}*</Form.Label>
+                                    <Form.Control as="textarea" rows={5}/>
                                 </Form.Group>
                             </Row>
                         </Form>,

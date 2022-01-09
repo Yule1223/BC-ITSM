@@ -38,9 +38,11 @@ const strings = new LocalizedStrings({
         formInformationCompanyNumberPlaceHolder: 'Introduce el número fiscal',
         formInformationCompanyNumberError: 'Por favor, introduce un número fiscal válido.',
         formInformationContactError: 'Por favor, introduce un contacto válido.',
-
         formClientInformation: 'Información del cliente',
         formServiceProviderInformation: 'Información del proveedor del servicio',
+        formInformationSubject: 'Asunto',
+        formInformationSubjectPlaceHolder: 'Introduce el asunto del correo',
+        formInformationMessage: 'Mensaje',
 
         // Form SLA specification
         formSLASpecification: 'Detalles SLA',
@@ -128,6 +130,9 @@ const strings = new LocalizedStrings({
         formInformationContactError: 'Please provide a valid contact.',
         formClientInformation: 'Client information',
         formServiceProviderInformation: 'Service Provider Information',
+        formInformationSubject: 'Subject',
+        formInformationSubjectPlaceHolder: 'Enter the subject of the email',
+        formInformationMessage: 'Message',
 
         // Form SLA specification
         formSLASpecification: 'SLA Specification',
