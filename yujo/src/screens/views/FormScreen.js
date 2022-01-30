@@ -403,7 +403,8 @@ function FormScreen() {
                                     <Form.Control required type="text"
                                                   placeholder={strings.formInformationLastNamePlaceHolder}/>
                                     {/*Email*/}
-                                    <Form.Label className="mt-3">{strings.formSLASpecificationContactEmail}*</Form.Label>
+                                    <Form.Label
+                                        className="mt-3">{strings.formSLASpecificationContactEmail}*</Form.Label>
                                     <Form.Control required type="text"
                                                   placeholder={strings.formSLASpecificationContactEmailPlaceHolder}/>
                                     {/*Subject*/}
@@ -491,125 +492,61 @@ function FormScreen() {
                             {/*Sixth row*/}
                             <Row className="mb-3">
                                 {/*Related files*/}
-                                <Form.Group as={Col} controlId="formFile" className="mb-3">
+                                <Form.Group as={Col} controlId="formFile">
                                     <Form.Label>{strings.formSLASpecificationRelatedFiles}</Form.Label>
                                     <Form.Control type="file"/>
                                 </Form.Group>
                             </Row>
                             {/*Seventh row*/}
+                            <Row className="g-2 mb-3">
+                                {/*Service hours*/}
+                                <Form.Label>{strings.formSLASpecificationServiceHours}</Form.Label>
+                                {['checkbox'].map((type) => (
+                                    <div key={type}>
+                                        <Form.Check inline type={type} id={`morning-${type}`}>
+                                            <Form.Check.Input type={type} isValid/>
+                                            <Form.Check.Label
+                                                style={{marginLeft: '3px'}}>{`morning (9h-14h)`}</Form.Check.Label>
+                                            <Form.Control.Feedback type='valid'>300€</Form.Control.Feedback>
+                                        </Form.Check>
+                                        <Form.Check inline type={type} id={`afternoon-${type}`}>
+                                            <Form.Check.Input type={type} isValid/>
+                                            <Form.Check.Label
+                                                style={{marginLeft: '3px'}}>{`afternoon (15h-20h)`}</Form.Check.Label>
+                                            <Form.Control.Feedback type="valid">300€</Form.Control.Feedback>
+                                        </Form.Check>
+                                        <Form.Check inline type={type} id={`allday-${type}`}>
+                                            <Form.Check.Input type={type} isValid/>
+                                            <Form.Check.Label
+                                                style={{marginLeft: '3px'}}>{`all day (9h-20h)`}</Form.Check.Label>
+                                            <Form.Control.Feedback type="valid">600€</Form.Control.Feedback>
+                                        </Form.Check>
+                                    </div>
+                                ))}
+                            </Row>
+                            {/*Eighth row*/}
                             <Row className="g-2">
-                                {/*Initial Hour*/}
-                                <Col md>
-                                    <FloatingLabel controlId="formInitialHour" label="Service Initial Hour">
-                                        <Form.Select>
-                                            <option>{strings.formSLASpecificationChooseStart}</option>
-                                            <option value="1"> 0:00</option>
-                                            <option value="2"> 0:30</option>
-                                            <option value="3"> 1:00</option>
-                                            <option value="4"> 1:30</option>
-                                            <option value="5"> 2:00</option>
-                                            <option value="6"> 2:30</option>
-                                            <option value="7"> 3:00</option>
-                                            <option value="8"> 3:30</option>
-                                            <option value="9"> 4:00</option>
-                                            <option value="10"> 4:30</option>
-                                            <option value="11"> 5:00</option>
-                                            <option value="12"> 5:30</option>
-                                            <option value="13"> 6:00</option>
-                                            <option value="14"> 6:30</option>
-                                            <option value="15"> 7:00</option>
-                                            <option value="16"> 7:30</option>
-                                            <option value="17"> 8:00</option>
-                                            <option value="18"> 8:30</option>
-                                            <option value="19"> 9:00</option>
-                                            <option value="20"> 9:30</option>
-                                            <option value="21"> 10:00</option>
-                                            <option value="22"> 10:30</option>
-                                            <option value="23"> 11:00</option>
-                                            <option value="24"> 11:30</option>
-                                            <option value="25"> 12:00</option>
-                                            <option value="26"> 12:30</option>
-                                            <option value="27"> 13:00</option>
-                                            <option value="28"> 13:30</option>
-                                            <option value="29"> 14:00</option>
-                                            <option value="30"> 14:30</option>
-                                            <option value="31"> 15:00</option>
-                                            <option value="32"> 15:30</option>
-                                            <option value="33"> 16:00</option>
-                                            <option value="34"> 16:30</option>
-                                            <option value="35"> 17:00</option>
-                                            <option value="36"> 17:30</option>
-                                            <option value="37"> 18:00</option>
-                                            <option value="38"> 18:30</option>
-                                            <option value="39"> 19:00</option>
-                                            <option value="40"> 19:30</option>
-                                            <option value="41"> 20:00</option>
-                                            <option value="42"> 20:30</option>
-                                            <option value="43"> 21:00</option>
-                                            <option value="44"> 21:30</option>
-                                            <option value="45"> 22:00</option>
-                                            <option value="46"> 22:30</option>
-                                            <option value="47"> 23:00</option>
-                                            <option value="48"> 23:30</option>
-                                        </Form.Select>
-                                    </FloatingLabel>
-                                </Col>
-                                {/*Final Hour*/}
-                                <Col md>
-                                    <FloatingLabel controlId="formFinalHour" label="Service Final Hour">
-                                        <Form.Select>
-                                            <option>{strings.formSLASpecificationChooseEnd}</option>
-                                            <option value="1"> 0:00</option>
-                                            <option value="2"> 0:30</option>
-                                            <option value="3"> 1:00</option>
-                                            <option value="4"> 1:30</option>
-                                            <option value="5"> 2:00</option>
-                                            <option value="6"> 2:30</option>
-                                            <option value="7"> 3:00</option>
-                                            <option value="8"> 3:30</option>
-                                            <option value="9"> 4:00</option>
-                                            <option value="10"> 4:30</option>
-                                            <option value="11"> 5:00</option>
-                                            <option value="12"> 5:30</option>
-                                            <option value="13"> 6:00</option>
-                                            <option value="14"> 6:30</option>
-                                            <option value="15"> 7:00</option>
-                                            <option value="16"> 7:30</option>
-                                            <option value="17"> 8:00</option>
-                                            <option value="18"> 8:30</option>
-                                            <option value="19"> 9:00</option>
-                                            <option value="20"> 9:30</option>
-                                            <option value="21"> 10:00</option>
-                                            <option value="22"> 10:30</option>
-                                            <option value="23"> 11:00</option>
-                                            <option value="24"> 11:30</option>
-                                            <option value="25"> 12:00</option>
-                                            <option value="26"> 12:30</option>
-                                            <option value="27"> 13:00</option>
-                                            <option value="28"> 13:30</option>
-                                            <option value="29"> 14:00</option>
-                                            <option value="30"> 14:30</option>
-                                            <option value="31"> 15:00</option>
-                                            <option value="32"> 15:30</option>
-                                            <option value="33"> 16:00</option>
-                                            <option value="34"> 16:30</option>
-                                            <option value="35"> 17:00</option>
-                                            <option value="36"> 17:30</option>
-                                            <option value="37"> 18:00</option>
-                                            <option value="38"> 18:30</option>
-                                            <option value="39"> 19:00</option>
-                                            <option value="40"> 19:30</option>
-                                            <option value="41"> 20:00</option>
-                                            <option value="42"> 20:30</option>
-                                            <option value="43"> 21:00</option>
-                                            <option value="44"> 21:30</option>
-                                            <option value="45"> 22:00</option>
-                                            <option value="46"> 22:30</option>
-                                            <option value="47"> 23:00</option>
-                                            <option value="48"> 23:30</option>
-                                        </Form.Select>
-                                    </FloatingLabel>
-                                </Col>
+                                {/*Licences*/}
+                                <Form.Label>{strings.formSLASpecificationLicences}</Form.Label>
+                                {['checkbox'].map((type) => (
+                                    <div key={type}>
+                                        <Form.Check inline type={type} id={`paidbyclient-${type}`}>
+                                            <Form.Check.Input type={type} isValid/>
+                                            <Form.Check.Label
+                                                style={{marginLeft: '3px'}}>{`paid by client`}</Form.Check.Label>
+                                        </Form.Check>
+                                        <Form.Check inline type={type} id={`paidbyprovider-${type}`}>
+                                            <Form.Check.Input type={type} isValid/>
+                                            <Form.Check.Label
+                                                style={{marginLeft: '3px'}}>{`paid by service provider (no costs for client)`}</Form.Check.Label>
+                                        </Form.Check>
+                                        <Form.Check inline type={type} id={`paidbyproviderclient-${type}`}>
+                                            <Form.Check.Input type={type} isValid/>
+                                            <Form.Check.Label
+                                                style={{marginLeft: '3px'}}>{`paid by service provider (charges for client after)`}</Form.Check.Label>
+                                        </Form.Check>
+                                    </div>
+                                ))}
                             </Row>
                             {/*Service level*/}
                             <Form.Group className="mb-3 mt-3" controlId="formServiceLevel">
@@ -664,6 +601,10 @@ function FormScreen() {
                                     </FloatingLabel>
                                 </Col>
                             </Row>
+                            <Form.Group className="mt-3" controlId="formBasicCheckbox">
+                                <Form.Check required type="checkbox" label={strings.formServiceAssurancePrivacidad} />
+                                <p>Read the <a className="d-inline" href="/">legal notice and privacy policy</a>.</p>
+                            </Form.Group>
                             <Button className="mt-3" variant="primary" type="submit">
                                 {strings.formSubmit}
                             </Button>

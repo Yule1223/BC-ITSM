@@ -61,12 +61,13 @@ const strings = new LocalizedStrings({
         formSLASpecificationContactPhone: 'Número teléfono',
         formSLASpecificationContactPhonePlaceHolder: '+34 666555444',
         formSLASpecificationRelatedFiles: 'Archivos relacionados',
-        formSLASpecificationChooseStart: 'Seleccionar inicio ...',
-        formSLASpecificationChooseEnd: 'Seleccionar fin ...',
+        formSLASpecificationServiceHours: 'Horario de servicio',
         formSLASpecificationServiceLevel: 'Niveles de servicio',
         formSLASpecificationServiceExclusions: 'Exclusiones de servicio',
         formSLASpecificationClientExtraServices: 'Soporte extra',
         formSLASpecificationAutoRenewal: 'Renovación automática',
+        formSLASpecificationLicences: 'Licencias',
+        formServiceAssurancePrivacidad: 'He leído y acepto la política de privacidad',
 
         // Form service assurance
         formServiceAssurance: 'Garantía de servicio',
@@ -135,7 +136,7 @@ const strings = new LocalizedStrings({
         formInformationMessage: 'Message',
 
         // Form SLA specification
-        formSLASpecification: 'SLA Specification',
+        formSLASpecification: 'SLA specification',
         formSLASpecificationDuration: 'SLA duration',
         formSLASpecificationClientCoveredServices: 'Covered services',
         formSLASpecificationClientContact: 'Client contact',
@@ -151,15 +152,16 @@ const strings = new LocalizedStrings({
         formSLASpecificationContactPhone: 'Phone number',
         formSLASpecificationContactPhonePlaceHolder: '+34 666555444',
         formSLASpecificationRelatedFiles: 'Related files',
-        formSLASpecificationChooseStart: 'Choose start ...',
-        formSLASpecificationChooseEnd: 'Choose end ...',
+        formSLASpecificationServiceHours: 'Service hours',
         formSLASpecificationServiceLevel: 'Service levels',
         formSLASpecificationServiceExclusions: 'Service exclusions',
         formSLASpecificationClientExtraServices: 'Extra support',
         formSLASpecificationAutoRenewal: 'Automatic renewal',
+        formSLASpecificationLicences: 'Licences',
+        formServiceAssurancePrivacidad: 'I have read and accepted the policy of privacy',
 
         // Form service assurance
-        formServiceAssurance: 'Service Assurance',
+        formServiceAssurance: 'Service assurance',
         formServiceAssuranceComplaintProcedure: 'Complaint procedure',
         formServiceAssurancePerformPenalty: 'Performance penalty',
         formServiceAssuranceOperatingSafety: 'Operating safety',
@@ -170,7 +172,7 @@ const strings = new LocalizedStrings({
         formServiceAssuranceConfidentiality: 'Confidentiality',
         formServiceAssuranceServiceMonitoring: 'Service monitoring',
         formServiceAssuranceSelectServiceMonitoring: 'Choose period ...',
-        formServiceAssuranceServiceBilling: 'Service Billing',
+        formServiceAssuranceServiceBilling: 'Service billing',
         formServiceAssuranceSelectServiceBilling: 'Choose period ...',
         formServiceAssuranceSelectBillingMethod: 'Choose billing method',
 

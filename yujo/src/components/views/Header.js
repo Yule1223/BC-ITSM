@@ -27,7 +27,7 @@ function Header() {
         <nav className="navbar navbar-light bg-info fixed-top p-1">
             <a className="navbar-brand text-dark" href="/">
                 <img src={logo} width="30" height="30"
-                     className="d-inline-block align-top" alt=""/>Slink
+                     className="d-inline-block align-top" alt=""/>SLink
             </a>
             {active ? <Button onClick={disconnect} variant="danger">Disconnect from MetaMask</Button> : <Button onClick={connect} variant="success">Connect to MetaMask</Button>}
         </nav>
