@@ -43,6 +43,7 @@ const strings = new LocalizedStrings({
         formInformationSubject: 'Asunto',
         formInformationSubjectPlaceHolder: 'Introduce el asunto del correo',
         formInformationMessage: 'Mensaje',
+        formInformationContactUs: 'Contacta con nosotros',
 
         // Form SLA specification
         formSLASpecification: 'Detalles SLA',
@@ -66,7 +67,7 @@ const strings = new LocalizedStrings({
         formSLASpecificationServiceExclusions: 'Exclusiones de servicio',
         formSLASpecificationClientExtraServices: 'Soporte extra',
         formSLASpecificationAutoRenewal: 'Renovación automática',
-        formSLASpecificationLicences: 'Licencias',
+        formSLASpecificationLicences: 'Pagador de licencias',
         formServiceAssurancePrivacidad: 'He leído y acepto la política de privacidad',
 
         // Form service assurance
@@ -134,6 +135,7 @@ const strings = new LocalizedStrings({
         formInformationSubject: 'Subject',
         formInformationSubjectPlaceHolder: 'Enter the subject of the email',
         formInformationMessage: 'Message',
+        formInformationContactUs: 'Contact us',
 
         // Form SLA specification
         formSLASpecification: 'SLA specification',
@@ -157,7 +159,7 @@ const strings = new LocalizedStrings({
         formSLASpecificationServiceExclusions: 'Service exclusions',
         formSLASpecificationClientExtraServices: 'Extra support',
         formSLASpecificationAutoRenewal: 'Automatic renewal',
-        formSLASpecificationLicences: 'Licences',
+        formSLASpecificationLicences: 'Payer of licences',
         formServiceAssurancePrivacidad: 'I have read and accepted the policy of privacy',
 
         // Form service assurance

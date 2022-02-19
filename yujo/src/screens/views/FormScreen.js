@@ -359,19 +359,19 @@ function FormScreen() {
                             {/*First row*/}
                             <Row>
                                 <Form.Group as={Col} controlId="formProviderFirstColumn">
-                                    <Form.Label className='d-block'>
+                                    <Form.Label className='d-block mb-3'>
                                         <BsHouseFill style={{fontSize: '4vh'}}/>
                                         <span> Slink. Professionals of Technology Solutions for SLAs</span>
                                     </Form.Label>
                                     {/*Central office*/}
-                                    <Form.Label>
+                                    <Form.Label className='mb-3'>
                                         <BsBuilding style={{fontSize: '3vh'}}/>
                                         <span style={{textDecorationLine: 'underline'}}> Central Office</span>
                                         <span className='d-block'>Av. del Partenón, 4, 28042 Madrid</span>
                                         <span className='d-block'><b>Tel.</b> 902 884 834</span>
                                     </Form.Label>
                                     {/*technical support service*/}
-                                    <Form.Label className='d-block'>
+                                    <Form.Label className='d-block mb-3'>
                                         <BsHeadset style={{fontSize: '3vh'}}/>
                                         <span
                                             style={{textDecorationLine: 'underline'}}> Technical Support Service</span>
@@ -379,14 +379,14 @@ function FormScreen() {
                                         <b>Email: </b><a href='mailto:david.pascual@slink.com'>supportTeam@slink.com</a>
                                     </Form.Label>
                                     {/*Operation Centre*/}
-                                    <Form.Label className='d-block'>
+                                    <Form.Label className='d-block mb-3'>
                                         <BsShop style={{fontSize: '3vh'}}/>
                                         <span style={{textDecorationLine: 'underline'}}> Operation Centre</span>
                                         <span className='d-block'>C/ Gran Vía, 34, 28013 Madrid</span>
                                         <span className='d-block'><b>Tel.</b> 949 870 186</span>
                                     </Form.Label>
                                     {/*Commercial Attention*/}
-                                    <Form.Label className='d-block'>
+                                    <Form.Label className='d-block mb-3'>
                                         <BsTelephone style={{fontSize: '3vh'}}/>
                                         <span style={{textDecorationLine: 'underline'}}> Commercial Attention</span>
                                         <span className='d-block'><b>Tel.</b> 949 870 186 (<b>Not</b> client)</span>
@@ -394,6 +394,7 @@ function FormScreen() {
                                     </Form.Label>
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formProviderSecondColumn">
+                                    <h3>{strings.formInformationContactUs}</h3>
                                     {/*FirstName*/}
                                     <Form.Label>{strings.formInformationFirstName}*</Form.Label>
                                     <Form.Control required type="text"
@@ -411,9 +412,14 @@ function FormScreen() {
                                     <Form.Label className="mt-3">{strings.formInformationSubject}*</Form.Label>
                                     <Form.Control required type="text"
                                                   placeholder={strings.formInformationSubjectPlaceHolder}/>
-                                    {/*Service level*/}
+                                    {/*Message*/}
                                     <Form.Label className="mt-3">{strings.formInformationMessage}*</Form.Label>
-                                    <Form.Control as="textarea" rows={5}/>
+                                    <Form.Control required as="textarea" rows={5}/>
+                                    <Form.Check className="mt-3" required type="checkbox" label={strings.formServiceAssurancePrivacidad} />
+                                    <p>Read the <a className="d-inline" href="/form/policy" target="_blank">legal notice and privacy policy</a>.</p>
+                                    <Button className="mb-3" variant="primary" type="submit">
+                                        {strings.formSubmit}
+                                    </Button>
                                 </Form.Group>
                             </Row>
                         </Form>,
@@ -427,8 +433,6 @@ function FormScreen() {
                                     <Form.Label className='d-block'>{strings.formSLASpecificationDuration}</Form.Label>
                                     <Form.Label>Initial date</Form.Label>
                                     <DatePicker onChange={onChangeDate}/>
-                                    <Form.Label className='mt-3'><b>The defect duration of SLA is of 1 year, you have 3
-                                        months since the initial date to cancel it for free.</b></Form.Label>
                                 </Form.Group>
                                 {/*Second row*/}
                                 <Form.Group as={Col} assName="mb-3" controlId="formCoveredService">
@@ -485,8 +489,6 @@ function FormScreen() {
                                             />
                                         </div>
                                     ))}
-                                    <Form.Label><b>You can cancel whenever you want until 2 months before the next
-                                        renovation date.</b></Form.Label>
                                 </Form.Group>
                             </Row>
                             {/*Sixth row*/}
@@ -533,28 +535,28 @@ function FormScreen() {
                                         <Form.Check inline type={type} id={`paidbyclient-${type}`}>
                                             <Form.Check.Input type={type} isValid/>
                                             <Form.Check.Label
-                                                style={{marginLeft: '3px'}}>{`paid by client`}</Form.Check.Label>
+                                                style={{marginLeft: '3px'}}>{`client`}</Form.Check.Label>
                                         </Form.Check>
                                         <Form.Check inline type={type} id={`paidbyprovider-${type}`}>
                                             <Form.Check.Input type={type} isValid/>
                                             <Form.Check.Label
-                                                style={{marginLeft: '3px'}}>{`paid by service provider (no costs for client)`}</Form.Check.Label>
+                                                style={{marginLeft: '3px'}}>{`service provider (no costs for client)`}</Form.Check.Label>
                                         </Form.Check>
                                         <Form.Check inline type={type} id={`paidbyproviderclient-${type}`}>
                                             <Form.Check.Input type={type} isValid/>
                                             <Form.Check.Label
-                                                style={{marginLeft: '3px'}}>{`paid by service provider (charges for client after)`}</Form.Check.Label>
+                                                style={{marginLeft: '3px'}}>{`service provider (charges for client after)`}</Form.Check.Label>
                                         </Form.Check>
                                     </div>
                                 ))}
                             </Row>
                             {/*Service level*/}
-                            <Form.Group className="mb-3 mt-3" controlId="formServiceLevel">
+                            <Form.Group className="mt-3" controlId="formServiceLevel">
                                 <Form.Label>{strings.formSLASpecificationServiceLevel}</Form.Label>
                                 <Form.Control as="textarea" rows={3}/>
                             </Form.Group>
-                            {/*Fourth row*/}
-                            <Form.Label>{strings.formServiceAssuranceReport}</Form.Label>
+                            {/*Revision report*/}
+                            <Form.Label className="mt-3">{strings.formServiceAssuranceReport}</Form.Label>
                             <Row className="g-2">
                                 {/*Report Period*/}
                                 <Col md>
@@ -603,7 +605,7 @@ function FormScreen() {
                             </Row>
                             <Form.Group className="mt-3" controlId="formBasicCheckbox">
                                 <Form.Check required type="checkbox" label={strings.formServiceAssurancePrivacidad} />
-                                <p>Read the <a className="d-inline" href="/">legal notice and privacy policy</a>.</p>
+                                <p>Read the <a className="d-inline" href="/form/policy" target="_blank">legal notice and privacy policy</a>.</p>
                             </Form.Group>
                             <Button className="mt-3" variant="primary" type="submit">
                                 {strings.formSubmit}
