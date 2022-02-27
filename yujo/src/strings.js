@@ -6,6 +6,7 @@ const strings = new LocalizedStrings({
         openYourSLANow2: 'AHORA',
         openYourSLANow3: 'en <strong>BlockChain</strong>',
         iWantIt: '¡LO QUIERO!',
+        knowUs: 'Conocenos',
 
         // Form information
         formInformationDNI: 'DNI',
@@ -39,7 +40,6 @@ const strings = new LocalizedStrings({
         formInformationCompanyNumberError: 'Por favor, introduce un número fiscal válido.',
         formInformationContactError: 'Por favor, introduce un contacto válido.',
         formClientInformation: 'Información del cliente',
-        formServiceProviderInformation: 'Información del proveedor del servicio',
         formInformationSubject: 'Asunto',
         formInformationSubjectPlaceHolder: 'Introduce el asunto del correo',
         formInformationMessage: 'Mensaje',
@@ -47,10 +47,8 @@ const strings = new LocalizedStrings({
 
         // Form SLA specification
         formSLASpecification: 'Detalles SLA',
-        formSLASpecificationDuration: 'Duración SLA',
-        formSLASpecificationClientCoveredServices: 'Cobertura de servicios',
-        formSLASpecificationClientContact: 'Contacto cliente',
-        formSLASpecificationServiceProviderContact: 'Contacto proveedor servicios',
+        formSLASpecificationCoveredServices: 'Cobertura de servicios',
+        formSLASpecificationChooseCoveredServices: 'Selecionar cobertura de servicios ...',
         formSLASpecificationContactFirstName: 'Nombre',
         formSLASpecificationContactFirstNamePlaceHolder: 'Introduce nombre',
         formSLASpecificationContactFirstNameError: 'Por favor, introduce un nombre válido.',
@@ -60,37 +58,81 @@ const strings = new LocalizedStrings({
         formSLASpecificationContactEmail: 'Correo electrónico',
         formSLASpecificationContactEmailPlaceHolder: 'nombre@ejemplo.com',
         formSLASpecificationContactPhone: 'Número teléfono',
-        formSLASpecificationContactPhonePlaceHolder: '+34 666555444',
+        formSLASpecificationContactPhonePlaceHolder: '+34 666 555 444',
+        formSLASpecificationInitialDate: 'Fecha inicial',
         formSLASpecificationRelatedFiles: 'Archivos relacionados',
         formSLASpecificationServiceHours: 'Horario de servicio',
+        formSLASpecificationChooseServiceHours: 'Selecionar horario de servicio ...',
         formSLASpecificationServiceLevel: 'Niveles de servicio',
-        formSLASpecificationServiceExclusions: 'Exclusiones de servicio',
-        formSLASpecificationClientExtraServices: 'Soporte extra',
+        formSLASpecificationExtraServices: 'Soporte extra',
+        formSLASpecificationChooseExtraServices: 'Selecionar soporte extra ...',
         formSLASpecificationAutoRenewal: 'Renovación automática',
         formSLASpecificationLicences: 'Pagador de licencias',
+        formSLASpecificationChooseLicences: 'Selecionar pagador de licencias ...',
         formServiceAssurancePrivacidad: 'He leído y acepto la política de privacidad',
-
-        // Form service assurance
-        formServiceAssurance: 'Garantía de servicio',
-        formServiceAssuranceComplaintProcedure: 'Procedimiento de queja',
-        formServiceAssurancePerformPenalty: 'Penalización de rendimiento',
-        formServiceAssuranceOperatingSafety: 'Seguridad operacional',
+        formServiceAssuranceRead: 'Leer el ',
+        formServiceAssuranceLegalNotice: 'aviso legal y la política de privacidad',
         formServiceAssuranceReport: 'Reporte de revisión',
         formServiceAssuranceChoosePeriod: 'Seleccionar periodo ...',
-        formServiceAssuranceRecipientEmail: 'Correo electrónico para reportes',
-        formServiceAssuranceIncidentManager: 'Administracion de incidentes',
-        formServiceAssuranceConfidentiality: 'Confidencialidad',
-        formServiceAssuranceServiceMonitoring: 'Monitoreo de servicio',
-        formServiceAssuranceSelectServiceMonitoring: 'Seleccionar periodo ...',
         formServiceAssuranceServiceBilling: 'Facturación de servicios',
         formServiceAssuranceSelectServiceBilling: 'Seleccionar periodo ...',
         formServiceAssuranceSelectBillingMethod: 'Seleccionar método de facturación ...',
 
+        formSLASpecificationServiceHoursOption1: 'mañana (9h-14h) - 900€/mes',
+        formSLASpecificationServiceHoursOption2: 'tarde (15h-20h) - 900€/mes',
+        formSLASpecificationServiceHoursOption3: 'todo el día (9h-20h) - 1800€/mes',
+
+        formSLASpecificationCoveredServicesOption1: 'gestión de incidencias - 1.000€/mes',
+        formSLASpecificationCoveredServicesOption2: 'gestión de infraestructura TI - 2.000€/mes',
+
+        formSLASpecificationExtraServicesOption1: 'apoyo fin de semana/festival - 400€/día',
+        formSLASpecificationExtraServicesOption2: 'soporte presencial - 200€/hora',
+
+        formSLASpecificationLicencesOption1: 'cliente',
+        formSLASpecificationLicencesOption2: 'proveedor de servicios (sin costes para el cliente)',
+        formSLASpecificationLicencesOption3: 'proveedor de servicios (cargos para el cliente después)',
+
+        formSLASpecificationPeriodOption1: 'cada mes - 500€',
+        formSLASpecificationPeriodOption2: 'cada trimestre - 450€',
+        formSLASpecificationPeriodOption3: 'cada medio año - 400€',
+        formSLASpecificationPeriodOption4: 'cada año - 350€',
+
+        formSLASpecificationBillingPeriodOption1: '1 mes',
+        formSLASpecificationBillingPeriodOption2: '1 trimestre',
+        formSLASpecificationBillingPeriodOption3: '6 meses',
+        formSLASpecificationBillingPeriodOption4: '1 año',
+
+        formSLASpecificationBillingMethodOption1: 'criptomonedas',
+        formSLASpecificationBillingMethodOption2: 'transferencia bancaria',
+        formSLASpecificationBillingMethodOption3: 'cheque bancario',
+
         // Form general
         formLooksGood: '¡Tiene buena pinta!',
         formShareWithAnyoneElse: 'Nunca compartiremos esto con alguien.',
-        formFieldsAreMandatory: 'Los campos con * son obligatorios',
+        formFieldsAreMandatory: 'Los campos con * son obligatorios en este formulario. El precio mostrado anteriormente no está considerando el coste del servicio extra, ya que se cobrará diariamente de acuerdo a la cantidad de solicitud.',
         formSubmit: 'Enviar',
+        formPrice: 'El precio actual de tu SLA es: ',
+
+        // Know Us
+        knowUsSLink: 'SLink. Profesionales de Soluciones Tecnológicas para SLAs',
+        knowUsCentralOffice: 'Oficina Central',
+        knowUsTechnicalSupport: 'Servicio de Soporte Técnico',
+        knowUsOperationCenter: 'Centro de Operaciones',
+        knowUsCommercialAttention: 'Atención Comercial',
+        knowUsNot: 'No',
+        knowUsClient: 'cliente',
+        knowUsForClient: 'Para cliente',
+
+        // Policy notice
+        policyNoticeTitle: 'Aviso legal y política de privacidad',
+        policyNoticeSubTitle1: 'Aviso legal',
+        policyNoticeSubTitle2: 'Política de privacidad',
+        policyNoticeLegalNotice1: 'La duración del defecto de nuestro SLA es de 1 año, tiene 3 meses desde la fecha inicial para cancelarlo gratis. También puede cancelar cuando quiera el servicio del próximo año hasta 2 meses antes de la próxima fecha de renovación.',
+        policyNoticeLegalNotice2: 'La renovación automática depende totalmente de usted.',
+        policyNoticeLegalNotice3: 'Todos los precios que se muestran en nuestro sitio web son precios generales, si tiene una solicitud específica, no dude en contactarnos. Además, los horarios de servicio son horarios generales, podemos cambiarlos para que se ajusten a sus necesidades.',
+        policyNoticePrivacy1: 'We will never share your sensitive data with anyone else',
+        policyNoticePrivacy2: 'Información delicada ',
+        policyNoticePrivacy3: 'Incluye: DNI, nombre y apellidos, dirección de correo electrónico, número de teléfono, datos de la empresa',
     },
 
     en: {
@@ -98,6 +140,7 @@ const strings = new LocalizedStrings({
         openYourSLANow2: 'NOW',
         openYourSLANow3: 'in <strong>BlockChain</strong>',
         iWantIt: 'I WANT IT!',
+        knowUs: 'KNOW US',
 
         // Form information
         formInformationDNI: 'DNI',
@@ -131,7 +174,6 @@ const strings = new LocalizedStrings({
         formInformationCompanyNumberError: 'Please provide a valid fiscal number.',
         formInformationContactError: 'Please provide a valid contact.',
         formClientInformation: 'Client information',
-        formServiceProviderInformation: 'Service Provider Information',
         formInformationSubject: 'Subject',
         formInformationSubjectPlaceHolder: 'Enter the subject of the email',
         formInformationMessage: 'Message',
@@ -139,10 +181,8 @@ const strings = new LocalizedStrings({
 
         // Form SLA specification
         formSLASpecification: 'SLA specification',
-        formSLASpecificationDuration: 'SLA duration',
-        formSLASpecificationClientCoveredServices: 'Covered services',
-        formSLASpecificationClientContact: 'Client contact',
-        formSLASpecificationServiceProviderContact: 'Service provider contact',
+        formSLASpecificationCoveredServices: 'Covered services',
+        formSLASpecificationChooseCoveredServices: 'Choose covered services ...',
         formSLASpecificationContactFirstName: 'First name',
         formSLASpecificationContactFirstNamePlaceHolder: 'Enter the first name',
         formSLASpecificationContactFirstNameError: 'Please provide a valid first name.',
@@ -152,37 +192,81 @@ const strings = new LocalizedStrings({
         formSLASpecificationContactEmail: 'Email address',
         formSLASpecificationContactEmailPlaceHolder: 'name@example.com',
         formSLASpecificationContactPhone: 'Phone number',
-        formSLASpecificationContactPhonePlaceHolder: '+34 666555444',
+        formSLASpecificationContactPhonePlaceHolder: '+34 666 555 444',
+        formSLASpecificationInitialDate: 'Initial date',
         formSLASpecificationRelatedFiles: 'Related files',
         formSLASpecificationServiceHours: 'Service hours',
+        formSLASpecificationChooseServiceHours: 'Choose service hours ...',
         formSLASpecificationServiceLevel: 'Service levels',
-        formSLASpecificationServiceExclusions: 'Service exclusions',
-        formSLASpecificationClientExtraServices: 'Extra support',
+        formSLASpecificationExtraServices: 'Extra support',
+        formSLASpecificationChooseExtraServices: 'Choose extra support ...',
         formSLASpecificationAutoRenewal: 'Automatic renewal',
         formSLASpecificationLicences: 'Payer of licences',
+        formSLASpecificationChooseLicences: 'Choose payer of licences ...',
         formServiceAssurancePrivacidad: 'I have read and accepted the policy of privacy',
-
-        // Form service assurance
-        formServiceAssurance: 'Service assurance',
-        formServiceAssuranceComplaintProcedure: 'Complaint procedure',
-        formServiceAssurancePerformPenalty: 'Performance penalty',
-        formServiceAssuranceOperatingSafety: 'Operating safety',
+        formServiceAssuranceRead: 'Read the ',
+        formServiceAssuranceLegalNotice: 'legal notice and privacy policy',
         formServiceAssuranceReport: 'Revision report',
         formServiceAssuranceChoosePeriod: 'Choose period ...',
-        formServiceAssuranceRecipientEmail: 'Report recipient email',
-        formServiceAssuranceIncidentManager: 'Incident management',
-        formServiceAssuranceConfidentiality: 'Confidentiality',
-        formServiceAssuranceServiceMonitoring: 'Service monitoring',
-        formServiceAssuranceSelectServiceMonitoring: 'Choose period ...',
         formServiceAssuranceServiceBilling: 'Service billing',
         formServiceAssuranceSelectServiceBilling: 'Choose period ...',
-        formServiceAssuranceSelectBillingMethod: 'Choose billing method',
+        formServiceAssuranceSelectBillingMethod: 'Choose billing method ...',
+
+        formSLASpecificationServiceHoursOption1: 'morning (9h-14h) - 900€/month',
+        formSLASpecificationServiceHoursOption2: 'afternoon (15h-20h) - 900€/month',
+        formSLASpecificationServiceHoursOption3: 'all day (9h-20h) - 1800€/month',
+
+        formSLASpecificationCoveredServicesOption1: 'management of incidents - 1,000€/month',
+        formSLASpecificationCoveredServicesOption2: 'IT infrastructure management - 2,000€/month',
+
+        formSLASpecificationExtraServicesOption1: 'weekend/festival support - 400€/day',
+        formSLASpecificationExtraServicesOption2: 'On-site support - 200€/time',
+
+        formSLASpecificationLicencesOption1: 'client',
+        formSLASpecificationLicencesOption2: 'service provider (no costs for client)',
+        formSLASpecificationLicencesOption3: 'service provider (charges for client after)',
+
+        formSLASpecificationPeriodOption1: 'every month - 500€',
+        formSLASpecificationPeriodOption2: 'every trimester - 450€',
+        formSLASpecificationPeriodOption3: 'every half year - 400€',
+        formSLASpecificationPeriodOption4: 'every year - 350€',
+
+        formSLASpecificationBillingPeriodOption1: '1 month',
+        formSLASpecificationBillingPeriodOption2: '1 trimester',
+        formSLASpecificationBillingPeriodOption3: '6 months',
+        formSLASpecificationBillingPeriodOption4: '1 year',
+
+        formSLASpecificationBillingMethodOption1: 'cryptocurrencies',
+        formSLASpecificationBillingMethodOption2: 'bank transfer',
+        formSLASpecificationBillingMethodOption3: 'bank check',
 
         // Form general
         formLooksGood: 'Looks good!',
         formShareWithAnyoneElse: 'We\'ll never share this with anyone else.',
-        formFieldsAreMandatory: 'Fields with * are mandatory in this form',
+        formFieldsAreMandatory: 'Fields with * are mandatory in this form. The price showed above is not considering the cost of extra service, since it will be charged daily according to the number of request.',
         formSubmit: 'Submit',
+        formPrice: 'The current price of your SLA is: ',
+
+        // Know Us
+        knowUsSLink: 'SLink. Professionals of Technology Solutions for SLAs',
+        knowUsCentralOffice: 'Central Office',
+        knowUsTechnicalSupport: 'Technical Support Service',
+        knowUsOperationCenter: 'Operation Center',
+        knowUsCommercialAttention: 'Commercial Attention',
+        knowUsNot: 'Not',
+        knowUsClient: 'client',
+        knowUsForClient: 'For client',
+
+        // Policy notice
+        policyNoticeTitle: 'Legal notice and privacy policy',
+        policyNoticeSubTitle1: 'Legal notice',
+        policyNoticeSubTitle2: 'Privacy policy',
+        policyNoticeLegalNotice1: 'The defect duration of our SLA is of 1 year, you have 3 months since the initial date to cancel it for free. Also you can cancel whenever you want the next year\'s service until 2 months before the next renovation date.',
+        policyNoticeLegalNotice2: 'The automatic renewal is totally up to you.',
+        policyNoticeLegalNotice3: 'All the prices showed on our website are general prices, if you have specific request, do not hesitate to contact us. Also the service hours are general hours, we can change them to fit your needs.',
+        policyNoticePrivacy1: 'We will never share your sensitive data with anyone else',
+        policyNoticePrivacy2: 'Sensitive data ',
+        policyNoticePrivacy3: 'includes: DNI, first name and last name, email address, phone number, company information',
     }
 });
 

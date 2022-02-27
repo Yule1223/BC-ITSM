@@ -51,3 +51,7 @@ form {
   width: 75vw;
 }
 
+h3{
+  padding-bottom: 3px;
+  border-bottom: 1px solid black;
+}
