@@ -1,12 +1,11 @@
 import '../styles/FormScreen.style.css';
 import Header from "../../components/views/Header";
-import TabsFormScreen from "./TabsFormScreen";
 import {Button, Col, FloatingLabel, Form, Row} from "react-bootstrap";
 import {useState} from "react";
 import strings from "../../strings";
 import DatePicker from 'sassy-datepicker';
-import {DebounceInput} from 'react-debounce-input';
 import React from 'react';
+import FormSelect from "../../components/views/FormSelect";
 
 const SUM_A = 'SUM_A';
 const SUM_B = 'SUM_B';
@@ -37,7 +36,7 @@ function reducer(state, action) {
     }
 }
 
-function FormScreen() {
+function FormScreen(props) {
 
     const [state, dispatch] = React.useReducer(reducer, {a: 0, b: 0, c: 0, sum: 0});
 
@@ -423,62 +422,58 @@ function FormScreen() {
                     <Row className="g-2 mb-3">
                         <Col md>
                             {/*Service hours*/}
-                            <FloatingLabel controlId="formServiceHours"
-                                           label={strings.formSLASpecificationServiceHours} htmlFor='first'>
-                                <Form.Select onChange={(e) => dispatch({type: SUM_A, payload: +e.target.value})}
-                                             value={state.a || ''}
-                                             debounceTimeout={300}
-                                             name='a'>
-                                    <option>{strings.formSLASpecificationChooseServiceHours}</option>
-                                    <option value="10800">{strings.formSLASpecificationServiceHoursOption1}</option>
-                                    <option value="10800">{strings.formSLASpecificationServiceHoursOption2}</option>
-                                    <option value="21600">{strings.formSLASpecificationServiceHoursOption3}</option>
-                                </Form.Select>
+                            <FloatingLabel controlId="formServiceHours" label={strings.formSLASpecificationServiceHours} htmlFor='first'>
+                                <FormSelect
+                                    index={props.serviceSpaceIndex}
+                                    options={props.serviceSpaces}
+                                    defaultLabel={strings.formSLASpecificationChooseServiceHours}
+                                    renderLabel={(serviceSpace) => serviceSpace.name + ' (' + serviceSpace.startTime + '-' + serviceSpace.endTime + ') ' + serviceSpace.price + '/' + serviceSpace.pricePeriodicity}
+                                    onOptionSelected={props.onServiceSpaceSelected}
+                                />
                             </FloatingLabel>
                         </Col>
                         <Col md>
-                            <FloatingLabel controlId="formCoveredServices"
-                                           label={strings.formSLASpecificationCoveredServices} htmlFor='third'>
-                                <Form.Select onChange={(e) => dispatch({type: SUM_C, payload: +e.target.value})}
-                                             value={state.c || ''}
-                                             debounceTimeout={300}
-                                             name='c'>
-                                    <option>{strings.formSLASpecificationChooseCoveredServices}</option>
-                                    <option value="12000">{strings.formSLASpecificationCoveredServicesOption1}</option>
-                                    <option value="24000">{strings.formSLASpecificationCoveredServicesOption2}</option>
-                                </Form.Select>
+                            <FloatingLabel controlId="formCoveredServices" label={strings.formSLASpecificationCoveredServices} htmlFor='third'>
+                                <FormSelect
+                                    index={props.serviceIndex}
+                                    options={props.services}
+                                    defaultLabel={strings.formSLASpecificationChooseCoveredServices}
+                                    renderLabel={(service) => service.name + ' ' + service.price + '/' + service.pricePeriodicity}
+                                    onOptionSelected={props.onServiceSelected}
+                                />
                             </FloatingLabel>
                         </Col>
                     </Row>
                     {/*Eighth row*/}
                     <Row className="g-2">
                         <Col md>
-                            <FloatingLabel controlId="formCoveredServices"
-                                           label={strings.formSLASpecificationExtraServices}>
-                                <Form.Select>
-                                    <option>{strings.formSLASpecificationChooseExtraServices}</option>
-                                    <option value="0">{strings.formSLASpecificationExtraServicesOption1}</option>
-                                    <option value="0">{strings.formSLASpecificationExtraServicesOption2}</option>
-                                </Form.Select>
+                            <FloatingLabel controlId="formCoveredExtraServices" label={strings.formSLASpecificationExtraServices}>
+                                <FormSelect
+                                    index={props.extraServiceIndex}
+                                    options={props.extraServices}
+                                    defaultLabel={strings.formSLASpecificationChooseExtraServices}
+                                    renderLabel={(extraService) => extraService.name + ' ' + extraService.price + '/' + extraService.pricePeriodicity}
+                                    onOptionSelected={props.onExtraServiceSelected}
+                                />
                             </FloatingLabel>
                         </Col>
                         <Col md>
                             {/*Licences*/}
-                            <FloatingLabel controlId="formLicences"
-                                           label={strings.formSLASpecificationLicences}>
-                                <Form.Select>
-                                    <option>{strings.formSLASpecificationChooseLicences}</option>
-                                    <option value="1">{strings.formSLASpecificationLicencesOption1}</option>
-                                    <option value="2">{strings.formSLASpecificationLicencesOption2}</option>
-                                    <option value="3">{strings.formSLASpecificationLicencesOption3}</option>
-                                </Form.Select>
+                            <FloatingLabel controlId="formLicences" label={strings.formSLASpecificationLicences}>
+                                <FormSelect
+                                    index={props.licenseIndex}
+                                    options={props.licenses}
+                                    defaultLabel={strings.formSLASpecificationChooseLicences}
+                                    renderLabel={(license) => license}
+                                    onOptionSelected={props.onLicenseSelected}
+                                />
                             </FloatingLabel>
                         </Col>
                     </Row>
                     {/*Service level*/}
                     <Form.Group className="mt-3" controlId="formServiceLevel">
                         <Form.Label>{strings.formSLASpecificationServiceLevel}</Form.Label>
-                        <Form.Control as="textarea" rows={3}/>
+                        <Form.Control as="textarea" rows={3} value={props.serviceLevels}/>
                     </Form.Group>
                     {/*Revision report*/}
                     <Form.Label className="mt-3">{strings.formServiceAssuranceReport}</Form.Label>
@@ -486,16 +481,13 @@ function FormScreen() {
                         {/*Report Period*/}
                         <Col md>
                             <FloatingLabel controlId="formReportPeriod" label="Report Period" htmlFor='second'>
-                                <Form.Select onChange={(e) => dispatch({type: SUM_B, payload: +e.target.value})}
-                                             value={state.b || ''}
-                                             debounceTimeout={300}
-                                             name='b'>
-                                    <option>{strings.formServiceAssuranceChoosePeriod}</option>
-                                    <option value="500">{strings.formSLASpecificationPeriodOption1}</option>
-                                    <option value="450">{strings.formSLASpecificationPeriodOption2}</option>
-                                    <option value="400">{strings.formSLASpecificationPeriodOption3}</option>
-                                    <option value="350">{strings.formSLASpecificationPeriodOption4}</option>
-                                </Form.Select>
+                                <FormSelect
+                                    index={props.revisionReportIndex}
+                                    options={props.revisionReports}
+                                    defaultLabel={strings.formServiceAssuranceChoosePeriod}
+                                    renderLabel={(revisionReport) => revisionReport.name + ' ' + revisionReport.price + '/' + revisionReport.pricePeriodicity}
+                                    onOptionSelected={props.onRevisionReportSelected}
+                                />
                             </FloatingLabel>
                         </Col>
                         <Col md>
@@ -510,23 +502,24 @@ function FormScreen() {
                         {/*Service Billing*/}
                         <Col md>
                             <FloatingLabel controlId="formBillingPeriod" label="Billing Period">
-                                <Form.Select>
-                                    <option>{strings.formServiceAssuranceSelectServiceBilling}</option>
-                                    <option value="1">{strings.formSLASpecificationBillingPeriodOption1}</option>
-                                    <option value="2">{strings.formSLASpecificationBillingPeriodOption2}</option>
-                                    <option value="3">{strings.formSLASpecificationBillingPeriodOption3}</option>
-                                    <option value="4">{strings.formSLASpecificationBillingPeriodOption4}</option>
-                                </Form.Select>
+                                <FormSelect
+                                    index={props.billingIndex}
+                                    options={props.billings}
+                                    defaultLabel={strings.formServiceAssuranceSelectServiceBilling}
+                                    renderLabel={(billing) => billing.name}
+                                    onOptionSelected={props.onBillingSelected}
+                                />
                             </FloatingLabel>
                         </Col>
                         <Col md>
                             <FloatingLabel controlId="formBillingMethod" label="Billing Method">
-                                <Form.Select>
-                                    <option>{strings.formServiceAssuranceSelectBillingMethod}</option>
-                                    <option value="1">{strings.formSLASpecificationBillingMethodOption1}</option>
-                                    <option value="2">{strings.formSLASpecificationBillingMethodOption2}</option>
-                                    <option value="3">{strings.formSLASpecificationBillingMethodOption3}</option>
-                                </Form.Select>
+                                <FormSelect
+                                    index={props.billingMethodIndex}
+                                    options={props.billingMethods}
+                                    defaultLabel={strings.formServiceAssuranceSelectBillingMethod}
+                                    renderLabel={(billing) => billing}
+                                    onOptionSelected={props.onBillingMethodSelected}
+                                />
                             </FloatingLabel>
                         </Col>
                     </Row>
