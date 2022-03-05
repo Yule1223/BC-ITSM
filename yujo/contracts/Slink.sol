@@ -2,107 +2,93 @@
 pragma solidity >=0.4.4 < 0.7.0;
 pragma experimental ABIEncoderV2;
 
-// @title Slink
+// @title Slink V1
 // @author Yule Zhang, José Andrés Velasco Santos
 
-contract Slink {
+contract SlinkV1 {
 
     struct Service {
         string name;
         string description;
         uint price;
+        uint pricePeriodicity;
     }
 
-    struct ServicesSpace {
-        uint256 startDate;
-        uint256 endDate;
+    struct ServiceSpace {
+        string name;
+        string startTime;
+        string endTime;
         uint price;
+        uint pricePeriodicity;
     }
 
     struct RevisionReport {
         string name;
         uint price;
+        uint pricePeriodicity;
     }
 
-    uint public id;
+    struct Billing {
+        string name;
+        uint periodicity;
+    }
+
+    struct SLA {
+        address customer;
+        uint startDate;
+        bool automaticRenewal;
+        Service services;
+        Service extraServices;
+        string serviceLevel;
+        ServiceSpace serviceSpace;
+        string license;
+        RevisionReport revisionReport;
+        Billing billing;
+        uint billingMethod;
+    }
+
     address public provider;
-    address public customer;
-    uint256 public startDate;
-    bool public automaticRenewal;
+    uint[] private slaIDs;
+    mapping(uint => SLA) private slas;
 
-    string [] public serviceLevels;
-    Service [] public services;
-    Service [] public extraServices;
-    //License??
-    RevisionReport [] public revisionReports;
-    string public billing;
+    function findId(uint id) internal view returns(uint) {
+        uint pos = slaIDs.length;
+        uint i = 0;
+        while (i < slaIDs.length && pos == slaIDs.length)  {
+            if (slaIDs[i] == id) {
+                pos = i;
+            }
+            i++;
+        }
+        return pos;
+    }
 
-    constructor (
-        uint _id,
-        address _customer,
-        uint256 _startDate,
-        bool _automaticRenewal,
-        string memory _billing
-    ) public {
-        id = _id;
+    constructor() public {
         provider = msg.sender;
-        customer = _customer;
-        startDate = _startDate;
-        automaticRenewal = _automaticRenewal;
-        billing = _billing;
     }
 
-    function addServiceLevel(string memory serviceLevel) external checkProviderOrCustomer(msg.sender) {
-        serviceLevels.push(serviceLevel);
+    function addSLA(uint id, SLA memory sla) external checkProvider() checkNotExistID(id) {
+        slaIDs.push(id);
+        slas[id] = sla;
     }
 
-    function addService(string memory name, string memory description, uint price) external checkProviderOrCustomer(msg.sender) {
-        Service memory service;
-        service.name = name;
-        service.description = description;
-        service.price = price;
-
-        services.push(service);
+    function getSLA(uint id) external view checkExistID(id)  returns(SLA memory) {
+        return slas[id];
     }
 
-    function addExtraService(string memory name, string memory description, uint price) external checkProviderOrCustomer(msg.sender) {
-        Service memory service;
-        service.name = name;
-        service.description = description;
-        service.price = price;
-
-        extraServices.push(service);
-    }
-
-    function addRevisionReport(string memory name, uint price) external checkProviderOrCustomer(msg.sender) {
-        RevisionReport memory revisionReport;
-        revisionReport.name = name;
-        revisionReport.price = price;
-
-        revisionReports.push(revisionReport);
-    }
-
-    modifier checkProviderOrCustomer(address _address) {
-        require(_address == provider || _address == customer, "Unauthorized");
+    modifier checkProvider() {
+        require(provider == msg.sender, "Unauthorized");
         _;
     }
 
-    function totalPrice() public view returns(uint) {
-        uint total = 0;
+    modifier checkExistID(uint id) {
+        require(findId(id) != slaIDs.length, "SLA id not exist");
+        _;
+    }
 
-        for (uint i = 0; i < services.length; i++) {
-            total += services[i].price;
-        }
-
-        for (uint i = 0; i < extraServices.length; i++) {
-            total += extraServices[i].price;
-        }
-
-        for (uint i = 0; i < revisionReports.length; i++) {
-            total += revisionReports[i].price;
-        }
-
-        return total;
+    modifier checkNotExistID(uint id) {
+        require(findId(id) == slaIDs.length, "SLA id exist");
+        _;
     }
 
 }
