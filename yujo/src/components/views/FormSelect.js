@@ -7,7 +7,6 @@ function FormSelect(props) {
         <Form.Select
             onChange={(e) => props.onOptionSelected(e.target.value)}
             value={props.index}
-            debounceTimeout={300}
             name='c'
         >
             <option key={-1} value={-1}>{props.defaultLabel}</option>

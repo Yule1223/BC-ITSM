@@ -9,6 +9,24 @@ function getLibrary(provider) {
 }
 
 function FormScreenController() {
+    const [customerDNI, setCustomerDNI] = useState('');
+    const [customerName, setCustomerName] = useState('');
+    const [customerSurname, setCustomerSurname] = useState('');
+    const [customerEmail, setCustomerEmail] = useState('');
+    const [customerPhone, setCustomerPhone] = useState('');
+    const [customerCity, setCustomerCity] = useState('');
+    const [customerProvince, setCustomerProvince] = useState('');
+
+    //TODO Falta implementación de índice de país y de género
+    //const [customerCountry, setCustomerCountry] = useState(-1);
+    //const [customerGender, setCustomerGender] = useState(-1);
+
+    const [customerBusinessName, setCustomerBusinessName] = useState('');
+    const [customerBusinessAddress, setCustomerBusinessAddress] = useState('');
+    const [customerBusinessCIF, setCustomerBusinessCIF] = useState('');
+
+    const [startDate, setStartDate] = useState(new Date());
+    const [automaticRenewal, setAutomaticRenewal] = useState();
     const [serviceSpaceIndex, setServiceSpaceIndex] = useState(-1);
     const [serviceIndex, setServiceIndex] = useState(-1);
     const [extraServiceIndex, setExtraServiceIndex] = useState(-1);
@@ -19,6 +37,42 @@ function FormScreenController() {
 
     return <Web3ReactProvider getLibrary={getLibrary}>
         <FormScreen
+            customerDNI={customerDNI}
+            onCustomerDNIChange={setCustomerDNI}
+
+            customerName={customerName}
+            onCustomerNameChange={setCustomerName}
+
+            customerSurname={customerSurname}
+            onCustomerSurnameChange={setCustomerSurname}
+
+            customerEmail={customerEmail}
+            onCustomerEmailChange={setCustomerEmail}
+
+            customerPhone={customerPhone}
+            onCustomerPhoneChange={setCustomerPhone}
+
+            customerCity={customerCity}
+            onCustomerCityChange={setCustomerCity}
+
+            customerProvince={customerProvince}
+            onCustomerProvinceChange={setCustomerProvince}
+
+            customerBusinessName={customerBusinessName}
+            onCustomerBusinessNameChange={setCustomerBusinessName}
+
+            customerBusinessAddress={customerBusinessAddress}
+            onCustomerBusinessAddressChange={setCustomerBusinessAddress}
+
+            customerBusinessCIF={customerBusinessCIF}
+            onCustomerBusinessCIFChange={setCustomerBusinessCIF}
+
+            startDate={startDate}
+            onDateSelected={setStartDate}
+
+            automaticRenewal={automaticRenewal}
+            onAutomaticRenewalChange={setAutomaticRenewal}
+
             serviceSpaces={slinkConfig.serviceSpaces}
             serviceSpaceIndex={serviceSpaceIndex}
             onServiceSpaceSelected={(index) => setServiceSpaceIndex(index)}

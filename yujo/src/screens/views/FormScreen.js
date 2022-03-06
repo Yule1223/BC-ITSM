@@ -53,6 +53,7 @@ function FormScreen(props) {
     };
 
     const onChangeDate = (date) => {
+        console.log(typeof date);
         console.log(date.toString());
     };
 
@@ -67,8 +68,13 @@ function FormScreen(props) {
                         {/*DNI*/}
                         <Form.Group as={Col} controlId="formDNI">
                             <Form.Label>{strings.formInformationDNI}*</Form.Label>
-                            <Form.Control required type="text"
-                                          placeholder={strings.formInformationDNIPlaceHolder}/>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder={strings.formInformationDNIPlaceHolder}
+                                value={props.customerDNI}
+                                onChange={(e) => props.onCustomerDNIChange(e.target.value)}
+                            />
                             <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 {strings.formInformationDNIError}
@@ -77,8 +83,13 @@ function FormScreen(props) {
                         {/*FirstName*/}
                         <Form.Group as={Col} controlId="formFirstName">
                             <Form.Label>{strings.formInformationFirstName}*</Form.Label>
-                            <Form.Control required type="text"
-                                          placeholder={strings.formInformationFirstNamePlaceHolder}/>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder={strings.formInformationFirstNamePlaceHolder}
+                                value={props.customerName}
+                                onChange={(e) => props.onCustomerNameChange(e.target.value)}
+                            />
                             <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 {strings.formInformationFirstNameError}
@@ -87,8 +98,13 @@ function FormScreen(props) {
                         {/*LastName*/}
                         <Form.Group as={Col} controlId="formLastName">
                             <Form.Label>{strings.formInformationLastName}*</Form.Label>
-                            <Form.Control required type="text"
-                                          placeholder={strings.formInformationLastNamePlaceHolder}/>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder={strings.formInformationLastNamePlaceHolder}
+                                value={props.customerSurname}
+                                onChange={(e) => props.onCustomerSurnameChange(e.target.value)}
+                            />
                             <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 {strings.formInformationLastNameError}
@@ -99,16 +115,25 @@ function FormScreen(props) {
                     <Row className="mb-3 mt-3">
                         <Form.Group as={Col} controlId="formContactEmail">
                             <Form.Label>{strings.formSLASpecificationContactEmail}*</Form.Label>
-                            <Form.Control required type="email"
-                                          placeholder={strings.formSLASpecificationContactEmailPlaceHolder}/>
+                            <Form.Control
+                                required
+                                type="email"
+                                placeholder={strings.formSLASpecificationContactEmailPlaceHolder}
+                                value={props.customerEmail}
+                                onChange={(e) => props.onCustomerEmailChange(e.target.value)}
+                            />
                             <Form.Control.Feedback type="invalid">
                                 {strings.formInformationEmailError}
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group as={Col} controlId="formContactPhone">
                             <Form.Label>{strings.formSLASpecificationContactPhone}</Form.Label>
-                            <Form.Control type="text"
-                                          placeholder={strings.formSLASpecificationContactPhonePlaceHolder}/>
+                            <Form.Control
+                                type="text"
+                                placeholder={strings.formSLASpecificationContactPhonePlaceHolder}
+                                value={props.customerPhone}
+                                onChange={(e) => props.onCustomerPhoneChange(e.target.value)}
+                            />
                         </Form.Group>
                     </Row>
                     {/*Second row*/}
@@ -339,12 +364,22 @@ function FormScreen(props) {
                         {/*City*/}
                         <Form.Group as={Col} controlId="formCity">
                             <Form.Label>{strings.formInformationCity}</Form.Label>
-                            <Form.Control type="text" placeholder={strings.formInformationCityPlaceHolder}/>
+                            <Form.Control
+                                type="text"
+                                placeholder={strings.formInformationCityPlaceHolder}
+                                value={props.customerCity}
+                                onChange={(e) => props.onCustomerCityChange(e.target.value)}
+                            />
                         </Form.Group>
                         {/*Province*/}
                         <Form.Group as={Col} controlId="formProvince">
                             <Form.Label>{strings.formInformationProvince}</Form.Label>
-                            <Form.Control type="text" placeholder={strings.formInformationProvincePlaceHolder}/>
+                            <Form.Control
+                                type="text"
+                                placeholder={strings.formInformationProvincePlaceHolder}
+                                value={props.customerProvince}
+                                onChange={(e) => props.onCustomerProvinceChange(e.target.value)}
+                            />
                         </Form.Group>
                     </Row>
                     {/*Fourth row*/}
@@ -352,8 +387,13 @@ function FormScreen(props) {
                         {/*Company name*/}
                         <Form.Group as={Col} controlId="formCompanyName">
                             <Form.Label>{strings.formInformationCompanyName}*</Form.Label>
-                            <Form.Control required type="text"
-                                          placeholder={strings.formInformationCompanyNamePlaceHolder}/>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder={strings.formInformationCompanyNamePlaceHolder}
+                                value={props.customerBusinessName}
+                                onChange={(e) => props.onCustomerBusinessNameChange(e.target.value)}
+                            />
                             <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 {strings.formInformationCompanyNameError}
@@ -362,8 +402,13 @@ function FormScreen(props) {
                         {/*Company direction*/}
                         <Form.Group as={Col} controlId="formCompanyDirection">
                             <Form.Label>{strings.formInformationCompanyDirection}*</Form.Label>
-                            <Form.Control required type="text"
-                                          placeholder={strings.formInformationCompanyDirectionPlaceHolder}/>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder={strings.formInformationCompanyDirectionPlaceHolder}
+                                value={props.customerBusinessAddress}
+                                onChange={(e) => props.onCustomerBusinessAddressChange(e.target.value)}
+                            />
                             <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 {strings.formInformationCompanyDirectionError}
@@ -372,8 +417,13 @@ function FormScreen(props) {
                         {/*Company fiscal number*/}
                         <Form.Group as={Col} controlId="formFiscalNumber">
                             <Form.Label>{strings.formInformationCompanyNumber}*</Form.Label>
-                            <Form.Control required type="text"
-                                          placeholder={strings.formInformationCompanyNumberPlaceHolder}/>
+                            <Form.Control
+                                required
+                                type="text"
+                                placeholder={strings.formInformationCompanyNumberPlaceHolder}
+                                value={props.customerBusinessCIF}
+                                onChange={(e) => props.onCustomerBusinessCIFChange(e.target.value)}
+                            />
                             <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 {strings.formInformationCompanyNumberError}
@@ -385,7 +435,7 @@ function FormScreen(props) {
                     <Row className="mb-3">
                         <Form.Group as={Col}>
                             <Form.Label>{strings.formSLASpecificationInitialDate}</Form.Label>
-                            <DatePicker onChange={onChangeDate}/>
+                            <DatePicker value={props.startDate} onChange={props.onDateSelected}/>
                         </Form.Group>
                         {/*Second row*/}
                         <Form.Group as={Col} assName="mb-3" controlId="formCoveredService">
@@ -398,6 +448,8 @@ function FormScreen(props) {
                                         name="group1"
                                         type={type}
                                         id={`inline-${type}-1`}
+                                        value={props.automaticRenewal}
+                                        onChange={() => props.onAutomaticRenewalChange(true)}
                                     />
                                     <Form.Check
                                         inline
@@ -405,6 +457,8 @@ function FormScreen(props) {
                                         name="group1"
                                         type={type}
                                         id={`inline-${type}-2`}
+                                        value={!props.automaticRenewal}
+                                        onChange={() => props.onAutomaticRenewalChange(false)}
                                     />
                                 </div>
                             ))}
@@ -534,7 +588,6 @@ function FormScreen(props) {
                     <label className="d-inline mt-3 w-100 text-warning"
                            onChange={(e) => dispatch({type: SUM, payload: +e.target.value})}
                            value={state.sum || ''}
-                           debounceTimeout={300}
                            name='sum'>
                         {(state.sum || 0) + "€/year"}
                     </label>
