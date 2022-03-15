@@ -7,54 +7,16 @@ import DatePicker from 'sassy-datepicker';
 import React from 'react';
 import FormSelect from "../../components/views/FormSelect";
 
-const SUM_A = 'SUM_A';
-const SUM_B = 'SUM_B';
-const SUM_C = 'SUM_C';
-const SUM = 'SUM';
-let ANT_A = 0;
-let ANT_B = 0;
-let ANT_C = 0;
-
-function reducer(state, action) {
-    switch (action.type) {
-        case SUM_A:
-            let x = state.sum + action.payload - ANT_A;
-            ANT_A = action.payload;
-            return {...state, a: action.payload, sum: x};
-        case SUM_B:
-            let y = state.sum + action.payload - ANT_B;
-            ANT_B = action.payload;
-            return {...state, b: action.payload, sum: y};
-        case SUM_C:
-            let z = state.sum + action.payload - ANT_C;
-            ANT_C = action.payload;
-            return {...state, c: action.payload, sum: z};
-        case SUM:
-            return {sum: action.payload, a: action.payload / 2, b: action.payload / 2, c: action.payload / 2};
-        default:
-            throw new Error()
-    }
-}
-
 function FormScreen(props) {
-
-    const [state, dispatch] = React.useReducer(reducer, {a: 0, b: 0, c: 0, sum: 0});
 
     const [validated, setValidated] = useState(false);
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-
+        event.preventDefault();
+        event.stopPropagation();
         setValidated(true);
-    };
-
-    const onChangeDate = (date) => {
-        console.log(typeof date);
-        console.log(date.toString());
+        props.onSendPress();
     };
 
     return (
@@ -585,11 +547,8 @@ function FormScreen(props) {
                     </Form.Group>
                     {/*SLA Price*/}
                     <label className="d-inline text-warning" htmlFor='sum'>{strings.formPrice}</label>
-                    <label className="d-inline mt-3 w-100 text-warning"
-                           onChange={(e) => dispatch({type: SUM, payload: +e.target.value})}
-                           value={state.sum || ''}
-                           name='sum'>
-                        {(state.sum || 0) + "€/year"}
+                    <label className="d-inline mt-3 w-100 text-warning">
+                        {props.price + "€/year"}
                     </label>
                     <p className="text-danger mt-3">{strings.formFieldsAreMandatory}</p>
                     <Button className="mb-3" variant="primary" type="submit">
