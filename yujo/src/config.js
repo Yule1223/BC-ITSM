@@ -1,3 +1,7 @@
+export const CUSTOMER_ENTITY = 0;
+export const COMPANY_ENTITY = 1;
+export const SLA_ENTITY = 2;
+
 export const constantsValues = {
     hourlyPeriodicity: 0,
     dailyPeriodicity: 1,
