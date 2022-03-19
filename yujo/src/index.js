@@ -15,9 +15,7 @@ render(
             <Route path="/form" element={<FormScreenController />} />
             <Route path="/form/policy" element={<PolicyScreenController />} />
             <Route path="/knowUs" element={<KnowUsScreenController />} />
-            <Route path="/customers" element={<EntitiesListScreenController entity={CUSTOMER_ENTITY} />} />
-            <Route path="/companies" element={<EntitiesListScreenController entity={COMPANY_ENTITY} />} />
-            <Route path="/slas" element={<EntitiesListScreenController entity={SLA_ENTITY} />} />
+            <Route path="/dashboard" element={<EntitiesListScreenController />} />
         </Routes>
     </BrowserRouter>,
     rootElement
