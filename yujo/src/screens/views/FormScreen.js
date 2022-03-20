@@ -102,7 +102,7 @@ function FormScreen(props) {
                     <Row className="g-2 mt-3">
                         {/*Nationality*/}
                         <Col md>
-                            <FloatingLabel controlId="formNationality" label="Country of nationality">
+                            <FloatingLabel className="text-dark" controlId="formNationality" label="Country of nationality">
                                 <Form.Select autoComplete={"country-name"}>
                                     <option>{strings.formInformationCountryChoose}</option>
                                     <option value="401"> AFGANISTAN</option>
@@ -312,7 +312,7 @@ function FormScreen(props) {
                         </Col>
                         {/*Gender*/}
                         <Col md>
-                            <FloatingLabel controlId="formGender" label="Gender">
+                            <FloatingLabel className="text-dark" controlId="formGender" label="Gender">
                                 <Form.Select aria-label="Floating label select example">
                                     <option>{strings.formInformationGenderChoose}</option>
                                     <option value="1">{strings.formInformationGenderMale}</option>
@@ -438,7 +438,7 @@ function FormScreen(props) {
                     <Row className="g-2 mb-3">
                         <Col md>
                             {/*Service hours*/}
-                            <FloatingLabel controlId="formServiceHours" label={strings.formSLASpecificationServiceHours} htmlFor='first'>
+                            <FloatingLabel className="text-dark" controlId="formServiceHours" label={strings.formSLASpecificationServiceHours} htmlFor='first'>
                                 <FormSelect
                                     index={props.serviceSpaceIndex}
                                     options={props.serviceSpaces}
@@ -449,7 +449,7 @@ function FormScreen(props) {
                             </FloatingLabel>
                         </Col>
                         <Col md>
-                            <FloatingLabel controlId="formCoveredServices" label={strings.formSLASpecificationCoveredServices} htmlFor='third'>
+                            <FloatingLabel className="text-dark" controlId="formCoveredServices" label={strings.formSLASpecificationCoveredServices} htmlFor='third'>
                                 <FormSelect
                                     index={props.serviceIndex}
                                     options={props.services}
@@ -463,7 +463,7 @@ function FormScreen(props) {
                     {/*Eighth row*/}
                     <Row className="g-2">
                         <Col md>
-                            <FloatingLabel controlId="formCoveredExtraServices" label={strings.formSLASpecificationExtraServices}>
+                            <FloatingLabel className="text-dark" controlId="formCoveredExtraServices" label={strings.formSLASpecificationExtraServices}>
                                 <FormSelect
                                     index={props.extraServiceIndex}
                                     options={props.extraServices}
@@ -475,7 +475,7 @@ function FormScreen(props) {
                         </Col>
                         <Col md>
                             {/*Licences*/}
-                            <FloatingLabel controlId="formLicences" label={strings.formSLASpecificationLicences}>
+                            <FloatingLabel className="text-dark" controlId="formLicences" label={strings.formSLASpecificationLicences}>
                                 <FormSelect
                                     index={props.licenseIndex}
                                     options={props.licenses}
@@ -496,7 +496,7 @@ function FormScreen(props) {
                     <Row className="g-2">
                         {/*Report Period*/}
                         <Col md>
-                            <FloatingLabel controlId="formReportPeriod" label="Report Period" htmlFor='second'>
+                            <FloatingLabel className="text-dark" controlId="formReportPeriod" label="Report Period" htmlFor='second'>
                                 <FormSelect
                                     index={props.revisionReportIndex}
                                     options={props.revisionReports}
@@ -507,7 +507,7 @@ function FormScreen(props) {
                             </FloatingLabel>
                         </Col>
                         <Col md>
-                            <FloatingLabel controlId="floatingReportContent" label="Report Content">
+                            <FloatingLabel className="text-dark" controlId="floatingReportContent" label="Report Content">
                                 <Form.Control type="text"/>
                             </FloatingLabel>
                         </Col>
@@ -517,7 +517,7 @@ function FormScreen(props) {
                     <Row className="g-2">
                         {/*Service Billing*/}
                         <Col md>
-                            <FloatingLabel controlId="formBillingPeriod" label="Billing Period">
+                            <FloatingLabel className="text-dark" controlId="formBillingPeriod" label="Billing Period">
                                 <FormSelect
                                     index={props.billingIndex}
                                     options={props.billings}
@@ -528,7 +528,7 @@ function FormScreen(props) {
                             </FloatingLabel>
                         </Col>
                         <Col md>
-                            <FloatingLabel controlId="formBillingMethod" label="Billing Method">
+                            <FloatingLabel className="text-dark" controlId="formBillingMethod" label="Billing Method">
                                 <FormSelect
                                     index={props.billingMethodIndex}
                                     options={props.billingMethods}
