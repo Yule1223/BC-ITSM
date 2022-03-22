@@ -1,13 +1,13 @@
 import {useEffect, useState} from "react";
 import {
-    createCustomer,
-    deleteCompany,
-    deleteCustomer, deleteSLA,
-    getCompanies,
-    getCustomer,
-    getCustomers,
-    getSLAs,
-    updateCustomer
+    apiCreateCustomer,
+    apiDeleteCompany,
+    apiDeleteCustomer, apiDeleteSLA,
+    apiGetCompanies,
+    apiGetCustomer,
+    apiGetCustomers,
+    apiGetSLAs,
+    apiUpdateCustomer
 } from "../../API";
 import EntitiesListScreen from "../views/EntitiesListScreen";
 import {COMPANY_ENTITY, CUSTOMER_ENTITY, SLA_ENTITY} from "../../config";
@@ -22,9 +22,9 @@ function EntitiesListScreenController() {
 
     useEffect(() => {
         const getData = async () => {
-            setCustomers((await getCustomers()).data);
-            setCompanies((await getCompanies()).data);
-            setSLAs((await getSLAs()).data);
+            setCustomers((await apiGetCustomers()).data);
+            setCompanies((await apiGetCompanies()).data);
+            setSLAs((await apiGetSLAs()).data);
         };
         getData();
     }, []);
@@ -34,7 +34,7 @@ function EntitiesListScreenController() {
     }
 
     const onCreateCustomer = async (customer) => {
-        await createCustomer(customer);
+        await apiCreateCustomer(customer);
         const _customers = [...customers];
         _customers.push(customer);
         setCustomers(_customers);
@@ -42,7 +42,7 @@ function EntitiesListScreenController() {
 
     const onUpdateCustomer = async (customer) => {
         if (customer) {
-            await updateCustomer(customer);
+            await apiUpdateCustomer(customer);
             const _customers = [...customers];
             _customers[customerSelected] = customer;
             setCustomers(_customers);
@@ -53,21 +53,21 @@ function EntitiesListScreenController() {
     const onDeleteEntity = async (index) => {
         switch (tabIndex) {
             case CUSTOMER_ENTITY:
-                await deleteCustomer(customers[index].ethAddress);
+                await apiDeleteCustomer(customers[index].ethAddress);
                 const _customers = [...customers];
                 _customers.splice(index, 1);
                 setCustomers(_customers);
-                setSLAs((await getSLAs()).data);
+                setSLAs((await apiGetSLAs()).data);
                 break;
             case COMPANY_ENTITY:
-                await deleteCompany(companies[index].cif);
+                await apiDeleteCompany(companies[index].cif);
                 const _companies = [...companies];
                 _companies.splice(index, 1);
                 setCompanies(_companies);
-                setSLAs((await getSLAs()).data);
+                setSLAs((await apiGetSLAs()).data);
                 break;
             case SLA_ENTITY:
-                await deleteSLA(slas[index].id);
+                await apiDeleteSLA(slas[index].id);
                 const _slas = [...slas];
                 _slas.splice(index, 1);
                 setSLAs(_slas);

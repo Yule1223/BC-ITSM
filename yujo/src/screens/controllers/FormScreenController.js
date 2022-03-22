@@ -5,7 +5,7 @@ import {constantsValues, slinkConfig} from "../../config";
 import {useState} from "react";
 import detectEthereumProvider from "@metamask/detect-provider";
 import {loadMetaMaskContract} from "../../Contract";
-import {createCompany, createCustomer, createSLA} from "../../API";
+import {apiCreateCompany, apiCreateCustomer, apiCreateSLA} from "../../API";
 
 function getLibrary(provider) {
     return new Web3(provider)
@@ -84,13 +84,13 @@ function FormScreenController() {
         const slaId = Math.floor(new Date().getTime() / 1000);
         console.log(slaId);
 
-        const responseFromCustomerCreation = await createCustomer({ethAddress: ethAddress, dni: customerDNI, name: customerName, surname: customerSurname, email: customerEmail, phone: customerPhone, province: customerProvince, city: customerCity});
+        const responseFromCustomerCreation = await apiCreateCustomer({ethAddress: ethAddress, dni: customerDNI, name: customerName, surname: customerSurname, email: customerEmail, phone: customerPhone, province: customerProvince, city: customerCity});
         if (responseFromCustomerCreation.status !== 200) alert(responseFromCustomerCreation.statusText);
 
-        const responseFromCompanyCreation = await createCompany({cif: customerBusinessCIF, name: customerBusinessName, address: customerBusinessAddress});
+        const responseFromCompanyCreation = await apiCreateCompany({cif: customerBusinessCIF, name: customerBusinessName, address: customerBusinessAddress});
         if (responseFromCompanyCreation.status !== 200) alert(responseFromCompanyCreation.statusText);
 
-        const responseFromSLACreation = await createSLA({id: slaId, ethAddress: ethAddress, cif: customerBusinessCIF, price: price});
+        const responseFromSLACreation = await apiCreateSLA({id: slaId, ethAddress: ethAddress, cif: customerBusinessCIF, price: price});
         if (responseFromSLACreation.status !== 200) alert(responseFromSLACreation.statusText);
 
         const contract = await loadMetaMaskContract();
