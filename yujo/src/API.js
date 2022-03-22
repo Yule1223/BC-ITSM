@@ -50,7 +50,7 @@ const apiDeleteCompany = async (cif) => {
 
 //CRUD SLAs
 const apiCreateSLA = async (sla) => {
-    return await axios.post(`${slasURL}?id=${sla.id}&customer=${sla.ethAddress}&company=${sla.cif}&price=${sla.price}`);
+    return await axios.post(`${slasURL}?id=${sla.id}&customer=${sla.customer}&company=${sla.company}&price=${sla.price}`);
 }
 
 const apiGetSLA = async (id) => {
@@ -62,7 +62,7 @@ const apiGetSLAs = async () => {
 }
 
 const apiUpdateSLA = async (sla) => {
-    return await axios.put(`${slasURL}/${sla.id}?customer=${sla.ethAddress}&company=${sla.cif}&price=${sla.price}`);
+    return await axios.put(`${slasURL}/${sla.id}?customer=${sla.customer}&company=${sla.company}&price=${sla.price}`);
 }
 
 const apiDeleteSLA = async (id) => {

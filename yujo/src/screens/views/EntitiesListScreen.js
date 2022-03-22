@@ -19,6 +19,7 @@ import {Container} from "@mui/material";
 import {useState} from "react";
 import CustomerFormDialog from "../../components/views/CustomerFormDialog";
 import CompanyFormDialog from "../../components/views/CompanyFormDialog";
+import SLAFormDialog from "../../components/views/SLAFormDialog";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -112,10 +113,10 @@ export default function EntitiesListScreen(props) {
                 const sla = props.slas[index];
                 return (
                     <StyledTableRow key={index} role='button'>
-                        <StyledTableCell component="th" scope="row">{sla.id}</StyledTableCell>
-                        <StyledTableCell align="right">{sla.customer}</StyledTableCell>
-                        <StyledTableCell align="right">{sla.company}</StyledTableCell>
-                        <StyledTableCell align="right">{sla.price}</StyledTableCell>
+                        <StyledTableCell component="th" scope="row" onClick={() => props.onSLAPress(index)}>{sla.id}</StyledTableCell>
+                        <StyledTableCell align="right" onClick={() => props.onSLAPress(index)}>{sla.customer}</StyledTableCell>
+                        <StyledTableCell align="right" onClick={() => props.onSLAPress(index)}>{sla.company}</StyledTableCell>
+                        <StyledTableCell align="right" onClick={() => props.onSLAPress(index)}>{sla.price}</StyledTableCell>
                         <StyledTableCell align="right"><DeleteIcon color='error' onClick={() => props.onDeleteEntity(index)} /></StyledTableCell>
                     </StyledTableRow>
                 );
@@ -124,18 +125,32 @@ export default function EntitiesListScreen(props) {
 
     return (
         <div style={{paddingTop: '60px'}}>
-            <CustomerFormDialog
-                open={props.customerSelected !== -1}
-                customer={props.customers[props.customerSelected]}
-                onSave={props.onUpdateCustomer}
-                onCancel={props.onUpdateCustomer}
-            />
-            <CompanyFormDialog
-                open={props.companySelected !== -1}
-                company={props.companies[props.companySelected]}
-                onSave={props.onUpdateCompany}
-                onCancel={props.onUpdateCompany}
-            />
+            {props.customerSelected !== -1 &&
+                <CustomerFormDialog
+                    open={true}
+                    customer={props.customers[props.customerSelected]}
+                    onSave={props.onUpdateCustomer}
+                    onCancel={props.onUpdateCustomer}
+                />
+            }
+            {props.companySelected !== -1 &&
+                <CompanyFormDialog
+                    open={true}
+                    company={props.companies[props.companySelected]}
+                    onSave={props.onUpdateCompany}
+                    onCancel={props.onUpdateCompany}
+                />
+            }
+            {props.slaSelected !== -1 &&
+                <SLAFormDialog
+                    customers={props.customers}
+                    companies={props.companies}
+                    open={true}
+                    sla={props.slas[props.slaSelected]}
+                    onSave={props.onUpdateSLA}
+                    onCancel={props.onUpdateSLA}
+                />
+            }
             <Header />
             <Container maxWidth='lg'>
                 <Tabs value={props.tabIndex} onChange={handleChange} centered>
@@ -169,6 +184,12 @@ export default function EntitiesListScreen(props) {
             <CompanyFormDialog
                 isButton
                 onSave={props.onCreateCompany}
+            />
+            <SLAFormDialog
+                customers={props.customers}
+                companies={props.companies}
+                isButton
+                onSave={props.onCreateSLA}
             />
         </div>
     );

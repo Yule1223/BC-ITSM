@@ -74,6 +74,7 @@ function EntitiesListScreenController() {
     };
 
     const onUpdateSLA = async (sla) => {
+        console.log(sla);
         if (sla) {
             await apiUpdateSLA(sla);
             const _slas = [...slas];
