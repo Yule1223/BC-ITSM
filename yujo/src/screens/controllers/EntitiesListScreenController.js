@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {
+    createCustomer,
     deleteCompany,
     deleteCustomer, deleteSLA,
     getCompanies,
@@ -17,6 +18,7 @@ function EntitiesListScreenController() {
     const [customers, setCustomers] = useState([]);
     const [companies, setCompanies] = useState([]);
     const [slas, setSLAs] = useState([]);
+    const [customerSelected, setCustomerSelected] = useState(-1);
 
     useEffect(() => {
         const getData = async () => {
@@ -26,6 +28,27 @@ function EntitiesListScreenController() {
         };
         getData();
     }, []);
+
+    const onCustomerPress = async (index) => {
+        setCustomerSelected(index);
+    }
+
+    const onCreateCustomer = async (customer) => {
+        await createCustomer(customer);
+        const _customers = [...customers];
+        _customers.push(customer);
+        setCustomers(_customers);
+    } ;
+
+    const onUpdateCustomer = async (customer) => {
+        if (customer) {
+            await updateCustomer(customer);
+            const _customers = [...customers];
+            _customers[customerSelected] = customer;
+            setCustomers(_customers);
+        }
+        setCustomerSelected(-1);
+    } ;
 
     const onDeleteEntity = async (index) => {
         switch (tabIndex) {
@@ -59,6 +82,11 @@ function EntitiesListScreenController() {
             customers={customers}
             companies={companies}
             slas={slas}
+
+            onCreateCustomer={onCreateCustomer}
+            customerSelected={customerSelected}
+            onCustomerPress={onCustomerPress}
+            onUpdateCustomer={onUpdateCustomer}
 
             onDeleteEntity={onDeleteEntity}
         />;

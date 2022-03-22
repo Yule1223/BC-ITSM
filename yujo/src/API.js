@@ -8,7 +8,7 @@ const slasURL = url + '/slas';
 
 // CRUD Customers
 const createCustomer = async (customer) => {
-    return await axios.post(`${customersURL}?ethAddress=${customer.ethAddress}&dni=${customer.dni}&name=${customer.name}&surname=${customer.surname}&email=${customer.email}&phone=${customer.phone}&province=${customer.province}&city=${customer.city}`);
+    return await axios.post(`${customersURL}?ethAddress=${customer.ethAddress}&dni=${customer.dni}&name=${customer.name}&surname=${customer.surname}&gender=${customer.gender}&email=${customer.email}&phone=${customer.phone}&province=${customer.province}&city=${customer.city}&country=${customer.country}`);
 }
 
 const getCustomer = async (ethAddress) => {
@@ -20,7 +20,7 @@ const getCustomers = async () => {
 }
 
 const updateCustomer = async (customer) => {
-    return await axios.put(`${customersURL}/${customer.ethAddress}?dni=${customer.dni}&name=${customer.name}&surname=${customer.surname}&email=${customer.email}&phone=${customer.phone}&province=${customer.province}&city=${customer.city}`);
+    return await axios.put(`${customersURL}/${customer.ethAddress}?dni=${customer.dni}&name=${customer.name}&surname=${customer.surname}&gender=${customer.gender}&email=${customer.email}&phone=${customer.phone}&province=${customer.province}&city=${customer.city}&country=${customer.country}`);
 }
 
 const deleteCustomer = async (ethAddress) => {
