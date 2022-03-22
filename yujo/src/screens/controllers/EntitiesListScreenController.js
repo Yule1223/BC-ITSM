@@ -1,13 +1,14 @@
 import {useEffect, useState} from "react";
 import {
-    apiCreateCustomer,
+    apiCreateCompany,
+    apiCreateCustomer, apiCreateSLA,
     apiDeleteCompany,
     apiDeleteCustomer, apiDeleteSLA,
     apiGetCompanies,
     apiGetCustomer,
     apiGetCustomers,
-    apiGetSLAs,
-    apiUpdateCustomer
+    apiGetSLAs, apiUpdateCompany,
+    apiUpdateCustomer, apiUpdateSLA
 } from "../../API";
 import EntitiesListScreen from "../views/EntitiesListScreen";
 import {COMPANY_ENTITY, CUSTOMER_ENTITY, SLA_ENTITY} from "../../config";
@@ -19,6 +20,8 @@ function EntitiesListScreenController() {
     const [companies, setCompanies] = useState([]);
     const [slas, setSLAs] = useState([]);
     const [customerSelected, setCustomerSelected] = useState(-1);
+    const [companySelected, setCompanySelected] = useState(-1);
+    const [slaSelected, setSLASelected] = useState(-1);
 
     useEffect(() => {
         const getData = async () => {
@@ -29,16 +32,12 @@ function EntitiesListScreenController() {
         getData();
     }, []);
 
-    const onCustomerPress = async (index) => {
-        setCustomerSelected(index);
-    }
-
     const onCreateCustomer = async (customer) => {
         await apiCreateCustomer(customer);
         const _customers = [...customers];
         _customers.push(customer);
         setCustomers(_customers);
-    } ;
+    };
 
     const onUpdateCustomer = async (customer) => {
         if (customer) {
@@ -48,7 +47,41 @@ function EntitiesListScreenController() {
             setCustomers(_customers);
         }
         setCustomerSelected(-1);
-    } ;
+    };
+
+    const onCreateCompany = async (company) => {
+        await apiCreateCompany(company);
+        const _companies = [...companies];
+        _companies.push(company);
+        setCompanies(_companies);
+    };
+
+    const onUpdateCompany = async (company) => {
+        if (company) {
+            await apiUpdateCompany(company);
+            const _companies = [...companies];
+            _companies[companySelected] = company;
+            setCompanies(_companies);
+        }
+        setCompanySelected(-1);
+    };
+
+    const onCreateSLA = async (sla) => {
+        await apiCreateSLA(sla);
+        const _slas = [...slas];
+        _slas.push(sla);
+        setSLAs(_slas);
+    };
+
+    const onUpdateSLA = async (sla) => {
+        if (sla) {
+            await apiUpdateSLA(sla);
+            const _slas = [...slas];
+            _slas[slaSelected] = sla;
+            setSLAs(_slas);
+        }
+        setSLASelected(-1);
+    };
 
     const onDeleteEntity = async (index) => {
         switch (tabIndex) {
@@ -85,8 +118,18 @@ function EntitiesListScreenController() {
 
             onCreateCustomer={onCreateCustomer}
             customerSelected={customerSelected}
-            onCustomerPress={onCustomerPress}
+            onCustomerPress={setCustomerSelected}
             onUpdateCustomer={onUpdateCustomer}
+
+            onCreateCompany={onCreateCompany}
+            companySelected={companySelected}
+            onCompanyPress={setCompanySelected}
+            onUpdateCompany={onUpdateCompany}
+
+            onCreateSLA={onCreateSLA}
+            slaSelected={slaSelected}
+            onSLAPress={setSLASelected}
+            onUpdateSLA={onUpdateSLA}
 
             onDeleteEntity={onDeleteEntity}
         />;

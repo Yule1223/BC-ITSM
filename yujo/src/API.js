@@ -41,7 +41,7 @@ const apiGetCompanies = async () => {
 }
 
 const apiUpdateCompany = async (company) => {
-    return await axios.put(`${companiesURL}/${company.constructor}?name=${company.name}&address=${company.address}`);
+    return await axios.put(`${companiesURL}/${company.cif}?name=${company.name}&address=${company.address}`);
 }
 
 const apiDeleteCompany = async (cif) => {

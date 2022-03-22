@@ -18,6 +18,7 @@ import Header from "../../components/views/Header";
 import {Container} from "@mui/material";
 import {useState} from "react";
 import CustomerFormDialog from "../../components/views/CustomerFormDialog";
+import CompanyFormDialog from "../../components/views/CompanyFormDialog";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -99,10 +100,10 @@ export default function EntitiesListScreen(props) {
             case 1:
                 const company = props.companies[index];
                 return (
-                    <StyledTableRow key={index}>
-                        <StyledTableCell component="th" scope="row">{company.cif}</StyledTableCell>
-                        <StyledTableCell align="right">{company.name}</StyledTableCell>
-                        <StyledTableCell align="right">{company.address}</StyledTableCell>
+                    <StyledTableRow key={index} role='button'>
+                        <StyledTableCell component="th" scope="row" onClick={() => props.onCompanyPress(index)}>{company.cif}</StyledTableCell>
+                        <StyledTableCell align="right" onClick={() => props.onCompanyPress(index)}>{company.name}</StyledTableCell>
+                        <StyledTableCell align="right" onClick={() => props.onCompanyPress(index)}>{company.address}</StyledTableCell>
                         <StyledTableCell align="right"><DeleteIcon color='error' onClick={() => props.onDeleteEntity(index)} /></StyledTableCell>
                     </StyledTableRow>
                 );
@@ -110,7 +111,7 @@ export default function EntitiesListScreen(props) {
             case 2:
                 const sla = props.slas[index];
                 return (
-                    <StyledTableRow key={index}>
+                    <StyledTableRow key={index} role='button'>
                         <StyledTableCell component="th" scope="row">{sla.id}</StyledTableCell>
                         <StyledTableCell align="right">{sla.customer}</StyledTableCell>
                         <StyledTableCell align="right">{sla.company}</StyledTableCell>
@@ -128,6 +129,12 @@ export default function EntitiesListScreen(props) {
                 customer={props.customers[props.customerSelected]}
                 onSave={props.onUpdateCustomer}
                 onCancel={props.onUpdateCustomer}
+            />
+            <CompanyFormDialog
+                open={props.companySelected !== -1}
+                company={props.companies[props.companySelected]}
+                onSave={props.onUpdateCompany}
+                onCancel={props.onUpdateCompany}
             />
             <Header />
             <Container maxWidth='lg'>
@@ -158,6 +165,10 @@ export default function EntitiesListScreen(props) {
             <CustomerFormDialog
                 isButton
                 onSave={props.onCreateCustomer}
+            />
+            <CompanyFormDialog
+                isButton
+                onSave={props.onCreateCompany}
             />
         </div>
     );

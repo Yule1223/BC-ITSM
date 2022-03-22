@@ -74,14 +74,6 @@ export default function CustomerFormDialog(props) {
     };
 
     const handleSave = () => {
-        if (isNew) {
-            reset();
-        }
-
-        if (props.isButton) {
-            setOpen(false);
-        }
-
         props.onSave({
             ethAddress: ethAddress,
             dni: dni,
@@ -94,6 +86,14 @@ export default function CustomerFormDialog(props) {
             city: city,
             country: country,
         });
+
+        if (isNew) {
+            reset();
+        }
+
+        if (props.isButton) {
+            setOpen(false);
+        }
     };
 
     const handleClose = () => {
@@ -124,7 +124,7 @@ export default function CustomerFormDialog(props) {
                 fullWidth
                 maxWidth='xl'
             >
-                <DialogTitle>{isNew && 'Add new customer'}{!isNew && 'Update ' + ethAddress}</DialogTitle>
+                <DialogTitle>{isNew && 'Add new customer'}{!isNew && 'Update customer - ' + ethAddress}</DialogTitle>
                 <DialogContent style={{paddingTop: 10}}>
                     <Grid container rowSpacing={2} spacing={2}>
                         <Grid item xs={4}>
@@ -137,7 +137,8 @@ export default function CustomerFormDialog(props) {
                                     disabled={!isNew}
                                     InputProps={{
                                         readOnly: !isNew,
-                                    }} />
+                                    }}
+                                />
                             </Item>
                         </Grid>
                         <Grid item xs={2}>
