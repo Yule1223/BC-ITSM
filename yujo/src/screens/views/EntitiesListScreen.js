@@ -16,10 +16,11 @@ import ArticleIcon from '@mui/icons-material/Article';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Header from "../../components/views/Header";
 import {Container} from "@mui/material";
-import {useState} from "react";
 import CustomerFormDialog from "../../components/views/CustomerFormDialog";
 import CompanyFormDialog from "../../components/views/CompanyFormDialog";
 import SLAFormDialog from "../../components/views/SLAFormDialog";
+import Footer from "../../components/views/Footer";
+import {useTranslation} from "react-i18next";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -42,6 +43,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function EntitiesListScreen(props) {
+    const { t } = useTranslation();
+
     const handleChange = (event, newValue) => {
         props.onTabIndexSelected(newValue);
     };
@@ -51,11 +54,11 @@ export default function EntitiesListScreen(props) {
             case 0:
                 return (
                     <TableRow>
-                        <StyledTableCell>Ethereum address</StyledTableCell>
-                        <StyledTableCell align="right">DNI</StyledTableCell>
-                        <StyledTableCell align="right">Surname</StyledTableCell>
-                        <StyledTableCell align="right">Email</StyledTableCell>
-                        <StyledTableCell align="right">Phone</StyledTableCell>
+                        <StyledTableCell>{t('customerForm.ethereumAddress')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('customerForm.dni')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('customerForm.lastName')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('customerForm.email')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('customerForm.phone')}</StyledTableCell>
                         <StyledTableCell align="right" />
                     </TableRow>
                 );
@@ -63,9 +66,9 @@ export default function EntitiesListScreen(props) {
             case 1:
                 return (
                     <TableRow>
-                        <StyledTableCell>CIF</StyledTableCell>
-                        <StyledTableCell align="right">Name</StyledTableCell>
-                        <StyledTableCell align="right">Address</StyledTableCell>
+                        <StyledTableCell>{t('companyForm.cif')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('companyForm.name')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('companyForm.direction')}</StyledTableCell>
                         <StyledTableCell align="right" />
                     </TableRow>
                 );
@@ -73,10 +76,10 @@ export default function EntitiesListScreen(props) {
             case 2:
                 return (
                     <TableRow>
-                        <StyledTableCell>ID</StyledTableCell>
-                        <StyledTableCell align="right">Customer</StyledTableCell>
-                        <StyledTableCell align="right">Company</StyledTableCell>
-                        <StyledTableCell align="right">Price</StyledTableCell>
+                        <StyledTableCell>{t('slaForm.id')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('slaForm.customer')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('slaForm.company')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('slaForm.price')}</StyledTableCell>
                         <StyledTableCell align="right" />
                     </TableRow>
                 );
@@ -154,9 +157,9 @@ export default function EntitiesListScreen(props) {
             <Header />
             <Container maxWidth='lg'>
                 <Tabs value={props.tabIndex} onChange={handleChange} centered>
-                    <Tab icon={<PersonIcon />} label="Customers" />
-                    <Tab icon={<BusinessIcon />} label="Companies" />
-                    <Tab icon={<ArticleIcon />} label="SLAs" />
+                    <Tab icon={<PersonIcon />} label={t('dashboard.customers')} />
+                    <Tab icon={<BusinessIcon />} label={t('dashboard.companies')} />
+                    <Tab icon={<ArticleIcon />} label={t('dashboard.slas')} />
                 </Tabs>
             </Container>
             <TableContainer component={Paper}>
@@ -191,6 +194,7 @@ export default function EntitiesListScreen(props) {
                 isButton
                 onSave={props.onCreateSLA}
             />
+            <Footer />
         </div>
     );
 }

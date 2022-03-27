@@ -5,7 +5,7 @@ import FormScreenController from "./screens/controllers/FormScreenController";
 import PolicyScreenController from "./screens/controllers/PolicyScreenController";
 import KnowUsScreenController from "./screens/controllers/KnowUsScreenController";
 import EntitiesListScreenController from "./screens/controllers/EntitiesListScreenController";
-import {COMPANY_ENTITY, CUSTOMER_ENTITY, SLA_ENTITY} from "./config";
+import "./translations/translationConfig";
 
 const rootElement = document.getElementById("root");
 render(

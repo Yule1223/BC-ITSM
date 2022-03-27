@@ -10,6 +10,7 @@ import AddIcon from "@mui/icons-material/Add";
 import {FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {Item} from "semantic-ui-react";
 import {useEffect} from "react";
+import {useTranslation} from "react-i18next";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -22,6 +23,7 @@ export default function SLAFormDialog(props) {
     const [customer, setCustomer] =  React.useState('');
     const [company, setCompany] =  React.useState('');
     const [price, setPrice] =  React.useState('');
+    const { t } = useTranslation();
 
     const reset = () => {
         if (isNew) {
@@ -96,7 +98,7 @@ export default function SLAFormDialog(props) {
         <div>
             {props.isButton &&
                 <Button startIcon={<AddIcon />} endIcon={<ArticleIcon />} variant="outlined" onClick={handleClickOpen}>
-                    Add SLA
+                    {t('slaForm.addTitle')}
                 </Button>
             }
             <Dialog
@@ -108,13 +110,13 @@ export default function SLAFormDialog(props) {
                 fullWidth
                 maxWidth='xl'
             >
-                <DialogTitle>{isNew && 'Add new SLA'}{!isNew && 'Update SLA - ' + id}</DialogTitle>
+                <DialogTitle>{isNew && t('slaForm.addTitle')}{!isNew && t('slaForm.updateTitle') + ' - ' + id}</DialogTitle>
                 <DialogContent style={{paddingTop: 10}}>
                     <Grid container spacing={2}>
                         <Grid item xs={4}>
                             <Item>
                                 <TextField
-                                    label={'ID'}
+                                    label={t('slaForm.id')}
                                     fullWidth
                                     value={id}
                                     onChange={event => setID(event.target.value)}
@@ -128,10 +130,10 @@ export default function SLAFormDialog(props) {
                         <Grid item xs={8}>
                             <Item>
                                 <FormControl fullWidth>
-                                    <InputLabel id='customer-select'>Customer</InputLabel>
+                                    <InputLabel id='customer-select'>{t('slaForm.customer')}</InputLabel>
                                     <Select
                                         labelId='customer-select'
-                                        label={'Customer'}
+                                        label={t('slaForm.customer')}
                                         fullWidth
                                         value={indexOfCustomer}
                                         onChange={event => setCustomer(props.customers[event.target.value].ethAddress)}
@@ -142,15 +144,15 @@ export default function SLAFormDialog(props) {
                             </Item>
                         </Grid>
                         <Grid item xs={4}>
-                            <Item><TextField label={'Price'} fullWidth value={price} onChange={event => setPrice(event.target.value)} /></Item>
+                            <Item><TextField label={t('slaForm.price')} fullWidth value={price} onChange={event => setPrice(event.target.value)} /></Item>
                         </Grid>
                         <Grid item xs={8}>
                             <Item>
                                 <FormControl fullWidth>
-                                    <InputLabel id='company-select'>Company</InputLabel>
+                                    <InputLabel id='company-select'>{t('slaForm.company')}</InputLabel>
                                     <Select
                                         labelId='company-select'
-                                        label={'Company'}
+                                        label={t('slaForm.company')}
                                         fullWidth
                                         value={indexOfCompany}
                                         onChange={event => setCompany(props.companies[event.target.value].cif)}
@@ -163,9 +165,9 @@ export default function SLAFormDialog(props) {
                     </Grid>
                 </DialogContent>
                 <DialogActions>
-                    {isNew && <Button onClick={reset}>Reset</Button>}
-                    <Button onClick={handleClose} color='error'>Cancel</Button>
-                    <Button onClick={handleSave} color='success'>Save</Button>
+                    {isNew && <Button onClick={reset}>{t('form.resetButton')}</Button>}
+                    <Button onClick={handleClose} color='error'>{t('form.cancelButton')}</Button>
+                    <Button onClick={handleSave} color='success'>{t('form.saveButton')}</Button>
                 </DialogActions>
             </Dialog>
         </div>

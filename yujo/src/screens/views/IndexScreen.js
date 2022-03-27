@@ -4,10 +4,11 @@ import logo from '../../img/Slink-without-background.svg';
 import '../styles/IndexScreen.style.css';
 import Typewriter from "typewriter-effect";
 import {Link} from "react-router-dom";
-import strings from "../../strings";
-import {Button} from "react-bootstrap";
+import {useTranslation} from "react-i18next";
 
 function IndexScreen() {
+    const {t} = useTranslation();
+
     return (
         <div className="App bg-info">
             <section className="App-header pb-3">
@@ -21,19 +22,19 @@ function IndexScreen() {
                         }}
                         onInit={(typewriter) => {
                             typewriter
-                                .typeString(strings.openYourSLANow1 + ' ' + strings.openYourSLANow2)
+                                .typeString(t('index.openYourSLANow1') + ' ' + t('index.openYourSLANow2'))
                                 .pauseFor(300)
-                                .deleteChars(strings.openYourSLANow2.length)
+                                .deleteChars(t('index.openYourSLANow2').length)
                                 .pauseFor(1000)
-                                .typeString(strings.openYourSLANow3)
+                                .typeString(t('index.openYourSLANow3'))
                                 .start();
                         }}/></div>
                 <div className="d-flex w-25 justify-content-between">
                     <Link to="/form">
-                        <button type="button" className="btn-index btn btn-light">{strings.iWantIt}</button>
+                        <button type="button" className="btn-index btn btn-light">{t('index.iWantIt')}</button>
                     </Link>
                     <Link to="/knowUs">
-                        <button className="btn-index btn btn-light">{strings.knowUs}</button>
+                        <button className="btn-index btn btn-light">{t('index.knowUs')}</button>
                     </Link>
                 </div>
             </section>

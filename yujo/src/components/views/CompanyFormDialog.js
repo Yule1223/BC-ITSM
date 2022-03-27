@@ -11,6 +11,7 @@ import AddIcon from "@mui/icons-material/Add";
 import {FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import {Item} from "semantic-ui-react";
 import {useEffect} from "react";
+import {useTranslation} from "react-i18next";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -22,6 +23,7 @@ export default function CompanyFormDialog(props) {
     const [cif, setCIF] =  React.useState('');
     const [name, setName] =  React.useState('');
     const [address, setAddress] =  React.useState('');
+    const { t } = useTranslation();
 
     const reset = () => {
         if (isNew) {
@@ -83,7 +85,7 @@ export default function CompanyFormDialog(props) {
         <div>
             {props.isButton &&
                 <Button startIcon={<AddIcon />} endIcon={<BusinessIcon />} variant="outlined" onClick={handleClickOpen}>
-                    Add company
+                    {t('companyForm.addTitle')}
                 </Button>
             }
             <Dialog
@@ -95,13 +97,13 @@ export default function CompanyFormDialog(props) {
                 fullWidth
                 maxWidth='xl'
             >
-                <DialogTitle>{isNew && 'Add new company'}{!isNew && 'Update company - ' + cif}</DialogTitle>
+                <DialogTitle>{isNew && t('companyForm.addTitle')}{!isNew && t('companyForm.updateTitle') + ' - ' + cif}</DialogTitle>
                 <DialogContent style={{paddingTop: 10}}>
                     <Grid container spacing={2}>
                         <Grid item xs={4}>
                             <Item>
                                 <TextField
-                                    label={'CIF'}
+                                    label={t('companyForm.cif')}
                                     fullWidth
                                     value={cif}
                                     onChange={event => setCIF(event.target.value)}
@@ -113,17 +115,17 @@ export default function CompanyFormDialog(props) {
                             </Item>
                         </Grid>
                         <Grid item xs={4}>
-                            <Item><TextField label={'Name'} fullWidth value={name} onChange={event => setName(event.target.value)} /></Item>
+                            <Item><TextField label={t('companyForm.name')} fullWidth value={name} onChange={event => setName(event.target.value)} /></Item>
                         </Grid>
                         <Grid item xs={4}>
-                            <Item><TextField label={'Address'} fullWidth value={address} onChange={event => setAddress(event.target.value)} /></Item>
+                            <Item><TextField label={t('companyForm.direction')} fullWidth value={address} onChange={event => setAddress(event.target.value)} /></Item>
                         </Grid>
                     </Grid>
                 </DialogContent>
                 <DialogActions>
-                    {isNew && <Button onClick={reset}>Reset</Button>}
-                    <Button onClick={handleClose} color='error'>Cancel</Button>
-                    <Button onClick={handleSave} color='success'>Save</Button>
+                    {isNew && <Button onClick={reset}>{t('form.resetButton')}</Button>}
+                    <Button onClick={handleClose} color='error'>{t('form.cancelButton')}</Button>
+                    <Button onClick={handleSave} color='success'>{t('form.saveButton')}</Button>
                 </DialogActions>
             </Dialog>
         </div>

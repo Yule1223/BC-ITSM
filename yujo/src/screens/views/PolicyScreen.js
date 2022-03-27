@@ -1,7 +1,7 @@
 import '../styles/PolicyScreen.style.css';
 import Header from "../../components/views/Header";
 import React from "react";
-import strings from "../../strings";
+import {strings} from "../../strings";
 
 function PolicyScreen() {
     return (

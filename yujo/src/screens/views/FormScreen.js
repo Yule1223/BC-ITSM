@@ -2,14 +2,15 @@ import '../styles/FormScreen.style.css';
 import Header from "../../components/views/Header";
 import {Button, Col, FloatingLabel, Form, Row} from "react-bootstrap";
 import {useState} from "react";
-import strings from "../../strings";
 import DatePicker from 'sassy-datepicker';
 import React from 'react';
 import FormSelect from "../../components/views/FormSelect";
+import Footer from "../../components/views/Footer";
+import { useTranslation } from "react-i18next";
 
 function FormScreen(props) {
-
     const [validated, setValidated] = useState(false);
+    const { t } = useTranslation();
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
@@ -24,75 +25,75 @@ function FormScreen(props) {
             <Header/>
             <section>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                    <h3>{strings.formClientInformation}</h3>
+                    <h3>{t('customerForm.information')}</h3>
                     {/*First row*/}
                     <Row>
                         {/*DNI*/}
                         <Form.Group as={Col} controlId="formDNI">
-                            <Form.Label>{strings.formInformationDNI}*</Form.Label>
+                            <Form.Label>{t('customerForm.dni')}*</Form.Label>
                             <Form.Control
                                 required
                                 type="text"
-                                placeholder={strings.formInformationDNIPlaceHolder}
+                                placeholder={t('customerForm.dniPlaceHolder')}
                                 value={props.customerDNI}
                                 onChange={(e) => props.onCustomerDNIChange(e.target.value)}
                             />
-                            <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
+                            <Form.Control.Feedback>{t('form.looksGood')}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                {strings.formInformationDNIError}
+                                {t('customerForm.dniError')}
                             </Form.Control.Feedback>
                         </Form.Group>
                         {/*FirstName*/}
                         <Form.Group as={Col} controlId="formFirstName">
-                            <Form.Label>{strings.formInformationFirstName}*</Form.Label>
+                            <Form.Label>{t('customerForm.firstName')}*</Form.Label>
                             <Form.Control
                                 required
                                 type="text"
-                                placeholder={strings.formInformationFirstNamePlaceHolder}
+                                placeholder={t('customerForm.firstNamePlaceHolder')}
                                 value={props.customerName}
                                 onChange={(e) => props.onCustomerNameChange(e.target.value)}
                             />
-                            <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
+                            <Form.Control.Feedback>{t('form.looksGood')}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                {strings.formInformationFirstNameError}
+                                {t('customerForm.firstNameError')}
                             </Form.Control.Feedback>
                         </Form.Group>
                         {/*LastName*/}
                         <Form.Group as={Col} controlId="formLastName">
-                            <Form.Label>{strings.formInformationLastName}*</Form.Label>
+                            <Form.Label>{t('customerForm.lastName')}*</Form.Label>
                             <Form.Control
                                 required
                                 type="text"
-                                placeholder={strings.formInformationLastNamePlaceHolder}
+                                placeholder={t('customerForm.lastNamePlaceHolder')}
                                 value={props.customerSurname}
                                 onChange={(e) => props.onCustomerSurnameChange(e.target.value)}
                             />
-                            <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
+                            <Form.Control.Feedback>{t('form.looksGood')}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                {strings.formInformationLastNameError}
+                                {t('customerForm.lastNameError')}
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Row>
                     {/*Email and phone*/}
                     <Row className="mb-3 mt-3">
                         <Form.Group as={Col} controlId="formContactEmail">
-                            <Form.Label>{strings.formSLASpecificationContactEmail}*</Form.Label>
+                            <Form.Label>{t('customerForm.email')}*</Form.Label>
                             <Form.Control
                                 required
                                 type="email"
-                                placeholder={strings.formSLASpecificationContactEmailPlaceHolder}
+                                placeholder={t('customerForm.emailPlaceHolder')}
                                 value={props.customerEmail}
                                 onChange={(e) => props.onCustomerEmailChange(e.target.value)}
                             />
                             <Form.Control.Feedback type="invalid">
-                                {strings.formInformationEmailError}
+                                {t('customerForm.emailError')}
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group as={Col} controlId="formContactPhone">
-                            <Form.Label>{strings.formSLASpecificationContactPhone}</Form.Label>
+                            <Form.Label>{t('customerForm.phone')}</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder={strings.formSLASpecificationContactPhonePlaceHolder}
+                                placeholder={t('customerForm.phonePlaceHolder')}
                                 value={props.customerPhone}
                                 onChange={(e) => props.onCustomerPhoneChange(e.target.value)}
                             />
@@ -104,7 +105,7 @@ function FormScreen(props) {
                         <Col md>
                             <FloatingLabel className="text-dark" controlId="formNationality" label="Country of nationality">
                                 <Form.Select autoComplete={"country-name"}>
-                                    <option>{strings.formInformationCountryChoose}</option>
+                                    <option>{t('customerForm.countryChoose')}</option>
                                     <option value="401"> AFGANISTAN</option>
                                     <option value="102"> ALBANIA</option>
                                     <option value="103"> GERMANY</option>
@@ -314,9 +315,9 @@ function FormScreen(props) {
                         <Col md>
                             <FloatingLabel className="text-dark" controlId="formGender" label="Gender">
                                 <Form.Select aria-label="Floating label select example">
-                                    <option>{strings.formInformationGenderChoose}</option>
-                                    <option value="1">{strings.formInformationGenderMale}</option>
-                                    <option value="2">{strings.formInformationGenderFemale}</option>
+                                    <option>{t('customerForm.genderChoose')}</option>
+                                    <option value="1">{t('customerForm.genderMale')}</option>
+                                    <option value="2">{t('customerForm.genderFemale')}</option>
                                 </Form.Select>
                             </FloatingLabel>
                         </Col>
@@ -325,20 +326,20 @@ function FormScreen(props) {
                     <Row className="mb-3 mt-3">
                         {/*City*/}
                         <Form.Group as={Col} controlId="formCity">
-                            <Form.Label>{strings.formInformationCity}</Form.Label>
+                            <Form.Label>{t('customerForm.city')}</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder={strings.formInformationCityPlaceHolder}
+                                placeholder={t('customerForm.cityPlaceHolder')}
                                 value={props.customerCity}
                                 onChange={(e) => props.onCustomerCityChange(e.target.value)}
                             />
                         </Form.Group>
                         {/*Province*/}
                         <Form.Group as={Col} controlId="formProvince">
-                            <Form.Label>{strings.formInformationProvince}</Form.Label>
+                            <Form.Label>{t('customerForm.province')}</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder={strings.formInformationProvincePlaceHolder}
+                                placeholder={t('customerForm.provincePlaceHolder')}
                                 value={props.customerProvince}
                                 onChange={(e) => props.onCustomerProvinceChange(e.target.value)}
                             />
@@ -348,65 +349,65 @@ function FormScreen(props) {
                     <Row className="mb-3">
                         {/*Company name*/}
                         <Form.Group as={Col} controlId="formCompanyName">
-                            <Form.Label>{strings.formInformationCompanyName}*</Form.Label>
+                            <Form.Label>{t('companyForm.name')}*</Form.Label>
                             <Form.Control
                                 required
                                 type="text"
-                                placeholder={strings.formInformationCompanyNamePlaceHolder}
+                                placeholder={t('companyForm.namePlaceHolder')}
                                 value={props.customerBusinessName}
                                 onChange={(e) => props.onCustomerBusinessNameChange(e.target.value)}
                             />
-                            <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
+                            <Form.Control.Feedback>{t('form.looksGood')}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                {strings.formInformationCompanyNameError}
+                                {t('companyForm.nameError')}
                             </Form.Control.Feedback>
                         </Form.Group>
                         {/*Company direction*/}
                         <Form.Group as={Col} controlId="formCompanyDirection">
-                            <Form.Label>{strings.formInformationCompanyDirection}*</Form.Label>
+                            <Form.Label>{t('companyForm.direction')}*</Form.Label>
                             <Form.Control
                                 required
                                 type="text"
-                                placeholder={strings.formInformationCompanyDirectionPlaceHolder}
+                                placeholder={t('companyForm.directionPlaceHolder')}
                                 value={props.customerBusinessAddress}
                                 onChange={(e) => props.onCustomerBusinessAddressChange(e.target.value)}
                             />
-                            <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
+                            <Form.Control.Feedback>{t('form.looksGood')}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                {strings.formInformationCompanyDirectionError}
+                                {t('companyForm.directionError')}
                             </Form.Control.Feedback>
                         </Form.Group>
                         {/*Company fiscal number*/}
                         <Form.Group as={Col} controlId="formFiscalNumber">
-                            <Form.Label>{strings.formInformationCompanyNumber}*</Form.Label>
+                            <Form.Label>{t('companyForm.number')}*</Form.Label>
                             <Form.Control
                                 required
                                 type="text"
-                                placeholder={strings.formInformationCompanyNumberPlaceHolder}
+                                placeholder={t('companyForm.numberPlaceHolder')}
                                 value={props.customerBusinessCIF}
                                 onChange={(e) => props.onCustomerBusinessCIFChange(e.target.value)}
                             />
-                            <Form.Control.Feedback>{strings.formLooksGood}</Form.Control.Feedback>
+                            <Form.Control.Feedback>{t('form.looksGood')}</Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                {strings.formInformationCompanyNumberError}
+                                {t('companyForm.numberError')}
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Row>
-                    <h3>{strings.formSLASpecification}</h3>
+                    <h3>{t('slaForm.specification')}</h3>
                     {/*SLA Specification*/}
                     <Row className="mb-3">
                         <Form.Group as={Col}>
-                            <Form.Label>{strings.formSLASpecificationInitialDate}</Form.Label>
+                            <Form.Label>{t('slaForm.initialDate')}</Form.Label>
                             <DatePicker value={props.startDate} onChange={props.onDateSelected}/>
                         </Form.Group>
                         {/*Second row*/}
                         <Form.Group as={Col} assName="mb-3" controlId="formCoveredService">
-                            <Form.Label>{strings.formSLASpecificationAutoRenewal}</Form.Label>
+                            <Form.Label>{t('slaForm.autoRenewal')}</Form.Label>
                             {['radio'].map((type) => (
                                 <div key={`inline-${type}`} className="mb-3">
                                     <Form.Check
                                         inline
-                                        label="Yes"
+                                        label={t('slaForm.autoRenewalYes')}
                                         name="group1"
                                         type={type}
                                         id={`inline-${type}-1`}
@@ -415,7 +416,7 @@ function FormScreen(props) {
                                     />
                                     <Form.Check
                                         inline
-                                        label="No"
+                                        label={t('slaForm.autoRenewalNo')}
                                         name="group1"
                                         type={type}
                                         id={`inline-${type}-2`}
@@ -430,7 +431,7 @@ function FormScreen(props) {
                     <Row className="mb-3">
                         {/*Related files*/}
                         <Form.Group as={Col} controlId="formFile">
-                            <Form.Label>{strings.formSLASpecificationRelatedFiles}</Form.Label>
+                            <Form.Label>{t('slaForm.relatedFiles')}</Form.Label>
                             <Form.Control type="file"/>
                         </Form.Group>
                     </Row>
@@ -438,22 +439,22 @@ function FormScreen(props) {
                     <Row className="g-2 mb-3">
                         <Col md>
                             {/*Service hours*/}
-                            <FloatingLabel className="text-dark" controlId="formServiceHours" label={strings.formSLASpecificationServiceHours} htmlFor='first'>
+                            <FloatingLabel className="text-dark" controlId="formServiceHours" label={t('slaForm.serviceHours')} htmlFor='first'>
                                 <FormSelect
                                     index={props.serviceSpaceIndex}
                                     options={props.serviceSpaces}
-                                    defaultLabel={strings.formSLASpecificationChooseServiceHours}
+                                    defaultLabel={t('slaForm.chooseServiceHours')}
                                     renderLabel={(serviceSpace) => serviceSpace.name + ' (' + serviceSpace.startTime + '-' + serviceSpace.endTime + ') ' + serviceSpace.price + '/' + serviceSpace.pricePeriodicity}
                                     onOptionSelected={props.onServiceSpaceSelected}
                                 />
                             </FloatingLabel>
                         </Col>
                         <Col md>
-                            <FloatingLabel className="text-dark" controlId="formCoveredServices" label={strings.formSLASpecificationCoveredServices} htmlFor='third'>
+                            <FloatingLabel className="text-dark" controlId="formCoveredServices" label={t('slaForm.coveredServices')} htmlFor='third'>
                                 <FormSelect
                                     index={props.serviceIndex}
                                     options={props.services}
-                                    defaultLabel={strings.formSLASpecificationChooseCoveredServices}
+                                    defaultLabel={t('slaForm.chooseCoveredServices')}
                                     renderLabel={(service) => service.name + ' ' + service.price + '/' + service.pricePeriodicity}
                                     onOptionSelected={props.onServiceSelected}
                                 />
@@ -463,11 +464,11 @@ function FormScreen(props) {
                     {/*Eighth row*/}
                     <Row className="g-2">
                         <Col md>
-                            <FloatingLabel className="text-dark" controlId="formCoveredExtraServices" label={strings.formSLASpecificationExtraServices}>
+                            <FloatingLabel className="text-dark" controlId="formCoveredExtraServices" label={t('slaForm.extraServices')}>
                                 <FormSelect
                                     index={props.extraServiceIndex}
                                     options={props.extraServices}
-                                    defaultLabel={strings.formSLASpecificationChooseExtraServices}
+                                    defaultLabel={t('slaForm.chooseExtraServices')}
                                     renderLabel={(extraService) => extraService.name + ' ' + extraService.price + '/' + extraService.pricePeriodicity}
                                     onOptionSelected={props.onExtraServiceSelected}
                                 />
@@ -475,11 +476,11 @@ function FormScreen(props) {
                         </Col>
                         <Col md>
                             {/*Licences*/}
-                            <FloatingLabel className="text-dark" controlId="formLicences" label={strings.formSLASpecificationLicences}>
+                            <FloatingLabel className="text-dark" controlId="formLicences" label={t('slaForm.licences')}>
                                 <FormSelect
                                     index={props.licenseIndex}
                                     options={props.licenses}
-                                    defaultLabel={strings.formSLASpecificationChooseLicences}
+                                    defaultLabel={t('slaForm.chooseLicences')}
                                     renderLabel={(license) => license}
                                     onOptionSelected={props.onLicenseSelected}
                                 />
@@ -488,11 +489,11 @@ function FormScreen(props) {
                     </Row>
                     {/*Service level*/}
                     <Form.Group className="mt-3" controlId="formServiceLevel">
-                        <Form.Label>{strings.formSLASpecificationServiceLevel}</Form.Label>
+                        <Form.Label>{t('slaForm.serviceLevel')}</Form.Label>
                         <Form.Control as="textarea" rows={3} value={props.serviceLevels}/>
                     </Form.Group>
                     {/*Revision report*/}
-                    <Form.Label className="mt-3">{strings.formServiceAssuranceReport}</Form.Label>
+                    <Form.Label className="mt-3">{t('slaForm.assuranceReport')}</Form.Label>
                     <Row className="g-2">
                         {/*Report Period*/}
                         <Col md>
@@ -500,7 +501,7 @@ function FormScreen(props) {
                                 <FormSelect
                                     index={props.revisionReportIndex}
                                     options={props.revisionReports}
-                                    defaultLabel={strings.formServiceAssuranceChoosePeriod}
+                                    defaultLabel={t('slaForm.assuranceChoosePeriod')}
                                     renderLabel={(revisionReport) => revisionReport.name + ' ' + revisionReport.price + '/' + revisionReport.pricePeriodicity}
                                     onOptionSelected={props.onRevisionReportSelected}
                                 />
@@ -513,7 +514,7 @@ function FormScreen(props) {
                         </Col>
                     </Row>
                     {/*Eighth row*/}
-                    <Form.Label className="mt-3">{strings.formServiceAssuranceServiceBilling}</Form.Label>
+                    <Form.Label className="mt-3">{t('slaForm.assuranceServiceBilling')}</Form.Label>
                     <Row className="g-2">
                         {/*Service Billing*/}
                         <Col md>
@@ -521,7 +522,7 @@ function FormScreen(props) {
                                 <FormSelect
                                     index={props.billingIndex}
                                     options={props.billings}
-                                    defaultLabel={strings.formServiceAssuranceSelectServiceBilling}
+                                    defaultLabel={t('slaForm.assuranceSelectServiceBilling')}
                                     renderLabel={(billing) => billing.name}
                                     onOptionSelected={props.onBillingSelected}
                                 />
@@ -532,7 +533,7 @@ function FormScreen(props) {
                                 <FormSelect
                                     index={props.billingMethodIndex}
                                     options={props.billingMethods}
-                                    defaultLabel={strings.formServiceAssuranceSelectBillingMethod}
+                                    defaultLabel={t('slaForm.assuranceSelectBillingMethod')}
                                     renderLabel={(billing) => billing}
                                     onOptionSelected={props.onBillingMethodSelected}
                                 />
@@ -540,22 +541,23 @@ function FormScreen(props) {
                         </Col>
                     </Row>
                     <Form.Group className="mt-3" controlId="formBasicCheckbox">
-                        <Form.Check required type="checkbox" label={strings.formServiceAssurancePrivacidad}/>
-                        <p>{strings.formServiceAssuranceRead}<a className="d-inline" href="/form/policy"
-                                                                target="_blank">{strings.formServiceAssuranceLegalNotice}</a>.
+                        <Form.Check required type="checkbox" label={t('slaForm.assurancePrivacidad')}/>
+                        <p>{t('slaForm.assuranceRead')}<a className="d-inline" href="/form/policy"
+                                                                target="_blank">{t('slaForm.assuranceLegalNotice')}</a>.
                         </p>
                     </Form.Group>
                     {/*SLA Price*/}
-                    <label className="d-inline text-warning" htmlFor='sum'>{strings.formPrice}</label>
+                    <label className="d-inline text-warning" htmlFor='sum'>{t('form.price')}</label>
                     <label className="d-inline mt-3 w-100 text-warning">
                         {props.price + "€/year"}
                     </label>
-                    <p className="text-danger mt-3">{strings.formFieldsAreMandatory}</p>
+                    <p className="text-danger mt-3">{t('form.fieldsAreMandatory')}</p>
                     <Button className="mb-3" variant="primary" type="submit">
-                        {strings.formSubmit}
+                        {t('form.submit')}
                     </Button>
                 </Form>
             </section>
+            <Footer />
         </div>
     );
 }

@@ -3,9 +3,11 @@ import logo from '../../img/logo.svg';
 import {injected} from "../wallets/Connectors";
 import {useWeb3React} from "@web3-react/core";
 import {Button} from "react-bootstrap";
+import {useTranslation} from "react-i18next";
 
 function Header() {
     const {active, activate, deactivate } = useWeb3React()
+    const { t } = useTranslation();
 
     async function connect() {
         try {
@@ -29,7 +31,7 @@ function Header() {
                 <img src={logo} width="30" height="30"
                      className="d-inline-block align-top" alt=""/>SLink
             </a>
-            {active ? <Button onClick={disconnect} variant="danger">Disconnect from MetaMask</Button> : <Button onClick={connect} variant="success">Connect to MetaMask</Button>}
+            {active ? <Button onClick={disconnect} variant="danger">t('metamask.disconnect')</Button> : <Button onClick={connect} variant="success">{t('metamask.connect')}</Button>}
         </nav>
     );
 }

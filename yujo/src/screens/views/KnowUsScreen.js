@@ -1,6 +1,6 @@
 import {Button, Col, Form, Row} from "react-bootstrap";
 import {BsBuilding, BsHeadset, BsHouseFill, BsShop, BsTelephone} from "react-icons/bs";
-import strings from "../../strings";
+import {strings} from "../../strings";
 import React from "react";
 import Header from "../../components/views/Header";
 import '../styles/KnowUsScreen.style.css';
