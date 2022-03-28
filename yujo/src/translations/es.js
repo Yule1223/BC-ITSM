@@ -131,9 +131,12 @@ export default {
             privacy3: 'Incluye: DNI, nombre y apellidos, dirección de correo electrónico, número de teléfono, datos de la empresa',
         },
 
-        metamask: {
-            connect: 'Conectar MetaMask',
-            disconnect: 'Desconectar MetaMask',
+        wallet: {
+            connect: 'Conectar monedero',
+            disconnect: 'Desconectar',
+            choose: 'Elegir monedero',
+            metamask: 'MetaMask',
+            cancelButton: 'Cancelar',
         },
 
         dashboard: {

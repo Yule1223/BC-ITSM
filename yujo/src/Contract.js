@@ -367,17 +367,39 @@ const web3Infura = new Web3(new Web3.providers.HttpProvider("https://rinkeby.inf
 
 const infuraContract = new web3Infura.eth.Contract(abi, contractAddress);
 
-const loadMetaMaskContract = async () => {
-    const metaMaskProvider = await detectEthereumProvider();
+const isMetaMaskConnected = async () => {
+    const metaMaskProvider = await detectEthereumProvider({mustBeMetaMask: true});
+    return await metaMaskProvider.request({method: 'eth_accounts'});
+}
 
-    if (!metaMaskProvider) {
-        console.log('Please install MetaMask!');
-        return;
+const connectMetaMask = async () => {
+    const metaMaskProvider = await detectEthereumProvider({mustBeMetaMask: true});
+
+    if (metaMaskProvider) {
+        try {
+            return await metaMaskProvider.request({ method: 'eth_requestAccounts'});
+        } catch(e) {
+            return [];
+        }
+    } else {
+        alert('Please install MetaMask!');
+        return [];
     }
+}
 
-    const web3MetaMask = new Web3(window.ethereum);
+const loadMetaMaskContract = async () => {
+    const metaMaskProvider = await detectEthereumProvider({mustBeMetaMask: true});
 
-    return new web3MetaMask.eth.Contract(abi, contractAddress);
+    if (metaMaskProvider) {
+        const web3MetaMask = new Web3(window.ethereum);
+
+        return new web3MetaMask.eth.Contract(abi, contractAddress);
+    }
 };
 
-export {infuraContract, loadMetaMaskContract};
+export {
+    infuraContract,
+    isMetaMaskConnected,
+    connectMetaMask,
+    loadMetaMaskContract
+};
