@@ -66,6 +66,11 @@ function FormScreen(props) {
                             phoneDisabled
                             phoneReadOnly
 
+                            companies={props.companies}
+                            company={props.customer.company}
+                            companyDisabled
+                            companyReadOnly
+
                             province={props.customer.province}
                             provinceDisabled
                             provinceReadOnly
@@ -81,8 +86,8 @@ function FormScreen(props) {
 
 
                     {/*Fourth row*/}
-                    <Row className="mb-3">
-                        {/*Company name*/}
+                    {/*<Row className="mb-3">
+                        Company name
                         <Form.Group as={Col} controlId="formCompanyName">
                             <Form.Label>{t('companyForm.name')}*</Form.Label>
                             <Form.Control
@@ -97,7 +102,7 @@ function FormScreen(props) {
                                 {t('companyForm.nameError')}
                             </Form.Control.Feedback>
                         </Form.Group>
-                        {/*Company direction*/}
+                        Company direction
                         <Form.Group as={Col} controlId="formCompanyDirection">
                             <Form.Label>{t('companyForm.direction')}*</Form.Label>
                             <Form.Control
@@ -112,7 +117,7 @@ function FormScreen(props) {
                                 {t('companyForm.directionError')}
                             </Form.Control.Feedback>
                         </Form.Group>
-                        {/*Company fiscal number*/}
+                        Company fiscal number
                         <Form.Group as={Col} controlId="formFiscalNumber">
                             <Form.Label>{t('companyForm.number')}*</Form.Label>
                             <Form.Control
@@ -127,7 +132,7 @@ function FormScreen(props) {
                                 {t('companyForm.numberError')}
                             </Form.Control.Feedback>
                         </Form.Group>
-                    </Row>
+                    </Row>*/}
                     <h3>{t('slaForm.specification')}</h3>
                     {/*SLA Specification*/}
                     <Row className="mb-3">

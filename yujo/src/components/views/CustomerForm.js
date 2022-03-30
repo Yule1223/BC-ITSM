@@ -117,7 +117,7 @@ export default function CustomerForm(props) {
                         />
                     </Item>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={2}>
                     <Item>
                         <TextField
                             label={t('customerForm.phone')}
@@ -129,6 +129,26 @@ export default function CustomerForm(props) {
                                 readOnly: props.phoneReadOnly,
                             }}
                         />
+                    </Item>
+                </Grid>
+                <Grid item xs={4}>
+                    <Item>
+                        <FormControl fullWidth>
+                            <InputLabel id='company-select'>{t('customerForm.company')}</InputLabel>
+                            <Select
+                                labelId='company-select'
+                                label={t('customerForm.company')}
+                                fullWidth
+                                value={props.company}
+                                onChange={event => props.setCompany ? props.setCompany(event.target.value) : undefined}
+                                disabled={props.companyDisabled}
+                                InputProps={{
+                                    readOnly: props.companyReadOnly,
+                                }}
+                            >
+                                {props.companies.map((company) => <MenuItem key={company.cif} value={company.cif}>{company.cif} ({company.name})</MenuItem>)}
+                            </Select>
+                        </FormControl>
                     </Item>
                 </Grid>
                 <Grid item xs={4}>

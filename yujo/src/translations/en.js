@@ -38,6 +38,7 @@ export default {
             addTitle: 'Add new customer',
             updateTitle: 'Update customer',
             ethereumAddress: 'Ethereum address',
+            company: 'Company',
         },
 
         companyForm: {

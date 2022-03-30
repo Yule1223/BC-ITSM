@@ -132,6 +132,7 @@ export default function EntitiesListScreen(props) {
                 <CustomerFormDialog
                     open={true}
                     customer={props.customers[props.customerSelected]}
+                    companies={props.companies}
                     onSave={props.onUpdateCustomer}
                     onCancel={props.onUpdateCustomer}
                 />
@@ -184,6 +185,7 @@ export default function EntitiesListScreen(props) {
                     </TableContainer>
                     <CustomerFormDialog
                         isButton
+                        companies={props.companies}
                         onSave={props.onCreateCustomer}
                     />
                     <CompanyFormDialog

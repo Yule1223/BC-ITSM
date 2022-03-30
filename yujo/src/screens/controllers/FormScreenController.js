@@ -5,7 +5,14 @@ import {constantsValues, slinkConfig} from "../../config";
 import {useEffect, useState} from "react";
 import detectEthereumProvider from "@metamask/detect-provider";
 import {isMetaMaskConnected, loadMetaMaskContract} from "../../Contract";
-import {apiCreateCompany, apiCreateCustomer, apiCreateSLA, apiGetCustomer, apiGetProvider} from "../../API";
+import {
+    apiCreateCompany,
+    apiCreateCustomer,
+    apiCreateSLA,
+    apiGetCompanies,
+    apiGetCustomer,
+    apiGetProvider
+} from "../../API";
 import * as React from "react";
 
 function getLibrary(provider) {
@@ -14,6 +21,7 @@ function getLibrary(provider) {
 
 function FormScreenController() {
     const [customer, setCustomer] = useState();
+    const [companies, setCompanies] = useState([]);
     const [isOwner, setIsOwner] = useState(false);
     const [loadingCheck, setLoadingCheck] = useState(true);
 
@@ -50,12 +58,15 @@ function FormScreenController() {
                 const ownerAddress = await apiGetProvider();
                 setIsOwner(ownerAddress.data === customer.ethAddress);
             };
+            const getCompanies = async () => {
+                const companies = await apiGetCompanies();
+                setCompanies(companies.data);
+            };
 
             checkIfIsOwner();
+            getCompanies();
         }
     }, [customer]);
-
-
 
     const getPriceFromPeriodicity = (price, periodicity) => {
         switch (periodicity) {
@@ -141,6 +152,7 @@ function FormScreenController() {
     return <Web3ReactProvider getLibrary={getLibrary}>
         <FormScreen
             customer={customer}
+            companies={companies}
             isOwner={isOwner}
 
             loadingCheck={loadingCheck}

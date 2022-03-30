@@ -14,7 +14,7 @@ const apiGetProvider = async () => {
 
 // CRUD Customers
 const apiCreateCustomer = async (customer) => {
-    return await axios.post(`${customersURL}?ethAddress=${customer.ethAddress}&dni=${customer.dni}&name=${customer.name}&surname=${customer.surname}&gender=${customer.gender}&email=${customer.email}&phone=${customer.phone}&province=${customer.province}&city=${customer.city}&country=${customer.country}`);
+    return await axios.post(`${customersURL}?ethAddress=${customer.ethAddress}&dni=${customer.dni}&name=${customer.name}&surname=${customer.surname}&gender=${customer.gender}&email=${customer.email}&phone=${customer.phone}&province=${customer.province}&city=${customer.city}&country=${customer.country}&company=${customer.company}`);
 }
 
 const apiGetCustomer = async (ethAddress) => {
@@ -26,7 +26,7 @@ const apiGetCustomers = async () => {
 }
 
 const apiUpdateCustomer = async (customer) => {
-    return await axios.put(`${customersURL}/${customer.ethAddress}?dni=${customer.dni}&name=${customer.name}&surname=${customer.surname}&gender=${customer.gender}&email=${customer.email}&phone=${customer.phone}&province=${customer.province}&city=${customer.city}&country=${customer.country}`);
+    return await axios.put(`${customersURL}/${customer.ethAddress}?dni=${customer.dni}&name=${customer.name}&surname=${customer.surname}&gender=${customer.gender}&email=${customer.email}&phone=${customer.phone}&province=${customer.province}&city=${customer.city}&country=${customer.country}&company=${customer.company}`);
 }
 
 const apiDeleteCustomer = async (ethAddress) => {

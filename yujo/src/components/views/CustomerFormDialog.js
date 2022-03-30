@@ -29,6 +29,7 @@ export default function CustomerFormDialog(props) {
     const [gender, setGender] =  React.useState('');
     const [email, setEmail] =  React.useState('');
     const [phone, setPhone] =  React.useState('');
+    const [company, setCompany] =  React.useState('');
     const [province, setProvince] =  React.useState('');
     const [city, setCity] =  React.useState('');
     const [country, setCountry] =  React.useState('');
@@ -44,6 +45,7 @@ export default function CustomerFormDialog(props) {
         setGender('');
         setEmail('');
         setPhone('');
+        setCompany('');
         setProvince('');
         setCity('');
         setCountry('');
@@ -66,6 +68,7 @@ export default function CustomerFormDialog(props) {
             setGender(props.customer.gender);
             setEmail(props.customer.email);
             setPhone(props.customer.phone);
+            setCompany(props.customer.company);
             setProvince(props.customer.province);
             setCity(props.customer.city);
             setCountry(props.customer.country);
@@ -85,6 +88,7 @@ export default function CustomerFormDialog(props) {
             gender: gender,
             email: email,
             phone: phone,
+            company: company,
             province: province,
             city: city,
             country: country,
@@ -152,6 +156,10 @@ export default function CustomerFormDialog(props) {
 
                         phone={phone}
                         setPhone={setPhone}
+
+                        companies={props.companies}
+                        company={company}
+                        setCompany={setCompany}
 
                         province={province}
                         setProvince={setProvince}

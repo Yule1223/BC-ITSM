@@ -38,6 +38,7 @@ export default {
             addTitle: 'Crear nuevo cliente',
             updateTitle: 'Actualizar cliente',
             ethereumAddress: 'Dirección ethereum',
+            company: 'Empresa',
         },
 
         companyForm: {
