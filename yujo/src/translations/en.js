@@ -54,6 +54,7 @@ export default {
             numberError: 'Please provide a valid fiscal number.',
             addTitle: 'Add new company',
             updateTitle: 'Update company',
+            information: 'Company information',
         },
 
         slaForm: {

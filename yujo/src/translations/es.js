@@ -54,6 +54,7 @@ export default {
             numberError: 'Por favor, introduce un número fiscal válido.',
             addTitle: 'Crear nueva empresa',
             updateTitle: 'Actualizar empresa',
+            information: 'Información de la empresa',
         },
 
         slaForm: {

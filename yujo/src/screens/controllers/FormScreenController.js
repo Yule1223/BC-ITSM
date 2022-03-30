@@ -9,7 +9,7 @@ import {
     apiCreateCompany,
     apiCreateCustomer,
     apiCreateSLA,
-    apiGetCompanies,
+    apiGetCompanies, apiGetCompany,
     apiGetCustomer,
     apiGetProvider
 } from "../../API";
@@ -21,6 +21,7 @@ function getLibrary(provider) {
 
 function FormScreenController() {
     const [customer, setCustomer] = useState();
+    const [company, setCompany] = useState();
     const [companies, setCompanies] = useState([]);
     const [isOwner, setIsOwner] = useState(false);
     const [loadingCheck, setLoadingCheck] = useState(true);
@@ -58,12 +59,17 @@ function FormScreenController() {
                 const ownerAddress = await apiGetProvider();
                 setIsOwner(ownerAddress.data === customer.ethAddress);
             };
+            const getCompany = async () => {
+                const company = await apiGetCompany(customer.company);
+                setCompany(company.data);
+            };
             const getCompanies = async () => {
                 const companies = await apiGetCompanies();
                 setCompanies(companies.data);
             };
 
             checkIfIsOwner();
+            getCompany();
             getCompanies();
         }
     }, [customer]);
@@ -152,6 +158,7 @@ function FormScreenController() {
     return <Web3ReactProvider getLibrary={getLibrary}>
         <FormScreen
             customer={customer}
+            company={company}
             companies={companies}
             isOwner={isOwner}
 

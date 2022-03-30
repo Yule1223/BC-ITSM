@@ -12,6 +12,7 @@ import {FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/m
 import {Item} from "semantic-ui-react";
 import {useEffect} from "react";
 import {useTranslation} from "react-i18next";
+import CompanyForm from "./CompanyForm";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -99,28 +100,19 @@ export default function CompanyFormDialog(props) {
             >
                 <DialogTitle>{isNew && t('companyForm.addTitle')}{!isNew && t('companyForm.updateTitle') + ' - ' + cif}</DialogTitle>
                 <DialogContent style={{paddingTop: 10}}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={4}>
-                            <Item>
-                                <TextField
-                                    label={t('companyForm.cif')}
-                                    fullWidth
-                                    value={cif}
-                                    onChange={event => setCIF(event.target.value)}
-                                    disabled={!isNew}
-                                    InputProps={{
-                                        readOnly: !isNew,
-                                    }}
-                                />
-                            </Item>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Item><TextField label={t('companyForm.name')} fullWidth value={name} onChange={event => setName(event.target.value)} /></Item>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Item><TextField label={t('companyForm.direction')} fullWidth value={address} onChange={event => setAddress(event.target.value)} /></Item>
-                        </Grid>
-                    </Grid>
+                    <CompanyForm
+                        cif={cif}
+                        setCIF={setCIF}
+                        cifDisabled={!isNew}
+                        cifReadOnly={!isNew}
+
+                        name={name}
+                        setName={setName}
+
+                        address={address}
+                        setAddress={setAddress}
+
+                    />
                 </DialogContent>
                 <DialogActions>
                     {isNew && <Button onClick={reset}>{t('form.resetButton')}</Button>}
