@@ -155,45 +155,49 @@ export default function EntitiesListScreen(props) {
                 />
             }
             <Header />
-            <Container maxWidth='lg'>
-                <Tabs value={props.tabIndex} onChange={handleChange} centered>
-                    <Tab icon={<PersonIcon />} label={t('dashboard.customers')} />
-                    <Tab icon={<BusinessIcon />} label={t('dashboard.companies')} />
-                    <Tab icon={<ArticleIcon />} label={t('dashboard.slas')} />
-                </Tabs>
-            </Container>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                    <TableHead>
-                        {header()}
-                    </TableHead>
-                    <TableBody>
-                        {props.tabIndex === 0 && props.customers.map((customer, index) => {
-                            return renderRow(index);
-                        })}
-                        {props.tabIndex === 1 && props.companies.map((customer, index) => {
-                            return renderRow(index);
-                        })}
-                        {props.tabIndex === 2 && props.slas.map((customer, index) => {
-                            return renderRow(index);
-                        })}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <CustomerFormDialog
-                isButton
-                onSave={props.onCreateCustomer}
-            />
-            <CompanyFormDialog
-                isButton
-                onSave={props.onCreateCompany}
-            />
-            <SLAFormDialog
-                customers={props.customers}
-                companies={props.companies}
-                isButton
-                onSave={props.onCreateSLA}
-            />
+            {!props.loadingCheck && (
+                <>
+                    <Container maxWidth='lg'>
+                        <Tabs value={props.tabIndex} onChange={handleChange} centered>
+                            <Tab icon={<PersonIcon />} label={t('dashboard.customers')} />
+                            <Tab icon={<BusinessIcon />} label={t('dashboard.companies')} />
+                            <Tab icon={<ArticleIcon />} label={t('dashboard.slas')} />
+                        </Tabs>
+                    </Container>
+                    <TableContainer component={Paper}>
+                        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                            <TableHead>
+                                {header()}
+                            </TableHead>
+                            <TableBody>
+                                {props.tabIndex === 0 && props.customers.map((customer, index) => {
+                                    return renderRow(index);
+                                })}
+                                {props.tabIndex === 1 && props.companies.map((customer, index) => {
+                                    return renderRow(index);
+                                })}
+                                {props.tabIndex === 2 && props.slas.map((customer, index) => {
+                                    return renderRow(index);
+                                })}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <CustomerFormDialog
+                        isButton
+                        onSave={props.onCreateCustomer}
+                    />
+                    <CompanyFormDialog
+                        isButton
+                        onSave={props.onCreateCompany}
+                    />
+                    <SLAFormDialog
+                        customers={props.customers}
+                        companies={props.companies}
+                        isButton
+                        onSave={props.onCreateSLA}
+                    />
+                </>
+            )}
             <Footer />
         </div>
     );

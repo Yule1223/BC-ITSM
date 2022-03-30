@@ -5,10 +5,10 @@ import React from "react";
 import Header from "../../components/views/Header";
 import '../styles/KnowUsScreen.style.css';
 
-function KnowUsScreen() {
+function KnowUsScreen(props) {
     return (
         <div>
-            <Header/>
+            <Header isOwner={props.isOwner} />
             <div className="Contact-content">
                 <Form className="w-75 m-lg-auto">
                     {/*First row*/}

@@ -140,9 +140,20 @@ export default {
         },
 
         dashboard: {
+            dashboard: 'Tablero',
             customers: 'Clientes',
             companies: 'Empresas',
             slas: 'SLAs',
+        },
+
+        successAlerts: {
+            knownAddressTitle: 'Dirección conocida',
+            knownAddressMessage: 'Hola de nuevo, ',
+        },
+
+        errorAlerts: {
+            unknownAddressTitle: 'Dirección desconocida',
+            unknownAddressMessage: 'La dirección conectada desde el monedero no está vinculada a ningún cliente.',
         },
 
         footer: {

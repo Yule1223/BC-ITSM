@@ -387,6 +387,11 @@ const connectMetaMask = async () => {
     }
 }
 
+const addMetaMaskAccountsChangedObserver = async (observer) => {
+    const metaMaskProvider = await detectEthereumProvider({mustBeMetaMask: true});
+    metaMaskProvider.on('accountsChanged', observer);
+}
+
 const loadMetaMaskContract = async () => {
     const metaMaskProvider = await detectEthereumProvider({mustBeMetaMask: true});
 
@@ -401,5 +406,6 @@ export {
     infuraContract,
     isMetaMaskConnected,
     connectMetaMask,
+    addMetaMaskAccountsChangedObserver,
     loadMetaMaskContract
 };

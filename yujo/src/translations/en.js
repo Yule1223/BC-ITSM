@@ -139,9 +139,20 @@ export default {
         },
 
         dashboard: {
+            dashboard: 'Dashboard',
             customers: 'Customers',
             companies: 'Companies',
             slas: 'SLAs',
+        },
+
+        successAlerts: {
+            knownAddressTitle: 'Known address',
+            knownAddressMessage: 'Hello again, ',
+        },
+
+        errors: {
+            unknownAddressTitle: 'Unknown address',
+            unknownAddressMessage: 'The address connected from the wallet is not linked to any client.',
         },
 
         footer: {

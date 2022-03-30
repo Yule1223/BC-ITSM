@@ -2,27 +2,20 @@ import FormScreen from "../views/FormScreen";
 import {Web3ReactProvider} from "@web3-react/core";
 import Web3 from 'web3'
 import {constantsValues, slinkConfig} from "../../config";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import detectEthereumProvider from "@metamask/detect-provider";
-import {loadMetaMaskContract} from "../../Contract";
-import {apiCreateCompany, apiCreateCustomer, apiCreateSLA} from "../../API";
+import {isMetaMaskConnected, loadMetaMaskContract} from "../../Contract";
+import {apiCreateCompany, apiCreateCustomer, apiCreateSLA, apiGetCustomer, apiGetProvider} from "../../API";
+import * as React from "react";
 
 function getLibrary(provider) {
     return new Web3(provider)
 }
 
 function FormScreenController() {
-    const [customerDNI, setCustomerDNI] = useState('');
-    const [customerName, setCustomerName] = useState('');
-    const [customerSurname, setCustomerSurname] = useState('');
-    const [customerEmail, setCustomerEmail] = useState('');
-    const [customerPhone, setCustomerPhone] = useState('');
-    const [customerCity, setCustomerCity] = useState('');
-    const [customerProvince, setCustomerProvince] = useState('');
-
-    //TODO Falta implementación de índice de país y de género
-    //const [customerCountry, setCustomerCountry] = useState(-1);
-    //const [customerGender, setCustomerGender] = useState(-1);
+    const [customer, setCustomer] = useState();
+    const [isOwner, setIsOwner] = useState(false);
+    const [loadingCheck, setLoadingCheck] = useState(true);
 
     const [customerBusinessName, setCustomerBusinessName] = useState('');
     const [customerBusinessAddress, setCustomerBusinessAddress] = useState('');
@@ -37,6 +30,32 @@ function FormScreenController() {
     const [revisionReportIndex, setRevisionReportIndex] = useState(-1);
     const [billingIndex, setBillingIndex] = useState(-1);
     const [billingMethodIndex, setBillingMethodIndex] = useState(-1);
+
+
+    useEffect(() => {
+        const checkMetaMaskConnection = async () => {
+            const ethAddresses = await isMetaMaskConnected();
+            if (ethAddresses.length > 0) {
+                const customer = await apiGetCustomer(ethAddresses[0]);
+                setCustomer(customer.data);
+            }
+            setLoadingCheck(false);
+        };
+        checkMetaMaskConnection();
+    }, []);
+
+    useEffect(() => {
+        if (customer) {
+            const checkIfIsOwner = async () => {
+                const ownerAddress = await apiGetProvider();
+                setIsOwner(ownerAddress.data === customer.ethAddress);
+            };
+
+            checkIfIsOwner();
+        }
+    }, [customer]);
+
+
 
     const getPriceFromPeriodicity = (price, periodicity) => {
         switch (periodicity) {
@@ -72,6 +91,7 @@ function FormScreenController() {
     }
 
     const onSendPress = async () => {
+        /*
         const metaMaskProvider = await detectEthereumProvider();
 
         if (!metaMaskProvider) {
@@ -115,31 +135,15 @@ function FormScreenController() {
                 alert('SLA con id: ' + slaId + '\nTransacción con hash: ' + result);
                 console.log('SLA con id: ' + slaId + '\nTransacción con hash: ' + result);
             }
-        });
+        });*/
     };
 
     return <Web3ReactProvider getLibrary={getLibrary}>
         <FormScreen
-            customerDNI={customerDNI}
-            onCustomerDNIChange={setCustomerDNI}
+            customer={customer}
+            isOwner={isOwner}
 
-            customerName={customerName}
-            onCustomerNameChange={setCustomerName}
-
-            customerSurname={customerSurname}
-            onCustomerSurnameChange={setCustomerSurname}
-
-            customerEmail={customerEmail}
-            onCustomerEmailChange={setCustomerEmail}
-
-            customerPhone={customerPhone}
-            onCustomerPhoneChange={setCustomerPhone}
-
-            customerCity={customerCity}
-            onCustomerCityChange={setCustomerCity}
-
-            customerProvince={customerProvince}
-            onCustomerProvinceChange={setCustomerProvince}
+            loadingCheck={loadingCheck}
 
             customerBusinessName={customerBusinessName}
             onCustomerBusinessNameChange={setCustomerBusinessName}

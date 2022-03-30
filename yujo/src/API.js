@@ -2,9 +2,15 @@ const axios = require('axios');
 
 const url = 'http://localhost:2000';
 
+const blockchainURL = url + '/bc';
 const customersURL = url + '/customers';
 const companiesURL = url + '/companies';
 const slasURL = url + '/slas';
+
+// Blockchain
+const apiGetProvider = async () => {
+    return await axios.get(`${blockchainURL}/provider`);
+}
 
 // CRUD Customers
 const apiCreateCustomer = async (customer) => {
@@ -70,6 +76,9 @@ const apiDeleteSLA = async (id) => {
 }
 
 export {
+    // Blockchain
+    apiGetProvider,
+
     // CRUD Customers
     apiCreateCustomer,
     apiGetCustomer,

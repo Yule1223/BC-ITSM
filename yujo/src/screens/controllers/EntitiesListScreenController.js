@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {
     apiCreateCompany,
     apiCreateCustomer, apiCreateSLA,
@@ -6,15 +6,21 @@ import {
     apiDeleteCustomer, apiDeleteSLA,
     apiGetCompanies,
     apiGetCustomer,
-    apiGetCustomers,
+    apiGetCustomers, apiGetProvider,
     apiGetSLAs, apiUpdateCompany,
     apiUpdateCustomer, apiUpdateSLA
 } from "../../API";
 import EntitiesListScreen from "../views/EntitiesListScreen";
 import {COMPANY_ENTITY, CUSTOMER_ENTITY, SLA_ENTITY} from "../../config";
 import * as React from "react";
+import {isMetaMaskConnected} from "../../Contract";
+import {useNavigate} from "react-router-dom";
 
 function EntitiesListScreenController() {
+    const navigate = useNavigate();
+    const [customer, setCustomer] = useState();
+    const [loadingCheck, setLoadingCheck] = useState(true);
+
     const [tabIndex, setTabIndex] = useState(0);
     const [customers, setCustomers] = useState([]);
     const [companies, setCompanies] = useState([]);
@@ -23,14 +29,43 @@ function EntitiesListScreenController() {
     const [companySelected, setCompanySelected] = useState(-1);
     const [slaSelected, setSLASelected] = useState(-1);
 
+
     useEffect(() => {
-        const getData = async () => {
-            setCustomers((await apiGetCustomers()).data);
-            setCompanies((await apiGetCompanies()).data);
-            setSLAs((await apiGetSLAs()).data);
+        const checkMetaMaskConnection = async () => {
+            const ethAddresses = await isMetaMaskConnected();
+            if (ethAddresses.length > 0) {
+                const customer = await apiGetCustomer(ethAddresses[0]);
+                setCustomer(customer.data);
+            }
         };
-        getData();
+        checkMetaMaskConnection();
     }, []);
+
+    useEffect(() => {
+        if (customer) {
+            const checkIfIsOwner = async () => {
+                const ownerAddress = await apiGetProvider();
+                if (ownerAddress.data !== customer.ethAddress) {
+                    navigate('/', {replace: true});
+                } else {
+                    setLoadingCheck(false);
+                }
+            };
+
+            checkIfIsOwner();
+        }
+    }, [customer]);
+
+    useEffect(() => {
+        if (!loadingCheck) {
+            const getData = async () => {
+                setCustomers((await apiGetCustomers()).data);
+                setCompanies((await apiGetCompanies()).data);
+                setSLAs((await apiGetSLAs()).data);
+            };
+            getData();
+        }
+    }, [loadingCheck]);
 
     const onCreateCustomer = async (customer) => {
         await apiCreateCustomer(customer);
@@ -110,6 +145,8 @@ function EntitiesListScreenController() {
     }
 
         return <EntitiesListScreen
+            loadingCheck={loadingCheck}
+
             tabIndex={tabIndex}
             onTabIndexSelected={(index) => setTabIndex(index)}
 

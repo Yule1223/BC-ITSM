@@ -3,10 +3,17 @@ import background_logo from '../../img/blockchain-background.svg';
 import logo from '../../img/Slink-without-background.svg';
 import '../styles/IndexScreen.style.css';
 import Typewriter from "typewriter-effect";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-
+import {useCallback} from "react";
+import Button from "@mui/material/Button";
+import * as React from "react";
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import GroupsIcon from '@mui/icons-material/Groups';
 function IndexScreen() {
+    const navigate = useNavigate();
+    const handleOnForm = useCallback(() => navigate('/form', {replace: false}), [navigate]);
+    const handleOnKnowUs = useCallback(() => navigate('/knowus', {replace: false}), [navigate]);
     const {t} = useTranslation();
 
     return (
@@ -30,12 +37,12 @@ function IndexScreen() {
                                 .start();
                         }}/></div>
                 <div className="d-flex w-25 justify-content-between">
-                    <Link to="/form">
-                        <button type="button" className="btn-index btn btn-light">{t('index.iWantIt')}</button>
-                    </Link>
-                    <Link to="/knowUs">
-                        <button className="btn-index btn btn-light">{t('index.knowUs')}</button>
-                    </Link>
+                    <Button startIcon={<BorderColorIcon />} variant='contained' className='btn-index text-dark' onClick={handleOnForm}>
+                        {t('index.iWantIt')}
+                    </Button>
+                    <Button startIcon={<GroupsIcon />} variant='contained' className='btn-index text-dark' onClick={handleOnKnowUs}>
+                        {t('index.knowUs')}
+                    </Button>
                 </div>
             </section>
         </div>

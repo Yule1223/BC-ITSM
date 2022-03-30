@@ -13,6 +13,7 @@ import {Item} from "semantic-ui-react";
 import {useEffect} from "react";
 import {countries} from "../../config";
 import {useTranslation} from "react-i18next";
+import CustomerForm from "./CustomerForm";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -128,64 +129,39 @@ export default function CustomerFormDialog(props) {
             >
                 <DialogTitle>{isNew && t('customerForm.addTitle')}{!isNew &&  t('customerForm.updateTitle') + ' - ' + ethAddress}</DialogTitle>
                 <DialogContent style={{paddingTop: 10}}>
-                    <Grid container rowSpacing={2} spacing={2}>
-                        <Grid item xs={4}>
-                            <Item>
-                                <TextField
-                                    label={t('customerForm.ethereumAddress')}
-                                    fullWidth
-                                    value={ethAddress}
-                                    onChange={event => setEthAddress(event.target.value)}
-                                    disabled={!isNew}
-                                    InputProps={{
-                                        readOnly: !isNew,
-                                    }}
-                                />
-                            </Item>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Item><TextField label={t('customerForm.dni')} fullWidth value={dni} onChange={event => setDNI(event.target.value)} /></Item>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <Item><TextField label={t('customerForm.firstName')} fullWidth value={name} onChange={event => setName(event.target.value)} /></Item>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <Item><TextField label={t('customerForm.lastName')} fullWidth value={surname} onChange={event => setSurname(event.target.value)} /></Item>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <Item>
-                                <FormControl fullWidth>
-                                    <InputLabel id='gender-select'>{t('customerForm.genderChoose')}</InputLabel>
-                                    <Select labelId='gender-select' label={t('customerForm.genderChoose')} fullWidth value={gender} onChange={event => setGender(event.target.value)}>
-                                        <MenuItem value={0}>{t('customerForm.genderMale')}</MenuItem>
-                                        <MenuItem value={1}>{t('customerForm.genderFemale')}</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </Item>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Item><TextField label={t('customerForm.email')} fullWidth value={email} onChange={event => setEmail(event.target.value)} /></Item>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <Item><TextField label={t('customerForm.phone')} fullWidth value={phone} onChange={event => setPhone(event.target.value)} /></Item>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Item><TextField label={t('customerForm.province')} fullWidth value={province} onChange={event => setProvince(event.target.value)} /></Item>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Item><TextField label={t('customerForm.city')} fullWidth value={city} onChange={event => setCity(event.target.value)} /></Item>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Item>
-                                <FormControl fullWidth>
-                                    <InputLabel id='country-select'>{t('customerForm.country')}</InputLabel>
-                                    <Select labelId='country-select' label={t('customerForm.country')} fullWidth value={country} onChange={event => setCountry(event.target.value)}>
-                                        {countries.map((country, index) => <MenuItem key={index} value={index}>{country.label}</MenuItem>)}
-                                    </Select>
-                                </FormControl>
-                            </Item>
-                        </Grid>
-                    </Grid>
+                    <CustomerForm
+                        ethAddress={ethAddress}
+                        setEthAddress={setEthAddress}
+                        ethAddressDisabled={!isNew}
+                        ethAddressReadOnly={!isNew}
+
+                        dni={dni}
+                        setDNI={setDNI}
+
+                        firstName={name}
+                        setFirstName={setName}
+
+                        lastName={surname}
+                        setLastName={setSurname}
+
+                        gender={gender}
+                        setGender={setGender}
+
+                        email={email}
+                        setEmail={setEmail}
+
+                        phone={phone}
+                        setPhone={setPhone}
+
+                        province={province}
+                        setProvince={setProvince}
+
+                        city={city}
+                        setCity={setCity}
+
+                        country={country}
+                        setCountry={setCountry}
+                    />
                 </DialogContent>
                 <DialogActions>
                     {isNew && <Button onClick={reset}>{t('form.resetButton')}</Button>}

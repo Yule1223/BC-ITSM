@@ -8,7 +8,12 @@ import Slide from '@mui/material/Slide';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import {useTranslation} from "react-i18next";
 import { ReactComponent as MetaMaskSvg } from '../../img/metamask.svg';
-import {connectMetaMask, isMetaMaskConnected, loadMetaMaskContract} from "../../Contract";
+import {
+    addMetaMaskAccountsChangedObserver,
+    connectMetaMask,
+    isMetaMaskConnected,
+    loadMetaMaskContract
+} from "../../Contract";
 import LoadingButton from '@mui/lab/LoadingButton';
 import {useEffect} from "react";
 
@@ -28,6 +33,10 @@ export default function WalletDialog(props) {
             const ethAddresses = await isMetaMaskConnected();
             if (ethAddresses.length > 0) setEthAddress(ethAddresses[0]);
             setLoadingCheck(false);
+
+            await addMetaMaskAccountsChangedObserver(() => {
+                window.location.reload(false);
+            });
         };
         checkMetaMaskConnection();
     }, []);
@@ -57,12 +66,14 @@ export default function WalletDialog(props) {
         }
     };
 
+    const ethAddressLabel = ethAddress ? ethAddress.substring(0, 5) + '...' + ethAddress.substring(38) : '';
+
     return (
         <div>
             {!loadingCheck &&
                 (<Button endIcon={<AccountBalanceWalletIcon />} variant="contained" color={(!ethAddress && 'success') || (ethAddress && 'error')} onClick={handleClickOpen}>
                     {!ethAddress && t('wallet.connect')}
-                    {ethAddress && t('wallet.disconnect') + ' ' + ethAddress}
+                    {ethAddress && t('wallet.disconnect') + ' ' + ethAddressLabel}
                 </Button>)
             }
             <Dialog
