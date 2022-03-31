@@ -34,8 +34,12 @@ function EntitiesListScreenController() {
         const checkMetaMaskConnection = async () => {
             const ethAddresses = await isMetaMaskConnected();
             if (ethAddresses.length > 0) {
-                const customer = await apiGetCustomer(ethAddresses[0]);
-                setCustomer(customer.data);
+                try {
+                    const customer = await apiGetCustomer(ethAddresses[0]);
+                    setCustomer(customer.data);
+                } catch (e) {
+                    navigate('/', {replace: true});
+                }
             }
         };
         checkMetaMaskConnection();
