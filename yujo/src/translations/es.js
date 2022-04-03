@@ -105,9 +105,20 @@ export default {
 
         contact: {
             subject: 'Asunto',
-            subjectPlaceHolder: 'Introduce el asunto del correo',
+            subjectPlaceHolder: 'Indica brevemente el motivo de contacto',
             message: 'Mensaje',
+            messagePlaceHolder: 'Indica el motivo de contacto',
             contactUs: 'Contacta con nosotros',
+            firstName: 'Nombre',
+            firstNamePlaceHolder: 'Introduce tu nombre',
+            lastName: 'Apellidos',
+            lastNamePlaceHolder: 'Introduce tus apellidos',
+            email: 'Email',
+            emailPlaceHolder: 'Introduce tu email',
+            submit: 'Contactar',
+            ethAddress: 'Dirección Ethereum',
+            ethAddressPlaceHolder: 'Introduce la dirección Ethereum asociada',
+            requestCreated: '¡Contacto hecho!',
         },
 
         knowUs: {
@@ -155,7 +166,9 @@ export default {
 
         errorAlerts: {
             unknownAddressTitle: 'Dirección desconocida',
-            unknownAddressMessage: 'La dirección conectada desde el monedero no está vinculada a ningún cliente.',
+            unknownAddressMessage1: 'La dirección conectada desde el monedero no está vinculada a ningún cliente.',
+            unknownAddressMessage2: 'Si desea ser cliente para contratar SLA mediante la red Blockchain Ethereum, ',
+            unknownAddressMessage3: 'contacte con nosotros.',
         },
 
         footer: {

@@ -105,9 +105,20 @@ export default {
 
         contact: {
             subject: 'Subject',
-            subjectPlaceHolder: 'Enter the subject of the email',
+            subjectPlaceHolder: 'Briefly indicate the reason for the contact',
             message: 'Message',
+            messagePlaceHolder: 'Indicate the reason for contact',
             contactUs: 'Contact us',
+            firstName: 'First name',
+            firstNamePlaceHolder: 'Introduce your first name',
+            lastName: 'Second name',
+            lastNamePlaceHolder: 'Introduce your last name',
+            email: 'Email',
+            emailPlaceHolder: 'Introduce your email',
+            submit: 'Contact',
+            ethAddress: 'Ethereum address',
+            ethAddressPlaceHolder: 'Introduce Ethereum address associate',
+            requestCreated: 'Contact done!',
         },
 
         knowUs: {
@@ -152,9 +163,11 @@ export default {
             knownAddressMessage: 'Hello again, ',
         },
 
-        errors: {
+        errorAlerts: {
             unknownAddressTitle: 'Unknown address',
-            unknownAddressMessage: 'The address connected from the wallet is not linked to any client.',
+            unknownAddressMessage1: 'The address connected from the wallet is not linked to any client.',
+            unknownAddressMessage2: 'If you want to be a client to contract SLA through the Ethereum Blockchain network, ',
+            unknownAddressMessage3: 'contact us.',
         },
 
         footer: {

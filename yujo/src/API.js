@@ -6,6 +6,7 @@ const blockchainURL = url + '/bc';
 const customersURL = url + '/customers';
 const companiesURL = url + '/companies';
 const slasURL = url + '/slas';
+const contactRequestsURL = url + '/contactRequests';
 
 // Blockchain
 const apiGetProvider = async () => {
@@ -75,6 +76,19 @@ const apiDeleteSLA = async (id) => {
     return await axios.delete(`${slasURL}/${id}`);
 }
 
+//CRUD Contact requests
+const apiCreateContactRequest = async (contactRequest) => {
+    return await axios.post(`${contactRequestsURL}?firstName=${contactRequest.firstName}&lastName=${contactRequest.lastName}&email=${contactRequest.email}&ethAddress=${contactRequest.ethAddress}&subject=${contactRequest.subject}&message=${contactRequest.message}`);
+}
+
+const apiGetContactRequests = async () => {
+    return await axios.get(`${contactRequestsURL}`);
+}
+
+const apiDeleteContactRequest = async (id) => {
+    return await axios.delete(`${contactRequestsURL}/${id}`);
+}
+
 export {
     // Blockchain
     apiGetProvider,
@@ -98,5 +112,10 @@ export {
     apiGetSLA,
     apiGetSLAs,
     apiUpdateSLA,
-    apiDeleteSLA
+    apiDeleteSLA,
+
+    // CRUD Contact requests
+    apiCreateContactRequest,
+    apiGetContactRequests,
+    apiDeleteContactRequest
 };

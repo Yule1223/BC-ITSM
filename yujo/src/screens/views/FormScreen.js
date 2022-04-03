@@ -279,7 +279,11 @@ function FormScreen(props) {
                 {!props.customer && (
                     <Alert severity="error">
                         <AlertTitle><strong>{t('errorAlerts.unknownAddressTitle')}</strong></AlertTitle>
-                        {t('errorAlerts.unknownAddressMessage')}
+                        {t('errorAlerts.unknownAddressMessage1')}
+                        <br />
+                        <br />
+                        {t('errorAlerts.unknownAddressMessage2')}
+                        <a className="d-inline" href="/knowus">{t('errorAlerts.unknownAddressMessage3')}</a>
                     </Alert>
                 )}
             </section>

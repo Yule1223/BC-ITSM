@@ -108,8 +108,7 @@ function FormScreenController() {
     }
 
     const onSendPress = async () => {
-        /*
-        const metaMaskProvider = await detectEthereumProvider();
+        /*const metaMaskProvider = await detectEthereumProvider();
 
         if (!metaMaskProvider) {
             alert('Please install MetaMask!');
