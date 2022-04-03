@@ -13,6 +13,7 @@ import Tab from '@mui/material/Tab';
 import PersonIcon from '@mui/icons-material/Person';
 import BusinessIcon from '@mui/icons-material/Business';
 import ArticleIcon from '@mui/icons-material/Article';
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Header from "../../components/views/Header";
 import {Container} from "@mui/material";
@@ -83,6 +84,19 @@ export default function EntitiesListScreen(props) {
                         <StyledTableCell align="right" />
                     </TableRow>
                 );
+
+            case 3:
+                return (
+                    <TableRow>
+                        <StyledTableCell align="right">{t('contact.firstName')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('contact.lastName')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('contact.email')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('contact.ethAddress')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('contact.subject')}</StyledTableCell>
+                        <StyledTableCell align="right">{t('contact.message')}</StyledTableCell>
+                        <StyledTableCell align="right" />
+                    </TableRow>
+                );
         }
     };
 
@@ -120,6 +134,20 @@ export default function EntitiesListScreen(props) {
                         <StyledTableCell align="right" onClick={() => props.onSLAPress(index)}>{sla.customer}</StyledTableCell>
                         <StyledTableCell align="right" onClick={() => props.onSLAPress(index)}>{sla.company}</StyledTableCell>
                         <StyledTableCell align="right" onClick={() => props.onSLAPress(index)}>{sla.price}</StyledTableCell>
+                        <StyledTableCell align="right"><DeleteIcon color='error' onClick={() => props.onDeleteEntity(index)} /></StyledTableCell>
+                    </StyledTableRow>
+                );
+
+            case 3:
+                const contactRequest = props.contactRequests[index];
+                return (
+                    <StyledTableRow key={index} role='button'>
+                        <StyledTableCell align="right">{contactRequest.firstName}</StyledTableCell>
+                        <StyledTableCell align="right">{contactRequest.lastName}</StyledTableCell>
+                        <StyledTableCell align="right">{contactRequest.email}</StyledTableCell>
+                        <StyledTableCell align="right">{contactRequest.ethAddress}</StyledTableCell>
+                        <StyledTableCell align="right">{contactRequest.subject}</StyledTableCell>
+                        <StyledTableCell align="right">{contactRequest.message}</StyledTableCell>
                         <StyledTableCell align="right"><DeleteIcon color='error' onClick={() => props.onDeleteEntity(index)} /></StyledTableCell>
                     </StyledTableRow>
                 );
@@ -163,6 +191,7 @@ export default function EntitiesListScreen(props) {
                             <Tab icon={<PersonIcon />} label={t('dashboard.customers')} />
                             <Tab icon={<BusinessIcon />} label={t('dashboard.companies')} />
                             <Tab icon={<ArticleIcon />} label={t('dashboard.slas')} />
+                            <Tab icon={<ConnectWithoutContactIcon />} label={t('dashboard.contactRequests')} />
                         </Tabs>
                     </Container>
                     <TableContainer component={Paper}>
@@ -174,10 +203,13 @@ export default function EntitiesListScreen(props) {
                                 {props.tabIndex === 0 && props.customers.map((customer, index) => {
                                     return renderRow(index);
                                 })}
-                                {props.tabIndex === 1 && props.companies.map((customer, index) => {
+                                {props.tabIndex === 1 && props.companies.map((company, index) => {
                                     return renderRow(index);
                                 })}
-                                {props.tabIndex === 2 && props.slas.map((customer, index) => {
+                                {props.tabIndex === 2 && props.slas.map((sla, index) => {
+                                    return renderRow(index);
+                                })}
+                                {props.tabIndex === 3 && props.contactRequests.map((contactRequest, index) => {
                                     return renderRow(index);
                                 })}
                             </TableBody>

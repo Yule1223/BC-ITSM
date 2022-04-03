@@ -2,16 +2,16 @@ import {useCallback, useEffect, useState} from "react";
 import {
     apiCreateCompany,
     apiCreateCustomer, apiCreateSLA,
-    apiDeleteCompany,
+    apiDeleteCompany, apiDeleteContactRequest,
     apiDeleteCustomer, apiDeleteSLA,
-    apiGetCompanies,
+    apiGetCompanies, apiGetContactRequests,
     apiGetCustomer,
     apiGetCustomers, apiGetProvider,
     apiGetSLAs, apiUpdateCompany,
     apiUpdateCustomer, apiUpdateSLA
 } from "../../API";
 import EntitiesListScreen from "../views/EntitiesListScreen";
-import {COMPANY_ENTITY, CUSTOMER_ENTITY, SLA_ENTITY} from "../../config";
+import {COMPANY_ENTITY, CONTACT_REQUEST_ENTITY, CUSTOMER_ENTITY, SLA_ENTITY} from "../../config";
 import * as React from "react";
 import {isMetaMaskConnected} from "../../Contract";
 import {useNavigate} from "react-router-dom";
@@ -25,6 +25,7 @@ function EntitiesListScreenController() {
     const [customers, setCustomers] = useState([]);
     const [companies, setCompanies] = useState([]);
     const [slas, setSLAs] = useState([]);
+    const [contactRequests, setContactRequests] = useState([]);
     const [customerSelected, setCustomerSelected] = useState(-1);
     const [companySelected, setCompanySelected] = useState(-1);
     const [slaSelected, setSLASelected] = useState(-1);
@@ -66,6 +67,7 @@ function EntitiesListScreenController() {
                 setCustomers((await apiGetCustomers()).data);
                 setCompanies((await apiGetCompanies()).data);
                 setSLAs((await apiGetSLAs()).data);
+                setContactRequests((await apiGetContactRequests()).data);
             };
             getData();
         }
@@ -113,7 +115,6 @@ function EntitiesListScreenController() {
     };
 
     const onUpdateSLA = async (sla) => {
-        console.log(sla);
         if (sla) {
             await apiUpdateSLA(sla);
             const _slas = [...slas];
@@ -145,6 +146,12 @@ function EntitiesListScreenController() {
                 _slas.splice(index, 1);
                 setSLAs(_slas);
                 break;
+            case CONTACT_REQUEST_ENTITY:
+                await apiDeleteContactRequest(contactRequests[index].id);
+                const _contactRequests = [...contactRequests];
+                _contactRequests.splice(index, 1);
+                setContactRequests(_contactRequests);
+                break;
         }
     }
 
@@ -157,6 +164,7 @@ function EntitiesListScreenController() {
             customers={customers}
             companies={companies}
             slas={slas}
+            contactRequests={contactRequests}
 
             onCreateCustomer={onCreateCustomer}
             customerSelected={customerSelected}

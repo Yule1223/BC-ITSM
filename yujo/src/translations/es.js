@@ -157,6 +157,7 @@ export default {
             customers: 'Clientes',
             companies: 'Empresas',
             slas: 'SLAs',
+            contactRequests: 'Contactos',
         },
 
         successAlerts: {
