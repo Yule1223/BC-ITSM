@@ -11,10 +11,6 @@ export const constantsValues = {
     quarterlyPeriodicity: 4,
     semesterPeriodicity: 5,
     yearlyPeriodicity: 6,
-
-    cryptoBilling: 0,
-    bankTransferBilling: 1,
-    cardBilling: 2,
 };
 
 export const slinkConfig = {
@@ -117,7 +113,11 @@ export const slinkConfig = {
             periodicity: constantsValues.yearlyPeriodicity
         }
     ],
-    billingMethods: [constantsValues.cryptoBilling, constantsValues.bankTransferBilling, constantsValues.cardBilling]
+    billingMethods: [
+        'criptomonedas',
+        'transferencia bancaria',
+        'cheque bancario'
+    ]
 };
 
 export const countries = [

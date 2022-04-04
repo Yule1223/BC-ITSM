@@ -163,7 +163,7 @@ function FormScreen(props) {
                                         index={props.serviceSpaceIndex}
                                         options={props.serviceSpaces}
                                         defaultLabel={t('slaForm.chooseServiceHours')}
-                                        renderLabel={(serviceSpace) => serviceSpace.name + ' (' + serviceSpace.startTime + '-' + serviceSpace.endTime + ') ' + serviceSpace.price + '/' + serviceSpace.pricePeriodicity}
+                                        renderLabel={(serviceSpace) => serviceSpace.name + ' (' + serviceSpace.startTime + '-' + serviceSpace.endTime + ') ' + serviceSpace.price + '/€'}
                                         onOptionSelected={props.onServiceSpaceSelected}
                                     />
                                 </FloatingLabel>
@@ -174,7 +174,7 @@ function FormScreen(props) {
                                         index={props.serviceIndex}
                                         options={props.services}
                                         defaultLabel={t('slaForm.chooseCoveredServices')}
-                                        renderLabel={(service) => service.name + ' ' + service.price + '/' + service.pricePeriodicity}
+                                        renderLabel={(service) => service.name + ' ' + service.price + '/€'}
                                         onOptionSelected={props.onServiceSelected}
                                     />
                                 </FloatingLabel>
@@ -188,7 +188,7 @@ function FormScreen(props) {
                                         index={props.extraServiceIndex}
                                         options={props.extraServices}
                                         defaultLabel={t('slaForm.chooseExtraServices')}
-                                        renderLabel={(extraService) => extraService.name + ' ' + extraService.price + '/' + extraService.pricePeriodicity}
+                                        renderLabel={(extraService) => extraService.name + ' ' + extraService.price + '/€'}
                                         onOptionSelected={props.onExtraServiceSelected}
                                     />
                                 </FloatingLabel>
@@ -221,7 +221,7 @@ function FormScreen(props) {
                                         index={props.revisionReportIndex}
                                         options={props.revisionReports}
                                         defaultLabel={t('slaForm.assuranceChoosePeriod')}
-                                        renderLabel={(revisionReport) => revisionReport.name + ' ' + revisionReport.price + '/' + revisionReport.pricePeriodicity}
+                                        renderLabel={(revisionReport) => revisionReport.name + ' ' + revisionReport.price + '/€'}
                                         onOptionSelected={props.onRevisionReportSelected}
                                     />
                                 </FloatingLabel>
@@ -268,7 +268,7 @@ function FormScreen(props) {
                         {/*SLA Price*/}
                         <label className="d-inline text-warning" htmlFor='sum'>{t('form.price')}</label>
                         <label className="d-inline mt-3 w-100 text-warning">
-                            {props.price + "€/year"}
+                            {props.price.toLocaleString('es-ES') + "€/year"}
                         </label>
                         <p className="text-danger mt-3">{t('form.fieldsAreMandatory')}</p>
                         <Button className="mb-3" variant="primary" type="submit">
@@ -287,7 +287,6 @@ function FormScreen(props) {
                     </Alert>
                 )}
             </section>
-            <Footer />
         </div>
     );
 }
