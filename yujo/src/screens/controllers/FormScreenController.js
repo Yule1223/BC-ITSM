@@ -14,6 +14,7 @@ import {
     apiGetProvider
 } from "../../API";
 import * as React from "react";
+import {useTranslation} from "react-i18next";
 
 function getLibrary(provider) {
     return new Web3(provider)
@@ -41,6 +42,25 @@ function FormScreenController() {
     const [billingMethodIndex, setBillingMethodIndex] = useState(-1);
 
     const [slaDto, setSlaDto] = useState();
+    const { i18n } = useTranslation();
+
+    const slinkConfigWithTranslate = JSON.parse(JSON.stringify(slinkConfig));
+
+    slinkConfigWithTranslate.serviceSpaces.map(serviceSpace => serviceSpace.name = serviceSpace.name[i18n.language]);
+    slinkConfigWithTranslate.services.map(service => {
+        service.name = service.name[i18n.language];
+        service.description = service.description[i18n.language];
+    });
+    slinkConfigWithTranslate.extraServices.map(service => {
+        service.name = service.name[i18n.language];
+        service.description = service.description[i18n.language];
+    });
+    slinkConfigWithTranslate.licences = [];
+    slinkConfig.licences.forEach(license => slinkConfigWithTranslate.licences.push(license[i18n.language]));
+    slinkConfigWithTranslate.serviceLeves = slinkConfig.serviceLeves[i18n.language];
+    slinkConfigWithTranslate.billingMethods.map(billing => billing[i18n.language]);
+    slinkConfigWithTranslate.billingMethods = [];
+    slinkConfig.billingMethods.forEach(billingMethod => slinkConfigWithTranslate.billingMethods.push(billingMethod[i18n.language]));
 
 
     useEffect(() => {
@@ -94,19 +114,19 @@ function FormScreenController() {
     let price = 0;
 
     if (serviceIndex !== -1) {
-        price += getPriceFromPeriodicity(slinkConfig.services[serviceIndex].price, slinkConfig.services[serviceIndex].pricePeriodicity);
+        price += getPriceFromPeriodicity(slinkConfigWithTranslate.services[serviceIndex].price, slinkConfigWithTranslate.services[serviceIndex].pricePeriodicity);
     }
 
     if (extraServiceIndex !== -1) {
-        price += getPriceFromPeriodicity(slinkConfig.extraServices[extraServiceIndex].price, slinkConfig.extraServices[extraServiceIndex].pricePeriodicity);
+        price += getPriceFromPeriodicity(slinkConfigWithTranslate.extraServices[extraServiceIndex].price, slinkConfigWithTranslate.extraServices[extraServiceIndex].pricePeriodicity);
     }
 
     if (serviceSpaceIndex !== -1) {
-        price += getPriceFromPeriodicity(slinkConfig.serviceSpaces[serviceSpaceIndex].price, slinkConfig.serviceSpaces[serviceSpaceIndex].pricePeriodicity);
+        price += getPriceFromPeriodicity(slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].price, slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].pricePeriodicity);
     }
 
     if (revisionReportIndex !== -1) {
-        price += getPriceFromPeriodicity(slinkConfig.revisionReports[revisionReportIndex].price, slinkConfig.revisionReports[revisionReportIndex].pricePeriodicity);
+        price += getPriceFromPeriodicity(slinkConfigWithTranslate.revisionReports[revisionReportIndex].price, slinkConfigWithTranslate.revisionReports[revisionReportIndex].pricePeriodicity);
     }
 
     const onSendPress = async () => {
@@ -133,13 +153,13 @@ function FormScreenController() {
                 slaId,
                 startDate.getTime(),
                 automaticRenewal,
-                [`${slinkConfig.services[serviceIndex].name}`, `${slinkConfig.services[serviceIndex].description}`, slinkConfig.services[serviceIndex].price, slinkConfig.services[serviceIndex].pricePeriodicity],
-                [`${slinkConfig.extraServices[extraServiceIndex].name}`, `${slinkConfig.extraServices[extraServiceIndex].description}`, slinkConfig.extraServices[extraServiceIndex].price, slinkConfig.extraServices[extraServiceIndex].pricePeriodicity],
-                `${slinkConfig.serviceLeves}`,
-                [`${slinkConfig.serviceSpaces[serviceSpaceIndex].name}`, `${slinkConfig.serviceSpaces[serviceSpaceIndex].startTime}`, `${slinkConfig.serviceSpaces[serviceSpaceIndex].endTime}`, slinkConfig.serviceSpaces[serviceSpaceIndex].price, slinkConfig.serviceSpaces[serviceSpaceIndex].pricePeriodicity],
-                `${slinkConfig.licences[licenseIndex]}`,
-                [`${slinkConfig.revisionReports[revisionReportIndex].name}`, slinkConfig.revisionReports[revisionReportIndex].price, slinkConfig.revisionReports[revisionReportIndex].pricePeriodicity],
-                [`${slinkConfig.billings[billingIndex].name}`, slinkConfig.billings[billingIndex].periodicity],
+                [`${slinkConfigWithTranslate.services[serviceIndex].name}`, `${slinkConfigWithTranslate.services[serviceIndex].description}`, slinkConfigWithTranslate.services[serviceIndex].price, slinkConfigWithTranslate.services[serviceIndex].pricePeriodicity],
+                [`${slinkConfigWithTranslate.extraServices[extraServiceIndex].name}`, `${slinkConfigWithTranslate.extraServices[extraServiceIndex].description}`, slinkConfigWithTranslate.extraServices[extraServiceIndex].price, slinkConfigWithTranslate.extraServices[extraServiceIndex].pricePeriodicity],
+                `${slinkConfigWithTranslate.serviceLeves}`,
+                [`${slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].name}`, `${slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].startTime}`, `${slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].endTime}`, slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].price, slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].pricePeriodicity],
+                `${slinkConfigWithTranslate.licences[licenseIndex]}`,
+                [`${slinkConfigWithTranslate.revisionReports[revisionReportIndex].name}`, slinkConfigWithTranslate.revisionReports[revisionReportIndex].price, slinkConfigWithTranslate.revisionReports[revisionReportIndex].pricePeriodicity],
+                [`${slinkConfigWithTranslate.billings[billingIndex].name}`, slinkConfigWithTranslate.billings[billingIndex]],
                 billingMethodIndex,
             ).send({from: customer.ethAddress}, (error, result) => {
                 if (error) {
@@ -155,6 +175,7 @@ function FormScreenController() {
             });
         } catch (e) {
             alert(e);
+            console.log(e);
         }
     };
 
@@ -184,33 +205,33 @@ function FormScreenController() {
             automaticRenewal={automaticRenewal}
             onAutomaticRenewalChange={setAutomaticRenewal}
 
-            serviceSpaces={slinkConfig.serviceSpaces}
+            serviceSpaces={slinkConfigWithTranslate.serviceSpaces}
             serviceSpaceIndex={serviceSpaceIndex}
             onServiceSpaceSelected={(index) => setServiceSpaceIndex(Number(index))}
 
-            services={slinkConfig.services}
+            services={slinkConfigWithTranslate.services}
             serviceIndex={serviceIndex}
             onServiceSelected={(index) => setServiceIndex(Number(index))}
 
-            extraServices={slinkConfig.extraServices}
+            extraServices={slinkConfigWithTranslate.extraServices}
             extraServiceIndex={extraServiceIndex}
             onExtraServiceSelected={(index) => setExtraServiceIndex(Number(index))}
 
-            licenses={slinkConfig.licences}
+            licenses={slinkConfigWithTranslate.licences}
             licenseIndex={licenseIndex}
             onLicenseSelected={(index) => setLicenseIndex(Number(index))}
 
-            serviceLevels={slinkConfig.serviceLeves}
+            serviceLevels={slinkConfigWithTranslate.serviceLeves}
 
-            revisionReports={slinkConfig.revisionReports}
+            revisionReports={slinkConfigWithTranslate.revisionReports}
             revisionReportIndex={revisionReportIndex}
             onRevisionReportSelected={(index) => setRevisionReportIndex(Number(index))}
 
-            billings={slinkConfig.billings}
+            billings={slinkConfigWithTranslate.billings}
             billingIndex={billingIndex}
             onBillingSelected={(index) => setBillingIndex(Number(index))}
 
-            billingMethods={slinkConfig.billingMethods}
+            billingMethods={slinkConfigWithTranslate.billingMethods}
             billingMethodIndex={billingMethodIndex}
             onBillingMethodSelected={(index) => setBillingMethodIndex(Number(index))}
 

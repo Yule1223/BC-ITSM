@@ -13,7 +13,7 @@ import CompanyForm from "../../components/views/CompanyForm";
 
 function FormScreen(props) {
     const [validated, setValidated] = useState(false);
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
@@ -175,7 +175,7 @@ function FormScreen(props) {
                                         index={props.serviceSpaceIndex}
                                         options={props.serviceSpaces}
                                         defaultLabel={t('slaForm.chooseServiceHours')}
-                                        renderLabel={(serviceSpace) => serviceSpace.name[i18n.language] + ' (' + serviceSpace.startTime + '-' + serviceSpace.endTime + ') ' + serviceSpace.price + '/€'}
+                                        renderLabel={(serviceSpace) => serviceSpace.name + ' (' + serviceSpace.startTime + '-' + serviceSpace.endTime + ') ' + serviceSpace.price + '/€'}
                                         onOptionSelected={props.onServiceSpaceSelected}
                                     />
                                 </FloatingLabel>
@@ -186,7 +186,7 @@ function FormScreen(props) {
                                         index={props.serviceIndex}
                                         options={props.services}
                                         defaultLabel={t('slaForm.chooseCoveredServices')}
-                                        renderLabel={(service) => service.name[i18n.language] + ' ' + service.price + '/€'}
+                                        renderLabel={(service) => service.name + ' ' + service.price + '/€'}
                                         onOptionSelected={props.onServiceSelected}
                                     />
                                 </FloatingLabel>
@@ -200,7 +200,7 @@ function FormScreen(props) {
                                         index={props.extraServiceIndex}
                                         options={props.extraServices}
                                         defaultLabel={t('slaForm.chooseExtraServices')}
-                                        renderLabel={(extraService) => extraService.name[i18n.language] + ' ' + extraService.price + '/€'}
+                                        renderLabel={(extraService) => extraService.name + ' ' + extraService.price + '/€'}
                                         onOptionSelected={props.onExtraServiceSelected}
                                     />
                                 </FloatingLabel>
@@ -212,7 +212,7 @@ function FormScreen(props) {
                                         index={props.licenseIndex}
                                         options={props.licenses}
                                         defaultLabel={t('slaForm.chooseLicences')}
-                                        renderLabel={(license) => license[i18n.language]}
+                                        renderLabel={(license) => license}
                                         onOptionSelected={props.onLicenseSelected}
                                     />
                                 </FloatingLabel>
@@ -221,7 +221,7 @@ function FormScreen(props) {
                         {/*Service level*/}
                         <Form.Group className="mt-3" controlId="formServiceLevel">
                             <Form.Label>{t('slaForm.serviceLevel')}</Form.Label>
-                            <Form.Control as="textarea" rows={3} value={props.serviceLevels[i18n.language]} />
+                            <Form.Control as="textarea" rows={3} value={props.serviceLevels} />
                         </Form.Group>
                         {/*Revision report*/}
                         <Form.Label className="mt-3">{t('slaForm.assuranceReport')}</Form.Label>
@@ -254,7 +254,7 @@ function FormScreen(props) {
                                         index={props.billingIndex}
                                         options={props.billings}
                                         defaultLabel={t('slaForm.assuranceSelectServiceBilling')}
-                                        renderLabel={(billing) => billing[i18n.language]}
+                                        renderLabel={(billing) => billing}
                                         onOptionSelected={props.onBillingSelected}
                                     />
                                 </FloatingLabel>
@@ -265,7 +265,7 @@ function FormScreen(props) {
                                         index={props.billingMethodIndex}
                                         options={props.billingMethods}
                                         defaultLabel={t('slaForm.assuranceSelectBillingMethod')}
-                                        renderLabel={(billing) => billing[i18n.language]}
+                                        renderLabel={(billing) => billing}
                                         onOptionSelected={props.onBillingMethodSelected}
                                     />
                                 </FloatingLabel>

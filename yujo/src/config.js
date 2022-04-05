@@ -112,12 +112,10 @@ export const slinkConfig = {
             es: 'Proveedor de servicios (cargos para el cliente después)',
         },
     ],
-    serviceLeves: [
-        {
-            en: 'Service levels offered by the company:\nBlablabla...\nBlablabla...\nBlablabla...\nBlablabla...',
-            es: 'Niveles de servicio ofertados por la empresa:\nBlablabla...\nBlablabla...\nBlablabla...\nBlablabla...',
-        },
-    ],
+    serviceLeves: {
+        en: 'Service levels offered by the company:\nBlablabla...\nBlablabla...\nBlablabla...\nBlablabla...',
+        es: 'Niveles de servicio ofertados por la empresa:\nBlablabla...\nBlablabla...\nBlablabla...\nBlablabla...',
+    },
     revisionReports: [
         {
             price: 500,
