@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import {Alert, AlertTitle, FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import CustomerForm from "../../components/views/CustomerForm";
 import CompanyForm from "../../components/views/CompanyForm";
+import {getStringFromConstantValue} from "../../config";
 
 function FormScreen(props) {
     const [validated, setValidated] = useState(false);
@@ -175,7 +176,7 @@ function FormScreen(props) {
                                         index={props.serviceSpaceIndex}
                                         options={props.serviceSpaces}
                                         defaultLabel={t('slaForm.chooseServiceHours')}
-                                        renderLabel={(serviceSpace) => serviceSpace.name + ' (' + serviceSpace.startTime + '-' + serviceSpace.endTime + ') ' + serviceSpace.price + '/€'}
+                                        renderLabel={(serviceSpace) => serviceSpace.name + ' (' + serviceSpace.startTime + '-' + serviceSpace.endTime + ') ' + serviceSpace.price + '€/' + getStringFromConstantValue(serviceSpace.pricePeriodicity, t)}
                                         onOptionSelected={props.onServiceSpaceSelected}
                                     />
                                 </FloatingLabel>
@@ -186,7 +187,7 @@ function FormScreen(props) {
                                         index={props.serviceIndex}
                                         options={props.services}
                                         defaultLabel={t('slaForm.chooseCoveredServices')}
-                                        renderLabel={(service) => service.name + ' ' + service.price + '/€'}
+                                        renderLabel={(service) => service.name + ' ' + service.price + '€/' + getStringFromConstantValue(service.pricePeriodicity, t)}
                                         onOptionSelected={props.onServiceSelected}
                                     />
                                 </FloatingLabel>
@@ -200,7 +201,7 @@ function FormScreen(props) {
                                         index={props.extraServiceIndex}
                                         options={props.extraServices}
                                         defaultLabel={t('slaForm.chooseExtraServices')}
-                                        renderLabel={(extraService) => extraService.name + ' ' + extraService.price + '/€'}
+                                        renderLabel={(extraService) => extraService.name + ' ' + extraService.price + '€/' + getStringFromConstantValue(extraService.pricePeriodicity, t)}
                                         onOptionSelected={props.onExtraServiceSelected}
                                     />
                                 </FloatingLabel>
@@ -233,7 +234,10 @@ function FormScreen(props) {
                                         index={props.revisionReportIndex}
                                         options={props.revisionReports}
                                         defaultLabel={t('slaForm.assuranceChoosePeriod')}
-                                        renderLabel={(revisionReport) => revisionReport.pricePeriodicity + ' ' + revisionReport.price + '/€'}
+                                        renderLabel={(revisionReport) => {
+                                            const periodicity = getStringFromConstantValue(revisionReport.pricePeriodicity, t);
+                                            return periodicity.charAt(0).toUpperCase() + periodicity.slice(1) + ' (' + revisionReport.price + '€)';
+                                        }}
                                         onOptionSelected={props.onRevisionReportSelected}
                                     />
                                 </FloatingLabel>
@@ -254,7 +258,10 @@ function FormScreen(props) {
                                         index={props.billingIndex}
                                         options={props.billings}
                                         defaultLabel={t('slaForm.assuranceSelectServiceBilling')}
-                                        renderLabel={(billing) => billing}
+                                        renderLabel={(billing) => {
+                                            const periodicity = getStringFromConstantValue(billing, t);
+                                            return periodicity.charAt(0).toUpperCase() + periodicity.slice(1);
+                                        }}
                                         onOptionSelected={props.onBillingSelected}
                                     />
                                 </FloatingLabel>

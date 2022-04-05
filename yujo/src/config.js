@@ -13,6 +13,25 @@ export const constantsValues = {
     yearlyPeriodicity: 6,
 };
 
+export const getStringFromConstantValue = (constantValue, t) => {
+    switch (constantValue) {
+        case constantsValues.hourlyPeriodicity:
+            return t('constantsValues.hourlyPeriodicity');
+        case constantsValues.dailyPeriodicity:
+            return t('constantsValues.dailyPeriodicity');
+        case constantsValues.weeklyPeriodicity:
+            return t('constantsValues.weeklyPeriodicity');
+        case constantsValues.monthlyPeriodicity:
+            return t('constantsValues.monthlyPeriodicity');
+        case constantsValues.quarterlyPeriodicity:
+            return t('constantsValues.quarterlyPeriodicity');
+        case constantsValues.semesterPeriodicity:
+            return t('constantsValues.semesterPeriodicity');
+        case constantsValues.yearlyPeriodicity:
+            return t('constantsValues.yearlyPeriodicity');
+    }
+};
+
 export const slinkConfig = {
     serviceSpaces: [
         {

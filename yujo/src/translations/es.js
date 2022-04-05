@@ -176,6 +176,16 @@ export default {
             unknownAddressMessage3: 'contacte con nosotros.',
         },
 
+        constantsValues: {
+            hourlyPeriodicity: 'hora',
+            dailyPeriodicity: 'dia',
+            weeklyPeriodicity: 'semana',
+            monthlyPeriodicity: 'mes',
+            quarterlyPeriodicity: 'cuatrimestre',
+            semesterPeriodicity: 'semestre',
+            yearlyPeriodicity: 'año',
+        },
+
         footer: {
             languages: {
                 es: 'Español',
