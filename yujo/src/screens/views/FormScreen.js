@@ -27,7 +27,19 @@ function FormScreen(props) {
         <div className="App">
             <Header isOwner={props.isOwner} />
             <section>
-                {props.customer && (
+                {props.slaDto && (
+                    <Alert severity="success">
+                        <AlertTitle><strong>{t('form.slaCreatedTitle')}</strong></AlertTitle>
+                        {t('form.slaCreatedMessage1') + ' '}<strong>{props.slaDto.id}</strong>
+                        <br />
+                        <br />
+                        {t('form.slaCreatedMessage2') + ' '}<strong><a target='_blank' className="d-inline" href={'https://rinkeby.etherscan.io/tx/' + props.slaDto.transactionHash}>{props.slaDto.transactionHash}</a></strong>
+                        <br />
+                        <br />
+                        <a className="d-inline" href='/form'>{t('form.slaCreatedMessage3')}</a>
+                    </Alert>
+                )}
+                {props.customer && !props.slaDto && (
                     <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <Alert severity="success">
                             <AlertTitle><strong>{t('successAlerts.knownAddressTitle')}</strong></AlertTitle>

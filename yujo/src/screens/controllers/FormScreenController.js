@@ -40,6 +40,8 @@ function FormScreenController() {
     const [billingIndex, setBillingIndex] = useState(-1);
     const [billingMethodIndex, setBillingMethodIndex] = useState(-1);
 
+    const [slaDto, setSlaDto] = useState();
+
 
     useEffect(() => {
         const checkMetaMaskConnection = async () => {
@@ -108,50 +110,52 @@ function FormScreenController() {
     }
 
     const onSendPress = async () => {
-        /*const metaMaskProvider = await detectEthereumProvider();
+        const metaMaskProvider = await detectEthereumProvider();
 
         if (!metaMaskProvider) {
             alert('Please install MetaMask!');
             return;
         }
 
-        const web3 = new Web3(window.ethereum);
-        const ethAddress = (await web3.eth.getAccounts())[0];
         const slaId = Math.floor(new Date().getTime() / 1000);
-        console.log(slaId);
 
-        const responseFromCustomerCreation = await apiCreateCustomer({ethAddress: ethAddress, dni: customerDNI, name: customerName, surname: customerSurname, email: customerEmail, phone: customerPhone, province: customerProvince, city: customerCity});
-        if (responseFromCustomerCreation.status !== 200) alert(responseFromCustomerCreation.statusText);
+        try {
+            const responseFromSLACreation = await apiCreateSLA({
+                id: slaId,
+                customer: customer.ethAddress,
+                company: company.cif,
+                price: price
+            });
+            if (responseFromSLACreation.status !== 200) alert(responseFromSLACreation.statusText);
 
-        const responseFromCompanyCreation = await apiCreateCompany({cif: customerBusinessCIF, name: customerBusinessName, address: customerBusinessAddress});
-        if (responseFromCompanyCreation.status !== 200) alert(responseFromCompanyCreation.statusText);
-
-        const responseFromSLACreation = await apiCreateSLA({id: slaId, ethAddress: ethAddress, cif: customerBusinessCIF, price: price});
-        if (responseFromSLACreation.status !== 200) alert(responseFromSLACreation.statusText);
-
-        const contract = await loadMetaMaskContract();
-        contract.methods.addSLA(
-            slaId,
-            startDate.getTime(),
-            automaticRenewal,
-            [`${slinkConfig.services[serviceIndex].name}`, `${slinkConfig.services[serviceIndex].description}`, slinkConfig.services[serviceIndex].price, slinkConfig.services[serviceIndex].pricePeriodicity],
-            [`${slinkConfig.extraServices[extraServiceIndex].name}`, `${slinkConfig.extraServices[extraServiceIndex].description}`, slinkConfig.extraServices[extraServiceIndex].price, slinkConfig.extraServices[extraServiceIndex].pricePeriodicity],
-            `${slinkConfig.serviceLeves}`,
-            [`${slinkConfig.serviceSpaces[serviceSpaceIndex].name}`, `${slinkConfig.serviceSpaces[serviceSpaceIndex].startTime}`, `${slinkConfig.serviceSpaces[serviceSpaceIndex].endTime}`, slinkConfig.serviceSpaces[serviceSpaceIndex].price, slinkConfig.serviceSpaces[serviceSpaceIndex].pricePeriodicity],
-            `${slinkConfig.licences[licenseIndex]}`,
-            [`${slinkConfig.revisionReports[revisionReportIndex].name}`, slinkConfig.revisionReports[revisionReportIndex].price, slinkConfig.revisionReports[revisionReportIndex].pricePeriodicity],
-            [`${slinkConfig.billings[billingIndex].name}`, slinkConfig.billings[billingIndex].periodicity],
-            billingMethodIndex,
-        ).send({from: ethAddress}, (error, result) => {
-            if (error) {
-                alert(error);
-                console.log(error);
-            }
-            else {
-                alert('SLA con id: ' + slaId + '\nTransacción con hash: ' + result);
-                console.log('SLA con id: ' + slaId + '\nTransacción con hash: ' + result);
-            }
-        });*/
+            const contract = await loadMetaMaskContract();
+            contract.methods.addSLA(
+                slaId,
+                startDate.getTime(),
+                automaticRenewal,
+                [`${slinkConfig.services[serviceIndex].name}`, `${slinkConfig.services[serviceIndex].description}`, slinkConfig.services[serviceIndex].price, slinkConfig.services[serviceIndex].pricePeriodicity],
+                [`${slinkConfig.extraServices[extraServiceIndex].name}`, `${slinkConfig.extraServices[extraServiceIndex].description}`, slinkConfig.extraServices[extraServiceIndex].price, slinkConfig.extraServices[extraServiceIndex].pricePeriodicity],
+                `${slinkConfig.serviceLeves}`,
+                [`${slinkConfig.serviceSpaces[serviceSpaceIndex].name}`, `${slinkConfig.serviceSpaces[serviceSpaceIndex].startTime}`, `${slinkConfig.serviceSpaces[serviceSpaceIndex].endTime}`, slinkConfig.serviceSpaces[serviceSpaceIndex].price, slinkConfig.serviceSpaces[serviceSpaceIndex].pricePeriodicity],
+                `${slinkConfig.licences[licenseIndex]}`,
+                [`${slinkConfig.revisionReports[revisionReportIndex].name}`, slinkConfig.revisionReports[revisionReportIndex].price, slinkConfig.revisionReports[revisionReportIndex].pricePeriodicity],
+                [`${slinkConfig.billings[billingIndex].name}`, slinkConfig.billings[billingIndex].periodicity],
+                billingMethodIndex,
+            ).send({from: customer.ethAddress}, (error, result) => {
+                if (error) {
+                    alert(error);
+                    console.log(error);
+                }
+                else {
+                    setSlaDto({
+                        id: slaId,
+                        transactionHash: result
+                    });
+                }
+            });
+        } catch (e) {
+            alert(e);
+        }
     };
 
     return <Web3ReactProvider getLibrary={getLibrary}>
@@ -162,6 +166,8 @@ function FormScreenController() {
             isOwner={isOwner}
 
             loadingCheck={loadingCheck}
+
+            slaDto={slaDto}
 
             customerBusinessName={customerBusinessName}
             onCustomerBusinessNameChange={setCustomerBusinessName}
