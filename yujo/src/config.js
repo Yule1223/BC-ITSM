@@ -16,21 +16,30 @@ export const constantsValues = {
 export const slinkConfig = {
     serviceSpaces: [
         {
-            name: 'Mañana',
+            name: {
+                en: 'Morning',
+                es: 'Mañana',
+            },
             startTime: '9h',
             endTime: '14h',
             price: 900,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
         },
         {
-            name: 'Tarde',
+            name: {
+                en: 'Afternoon',
+                es: 'Tarde',
+            },
             startTime: '15h',
             endTime: '20h',
             price: 900,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
         },
         {
-            name: 'Todo el día',
+            name: {
+                en: 'All day',
+                es: 'Todo el día',
+            },
             startTime: '9h',
             endTime: '20h',
             price: 1800,
@@ -39,84 +48,113 @@ export const slinkConfig = {
     ],
     services: [
         {
-            name: 'Gestión de incidencias',
-            description: 'La notable gestión de incidencias ofertada por nuestro experimentado grupo',
+            name: {
+                en: 'Issues management',
+                es: 'Gestión de incidencias',
+            },
+            description: {
+                en: 'The remarkable issues management offered by our experienced group',
+                es: 'La notable gestión de incidencias ofertada por nuestro experimentado grupo',
+            },
             price: 1000,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
         },
         {
-            name: 'Gestión de infraestructura TI',
-            description: 'Disfruta de la mejor infraestructura TI del sector',
+            name: {
+                en: 'IT infrastructure management',
+                es: 'Gestión de infraestructura TI',
+            },
+            description: {
+                en: 'Enjoy the best IT infrastructure in the sector',
+                es: 'Disfruta de la mejor infraestructura TI del sector',
+            },
             price: 2000,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
         }
     ],
     extraServices: [
         {
-            name: 'Apoyo fin de semana / festivos',
-            description: 'Mantente activo los días de descanso',
+            name: {
+                en: 'Weekend/holiday support',
+                es: 'Apoyo fin de semana / festivos',
+            },
+            description: {
+                en: 'Stay active on rest days',
+                es: 'Mantente activo los días de descanso',
+            },
             price: 400,
             pricePeriodicity: constantsValues.dailyPeriodicity,
         },
         {
-            name: 'Soporte presencial',
-            description: 'Solventa las emergencias de la manera más rápida y mejor posible',
+            name: {
+                en: 'On-site support',
+                es: 'Soporte presencial',
+            },
+            description: {
+                en: 'Solve emergencies in the fastest and best way possible',
+                es: 'Solventa las emergencias de la manera más rápida y mejor posible',
+            },
             price: 200,
             pricePeriodicity: constantsValues.hourlyPeriodicity,
         }
     ],
     licences: [
-        'Cliente',
-        'Proveedor de servicios (sin costes para el cliente)',
-        'Proveedor de servicios (cargos para el cliente después)'
+        {
+            en: 'Customer',
+            es: 'Cliente',
+        },
+        {
+            en: 'Service provider (no cost to the customer)',
+            es: 'Proveedor de servicios (sin costes para el cliente)',
+        },
+        {
+            en: 'Service provider (charges for the client afterwards)',
+            es: 'Proveedor de servicios (cargos para el cliente después)',
+        },
     ],
     serviceLeves: [
-        'Niveles de servicio ofertados por la empresa:\nBlablabla...\nBlablabla...\nBlablabla...\nBlablabla...'
+        {
+            en: 'Service levels offered by the company:\nBlablabla...\nBlablabla...\nBlablabla...\nBlablabla...',
+            es: 'Niveles de servicio ofertados por la empresa:\nBlablabla...\nBlablabla...\nBlablabla...\nBlablabla...',
+        },
     ],
     revisionReports: [
         {
-            name: 'Mensual',
             price: 500,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
         },
         {
-            name: 'Trimestral',
             price: 450,
             pricePeriodicity: constantsValues.quarterlyPeriodicity,
         },
         {
-            name: 'Semestral',
             price: 400,
             pricePeriodicity: constantsValues.semesterPeriodicity,
         },
         {
-            name: 'Anual',
             price: 350,
             pricePeriodicity: constantsValues.yearlyPeriodicity,
         }
     ],
     billings: [
-        {
-            name: 'Mensual',
-            periodicity: constantsValues.monthlyPeriodicity,
-        },
-        {
-            name: 'Trimestral',
-            periodicity: constantsValues.quarterlyPeriodicity
-        },
-        {
-            name: 'Semestral',
-            periodicity: constantsValues.semesterPeriodicity
-        },
-        {
-            name: 'Anual',
-            periodicity: constantsValues.yearlyPeriodicity
-        }
+        constantsValues.monthlyPeriodicity,
+        constantsValues.quarterlyPeriodicity,
+        constantsValues.semesterPeriodicity,
+        constantsValues.yearlyPeriodicity,
     ],
     billingMethods: [
-        'criptomonedas',
-        'transferencia bancaria',
-        'cheque bancario'
+        {
+            en: 'Cryptocurrencies',
+            es: 'Criptomonedas',
+        },
+        {
+            en: 'Bank transfer',
+            es: 'Transferencia bancaria',
+        },
+        {
+            en: 'Bank check',
+            es: 'Cheque bancario',
+        },
     ]
 };
 
