@@ -121,7 +121,7 @@ export default {
             emailPlaceHolder: 'Introduce your email',
             submit: 'Contact',
             ethAddress: 'Ethereum address',
-            ethAddressPlaceHolder: 'Introduce Ethereum address associate',
+            ethAddressPlaceHolder: 'Ethereum address for new user',
             requestCreated: 'Contact done!',
         },
 

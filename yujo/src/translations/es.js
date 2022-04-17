@@ -121,7 +121,7 @@ export default {
             emailPlaceHolder: 'Introduce tu email',
             submit: 'Contactar',
             ethAddress: 'Dirección Ethereum',
-            ethAddressPlaceHolder: 'Introduce la dirección Ethereum asociada',
+            ethAddressPlaceHolder: 'Dirección Ethereum para nuevo usuari@',
             requestCreated: '¡Contacto hecho!',
         },
 
