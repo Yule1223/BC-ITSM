@@ -43,6 +43,7 @@ export const slinkConfig = {
             endTime: '14h',
             price: 900,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
+            priceSometimes: false,
         },
         {
             name: {
@@ -53,6 +54,7 @@ export const slinkConfig = {
             endTime: '20h',
             price: 900,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
+            priceSometimes: false,
         },
         {
             name: {
@@ -63,6 +65,7 @@ export const slinkConfig = {
             endTime: '20h',
             price: 1800,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
+            priceSometimes: false,
         }
     ],
     services: [
@@ -77,6 +80,7 @@ export const slinkConfig = {
             },
             price: 1000,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
+            priceSometimes: false,
         },
         {
             name: {
@@ -89,6 +93,7 @@ export const slinkConfig = {
             },
             price: 2000,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
+            priceSometimes: false,
         }
     ],
     extraServices: [
@@ -103,6 +108,7 @@ export const slinkConfig = {
             },
             price: 400,
             pricePeriodicity: constantsValues.dailyPeriodicity,
+            priceSometimes: true,
         },
         {
             name: {
@@ -115,6 +121,7 @@ export const slinkConfig = {
             },
             price: 200,
             pricePeriodicity: constantsValues.hourlyPeriodicity,
+            priceSometimes: true,
         }
     ],
     licences: [
@@ -139,18 +146,22 @@ export const slinkConfig = {
         {
             price: 500,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
+            priceSometimes: false,
         },
         {
             price: 450,
             pricePeriodicity: constantsValues.quarterlyPeriodicity,
+            priceSometimes: false,
         },
         {
             price: 400,
             pricePeriodicity: constantsValues.semesterPeriodicity,
+            priceSometimes: false,
         },
         {
             price: 350,
             pricePeriodicity: constantsValues.yearlyPeriodicity,
+            priceSometimes: false,
         }
     ],
     billings: [

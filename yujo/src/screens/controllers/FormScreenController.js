@@ -113,19 +113,19 @@ function FormScreenController() {
 
     let price = 0;
 
-    if (serviceIndex !== -1) {
+    if (serviceIndex !== -1 && !slinkConfigWithTranslate.services[serviceIndex].priceSometimes) {
         price += getPriceFromPeriodicity(slinkConfigWithTranslate.services[serviceIndex].price, slinkConfigWithTranslate.services[serviceIndex].pricePeriodicity);
     }
 
-    if (extraServiceIndex !== -1) {
+    if (extraServiceIndex !== -1 && !slinkConfigWithTranslate.extraServices[extraServiceIndex].priceSometimes) {
         price += getPriceFromPeriodicity(slinkConfigWithTranslate.extraServices[extraServiceIndex].price, slinkConfigWithTranslate.extraServices[extraServiceIndex].pricePeriodicity);
     }
 
-    if (serviceSpaceIndex !== -1) {
+    if (serviceSpaceIndex !== -1 && !slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].priceSometimes) {
         price += getPriceFromPeriodicity(slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].price, slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].pricePeriodicity);
     }
 
-    if (revisionReportIndex !== -1) {
+    if (revisionReportIndex !== -1 && !slinkConfigWithTranslate.revisionReports[revisionReportIndex].priceSometimes) {
         price += getPriceFromPeriodicity(slinkConfigWithTranslate.revisionReports[revisionReportIndex].price, slinkConfigWithTranslate.revisionReports[revisionReportIndex].pricePeriodicity);
     }
 
