@@ -19,12 +19,17 @@ function Header(props) {
 
     return (
         <nav className="navbar navbar-light bg-info fixed-top p-1" style={{height: '60px'}}>
-            <a className="navbar-brand text-dark" href="/">
-                <img src={logo} width="30" height="30"
-                     className="d-inline-block align-top" alt=""/>SLink
-            </a>
+            <div>
+                <a className="navbar-brand text-dark" href="/">
+                    <img src={logo} width="30" height="30"
+                         className="d-inline-block align-top" alt=""/>SLink
+                </a>
+                <p className="d-inline fw-bold text-capitalize fs-5">{t('knowUs.title')}</p>
+            </div>
+
             {props.isOwner && (
-                <Button startIcon={<DashboardIcon/>} variant='contained' color='warning' onClick={handleOnDashboard}>
+                <Button startIcon={<DashboardIcon/>} variant='contained' color='warning'
+                        onClick={handleOnDashboard}>
                     {t('dashboard.dashboard')}
                 </Button>
             )}
@@ -32,7 +37,8 @@ function Header(props) {
 
             <Box>
                 <FormControl>
-                    <InputLabel id="demo-simple-select-label">{t('footer.languages.selectLanguageTitle')}</InputLabel>
+                    <InputLabel
+                        id="demo-simple-select-label">{t('footer.languages.selectLanguageTitle')}</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
@@ -45,7 +51,6 @@ function Header(props) {
                     </Select>
                 </FormControl>
             </Box>
-
         </nav>
     );
 }

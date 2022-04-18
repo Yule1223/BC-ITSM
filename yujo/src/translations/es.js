@@ -37,7 +37,7 @@ export default {
             information: 'Información del cliente',
             addTitle: 'Crear nuevo cliente',
             updateTitle: 'Actualizar cliente',
-            ethereumAddress: 'Dirección ethereum',
+            ethereumAddress: 'Dirección ethereum (opcional)',
             company: 'Empresa',
         },
 
@@ -127,6 +127,7 @@ export default {
 
         knowUs: {
             sLink: 'SLink. Profesionales de Soluciones Tecnológicas para SLAs',
+            title: 'Profesionales de Soluciones Tecnológicas para SLAs',
             centralOffice: 'Oficina Central',
             technicalSupport: 'Servicio de Soporte Técnico',
             operationCenter: 'Centro de Operaciones',
@@ -143,9 +144,9 @@ export default {
             legalNotice1: 'La duración del defecto de nuestro SLA es de 1 año, tiene 3 meses desde la fecha inicial para cancelarlo gratis. También puede cancelar cuando quiera el servicio del próximo año hasta 2 meses antes de la próxima fecha de renovación.',
             legalNotice2: 'La renovación automática depende totalmente de usted.',
             legalNotice3: 'Todos los precios que se muestran en nuestro sitio web son precios generales, si tiene una solicitud específica, no dude en contactarnos. Además, los horarios de servicio son horarios generales, podemos cambiarlos para que se ajusten a sus necesidades.',
-            privacy1: 'We will never share your sensitive data with anyone else',
+            privacy1: 'Nunca compartiremos sus datos confidenciales con nadie más. El contenido de los emails de consulta y cualquier información mencionada en los mismos será leído y analizado únicamente por personal autorizado por SLink.',
             privacy2: 'Información delicada ',
-            privacy3: 'Incluye: DNI, nombre y apellidos, dirección de correo electrónico, número de teléfono, datos de la empresa',
+            privacy3: 'Incluye: DNI, nombre y apellidos, dirección de correo electrónico, número de teléfono, datos de la empresa, dir. de Ethreum',
         },
 
         wallet: {

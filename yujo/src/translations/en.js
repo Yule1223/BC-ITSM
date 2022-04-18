@@ -37,7 +37,7 @@ export default {
             information: 'Customer information',
             addTitle: 'Add new customer',
             updateTitle: 'Update customer',
-            ethereumAddress: 'Ethereum address',
+            ethereumAddress: 'Ethereum address (optional)',
             company: 'Company',
         },
 
@@ -127,6 +127,7 @@ export default {
 
         knowUs: {
             sLink: 'SLink. Professionals of Technology Solutions for SLAs',
+            title: 'Professionals of Technology Solutions for SLAs',
             centralOffice: 'Central Office',
             technicalSupport: 'Technical Support Service',
             operationCenter: 'Operation Center',
@@ -143,9 +144,9 @@ export default {
             legalNotice1: 'The defect duration of our SLA is of 1 year, you have 3 months since the initial date to cancel it for free. Also you can cancel whenever you want the next year\'s service until 2 months before the next renovation date.',
             legalNotice2: 'The automatic renewal is totally up to you.',
             legalNotice3: 'All the prices showed on our website are general prices, if you have specific request, do not hesitate to contact us. Also the service hours are general hours, we can change them to fit your needs.',
-            privacy1: 'We will never share your sensitive data with anyone else',
+            privacy1: 'We will never share your sensitive data with anyone else. The content of the consultation emails and any information mentioned in them will be read and analyzed only by personnel authorized by SLink.',
             privacy2: 'Sensitive data ',
-            privacy3: 'includes: DNI, first name and last name, email address, phone number, company information',
+            privacy3: 'includes: DNI, first name and last name, email address, phone number, company information, Ethreum dir.',
         },
 
         wallet: {

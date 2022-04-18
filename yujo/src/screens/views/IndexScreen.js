@@ -10,6 +10,8 @@ import Button from "@mui/material/Button";
 import * as React from "react";
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import GroupsIcon from '@mui/icons-material/Groups';
+import Header from "../../components/views/Header";
+import Header2 from "../../components/views/Header2";
 function IndexScreen() {
     const navigate = useNavigate();
     const handleOnForm = useCallback(() => navigate('/form', {replace: false}), [navigate]);
@@ -18,6 +20,7 @@ function IndexScreen() {
 
     return (
         <div className="App bg-info">
+            <Header2 />
             <section className="App-header pb-3">
                 <img src={background_logo} className="App-logo-1" alt="logo"/>
                 <img src={logo} className="App-logo-2" alt="logo"/>
