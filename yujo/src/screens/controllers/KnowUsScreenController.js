@@ -70,7 +70,7 @@ function KnowUsScreenController() {
         setEthAddress={setEthAddress}
 
         subject={subject}
-        setSubejct={setSubject}
+        setSubject={setSubject}
 
         message={message}
         setMessage={setMessage}

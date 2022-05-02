@@ -147,6 +147,7 @@ function FormScreen(props) {
                                             onChange={() => props.onAutomaticRenewalChange(true)}
                                         />
                                         <Form.Check
+                                            required
                                             inline
                                             label={t('slaForm.autoRenewalNo')}
                                             name="group1"

@@ -23,6 +23,8 @@ export default {
             emailError: 'Por favor, indica un email válido.',
             phone: 'Teléfono',
             phonePlaceHolder: 'Introduce un teléfono',
+            subjectError: 'Por favor, indica un asunto válido.',
+            messageError: 'Por favor, indica un mensaje válido.',
             contactChoose: 'Seleccionar método de contacto ...',
             countryChoose: 'Seleccionar país ...',
             genderChoose: 'Seleccionar género ...',
@@ -120,9 +122,10 @@ export default {
             email: 'Email',
             emailPlaceHolder: 'Introduce tu email',
             submit: 'Contactar',
-            ethAddress: 'Dirección Ethereum',
+            ethAddress: 'Dirección Ethereum (opcional)',
             ethAddressPlaceHolder: 'Dirección Ethereum para nuevo usuari@',
             requestCreated: '¡Contacto hecho!',
+            feedback: '¡Tiene buena pinta!',
         },
 
         knowUs: {

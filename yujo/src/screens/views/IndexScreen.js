@@ -40,10 +40,10 @@ function IndexScreen() {
                                 .start();
                         }}/></div>
                 <div className="d-flex w-25 justify-content-between mt-3">
-                    <Button startIcon={<BorderColorIcon />} variant='contained' className='btn-index text-dark' onClick={handleOnForm}>
+                    <Button startIcon={<BorderColorIcon />} variant='contained' className='btn-index text-dark fw-bold' onClick={handleOnForm}>
                         {t('index.iWantIt')}
                     </Button>
-                    <Button startIcon={<GroupsIcon />} variant='contained' className='btn-index text-dark' onClick={handleOnKnowUs}>
+                    <Button startIcon={<GroupsIcon />} variant='contained' className='btn-index text-dark fw-bold' onClick={handleOnKnowUs}>
                         {t('index.knowUs')}
                     </Button>
                 </div>

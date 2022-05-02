@@ -171,7 +171,7 @@ export default function EntitiesListScreen(props) {
     };
 
     return (
-        <div style={{paddingTop: '60px'}}>
+        <div style={{paddingTop: '60px'}} className="min-vh-100 d-flex flex-column">
             {props.customerSelected !== -1 &&
             <CustomerFormDialog
                 open={true}
@@ -231,7 +231,7 @@ export default function EntitiesListScreen(props) {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    <div className='bg-info p-2 justify-content-around d-flex'>
+                    <div className='bg-info p-2 justify-content-around d-flex mt-auto'>
                         <CustomerFormDialog
                             isButton
                             companies={props.companies}
