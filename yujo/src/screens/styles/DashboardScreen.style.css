@@ -1,0 +1,70 @@
+.generalContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 8vh;
+    height: 92vh;
+}
+
+.menuContainer {
+    width: 20vw;
+    height: 100%;
+    background-color: #0DCAF0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    width: 90%;
+}
+
+.menuItem {
+    height: 3em;
+    background-color: #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menuSeparator {
+    width: 100%;
+    height: 0.1em;
+    background-color: #acacac;
+}
+
+.topMenuItem {
+    background-color: #000000;
+    font-weight: bold;
+    color: white;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    cursor: default;
+}
+
+.menuItemSelected {
+    background-color: #6fe5d4;
+    font-weight: bold;
+}
+
+.bottomMenuItem {
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+}
+
+.content {
+    flex: 1;
+    height: 100%;
+    overflow: scroll;
+}
+
+.chartContainer {
+    width: 100%;
+    height: 50vh;
+    margin: 1em;
+}
+
+.chartRow {
+    display: flex;
+    justify-content: space-around;
+}

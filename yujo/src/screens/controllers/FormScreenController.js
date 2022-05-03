@@ -55,12 +55,12 @@ function FormScreenController() {
         service.name = service.name[i18n.language];
         service.description = service.description[i18n.language];
     });
-    slinkConfigWithTranslate.licences = [];
-    slinkConfig.licences.forEach(license => slinkConfigWithTranslate.licences.push(license[i18n.language]));
+    slinkConfigWithTranslate.licences.map(license => license.name = license.name[i18n.language]);
     slinkConfigWithTranslate.serviceLeves = slinkConfig.serviceLeves[i18n.language];
-    slinkConfigWithTranslate.billingMethods.map(billing => billing[i18n.language]);
-    slinkConfigWithTranslate.billingMethods = [];
-    slinkConfig.billingMethods.forEach(billingMethod => slinkConfigWithTranslate.billingMethods.push(billingMethod[i18n.language]));
+    //slinkConfigWithTranslate.billingMethods.map(billing => billing[i18n.language]);
+    //slinkConfigWithTranslate.billingMethods = [];
+    //slinkConfig.billingMethods.forEach(billingMethod => slinkConfigWithTranslate.billingMethods.push(billingMethod[i18n.language]));
+    slinkConfigWithTranslate.billingMethods.map(billingMethod => billingMethod.name = billingMethod.name[i18n.language]);
 
 
     useEffect(() => {
@@ -149,19 +149,21 @@ function FormScreenController() {
             if (responseFromSLACreation.status !== 200) alert(responseFromSLACreation.statusText);
 
             const contract = await loadMetaMaskContract();
-            contract.methods.addSLA(
-                slaId,
-                startDate.getTime(),
-                automaticRenewal,
-                [`${slinkConfigWithTranslate.services[serviceIndex].name}`, `${slinkConfigWithTranslate.services[serviceIndex].description}`, slinkConfigWithTranslate.services[serviceIndex].price, slinkConfigWithTranslate.services[serviceIndex].pricePeriodicity],
-                [`${slinkConfigWithTranslate.extraServices[extraServiceIndex].name}`, `${slinkConfigWithTranslate.extraServices[extraServiceIndex].description}`, slinkConfigWithTranslate.extraServices[extraServiceIndex].price, slinkConfigWithTranslate.extraServices[extraServiceIndex].pricePeriodicity],
-                `${slinkConfigWithTranslate.serviceLeves}`,
-                [`${slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].name}`, `${slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].startTime}`, `${slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].endTime}`, slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].price, slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].pricePeriodicity],
-                `${slinkConfigWithTranslate.licences[licenseIndex]}`,
-                [`${slinkConfigWithTranslate.revisionReports[revisionReportIndex].name}`, slinkConfigWithTranslate.revisionReports[revisionReportIndex].price, slinkConfigWithTranslate.revisionReports[revisionReportIndex].pricePeriodicity],
-                [`${slinkConfigWithTranslate.billings[billingIndex].name}`, slinkConfigWithTranslate.billings[billingIndex]],
-                billingMethodIndex,
-            ).send({from: customer.ethAddress}, (error, result) => {
+            const sla = {
+                id: slaId,
+                customer: customer.ethAddress,
+                startDate: startDate.getTime(),
+                automaticRenewal: automaticRenewal,
+                service: slinkConfigWithTranslate.services[serviceIndex].id,
+                extraService: slinkConfigWithTranslate.extraServices[extraServiceIndex].id,
+                serviceSpace: slinkConfigWithTranslate.serviceSpaces[serviceSpaceIndex].id,
+                license: slinkConfigWithTranslate.licences[licenseIndex].id,
+                revisionReport: slinkConfigWithTranslate.revisionReports[revisionReportIndex].id,
+                billing: slinkConfigWithTranslate.billings[billingIndex].id,
+                billingMethod: slinkConfigWithTranslate.billingMethods[billingMethodIndex].id,
+                totalPrice: price,
+            };
+            contract.methods.addSLA(sla).send({from: customer.ethAddress}, (error, result) => {
                 if (error) {
                     alert(error);
                     console.log(error);

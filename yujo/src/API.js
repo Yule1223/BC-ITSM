@@ -7,6 +7,7 @@ const customersURL = url + '/customers';
 const companiesURL = url + '/companies';
 const slasURL = url + '/slas';
 const contactRequestsURL = url + '/contactRequests';
+const theGraphURL = url + '/theGraph';
 
 // Blockchain
 const apiGetProvider = async () => {
@@ -89,6 +90,28 @@ const apiDeleteContactRequest = async (id) => {
     return await axios.delete(`${contactRequestsURL}/${id}`);
 }
 
+//THE GRAPH
+const apiGetSLAsByDateRange = async (start, end) => {
+    if (start && end) return await axios.get(`${theGraphURL}/slas?start=${start?.getTime()}&end=${end?.getTime()}`);
+    else if (start) return await axios.get(`${theGraphURL}/slas?start=${start?.getTime()}`);
+    else if (end) return await axios.get(`${theGraphURL}/slas?end=${end?.getTime()}`);
+    else return await axios.get(`${theGraphURL}/slas`);
+}
+
+const apiGetSLAsWithFeatureBySLADateRange = async (feature, id, start, end) => {
+    if (start && end) return await axios.get(`${theGraphURL}/${feature}s/${id}?start=${start?.getTime()}&end=${end?.getTime()}`);
+    else if (start) return await axios.get(`${theGraphURL}/${feature}s/${id}?start=${start?.getTime()}`);
+    else if (end) return await axios.get(`${theGraphURL}/${feature}s/${id}?end=${end?.getTime()}`);
+    else return await axios.get(`${theGraphURL}/${feature}s/${id}`);
+}
+
+const apiGetFeaturesBySLADateRange = async (feature, start, end) => {
+    if (start && end) return await axios.get(`${theGraphURL}/${feature}s/?start=${start?.getTime()}&end=${end?.getTime()}`);
+    else if (start) return await axios.get(`${theGraphURL}/${feature}s/?start=${start?.getTime()}`);
+    else if (end) return await axios.get(`${theGraphURL}/${feature}s/?end=${end?.getTime()}`);
+    else return await axios.get(`${theGraphURL}/${feature}s/`);
+}
+
 export {
     // Blockchain
     apiGetProvider,
@@ -117,5 +140,10 @@ export {
     // CRUD Contact requests
     apiCreateContactRequest,
     apiGetContactRequests,
-    apiDeleteContactRequest
+    apiDeleteContactRequest,
+
+    //THE GRAPH
+    apiGetSLAsByDateRange,
+    apiGetSLAsWithFeatureBySLADateRange,
+    apiGetFeaturesBySLADateRange,
 };
