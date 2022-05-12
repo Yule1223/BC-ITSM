@@ -214,7 +214,7 @@ function FormScreen(props) {
                                         index={props.licenseIndex}
                                         options={props.licenses}
                                         defaultLabel={t('slaForm.chooseLicences')}
-                                        renderLabel={(license) => license}
+                                        renderLabel={(license) => license.name}
                                         onOptionSelected={props.onLicenseSelected}
                                     />
                                 </FloatingLabel>
@@ -260,7 +260,7 @@ function FormScreen(props) {
                                         options={props.billings}
                                         defaultLabel={t('slaForm.assuranceSelectServiceBilling')}
                                         renderLabel={(billing) => {
-                                            const periodicity = getStringFromConstantValue(billing, t);
+                                            const periodicity = getStringFromConstantValue(billing.periodicity, t);
                                             return periodicity.charAt(0).toUpperCase() + periodicity.slice(1);
                                         }}
                                         onOptionSelected={props.onBillingSelected}
@@ -273,7 +273,7 @@ function FormScreen(props) {
                                         index={props.billingMethodIndex}
                                         options={props.billingMethods}
                                         defaultLabel={t('slaForm.assuranceSelectBillingMethod')}
-                                        renderLabel={(billing) => billing}
+                                        renderLabel={(billingMethod) => billingMethod.name}
                                         onOptionSelected={props.onBillingMethodSelected}
                                     />
                                 </FloatingLabel>

@@ -35,6 +35,7 @@ export const getStringFromConstantValue = (constantValue, t) => {
 export const slinkConfig = {
     serviceSpaces: [
         {
+            id: 1,
             name: {
                 en: 'Morning',
                 es: 'Mañana',
@@ -46,6 +47,7 @@ export const slinkConfig = {
             priceSometimes: false,
         },
         {
+            id: 2,
             name: {
                 en: 'Afternoon',
                 es: 'Tarde',
@@ -57,6 +59,7 @@ export const slinkConfig = {
             priceSometimes: false,
         },
         {
+            id: 3,
             name: {
                 en: 'All day',
                 es: 'Todo el día',
@@ -70,6 +73,7 @@ export const slinkConfig = {
     ],
     services: [
         {
+            id: 1,
             name: {
                 en: 'Issues management',
                 es: 'Gestión de incidencias',
@@ -83,6 +87,7 @@ export const slinkConfig = {
             priceSometimes: false,
         },
         {
+            id: 2,
             name: {
                 en: 'IT infrastructure management',
                 es: 'Gestión de infraestructura TI',
@@ -98,6 +103,7 @@ export const slinkConfig = {
     ],
     extraServices: [
         {
+            id: 1,
             name: {
                 en: 'Weekend/holiday support',
                 es: 'Apoyo fin de semana / festivos',
@@ -111,6 +117,7 @@ export const slinkConfig = {
             priceSometimes: true,
         },
         {
+            id: 2,
             name: {
                 en: 'On-site support',
                 es: 'Soporte presencial',
@@ -126,16 +133,25 @@ export const slinkConfig = {
     ],
     licences: [
         {
-            en: 'Customer',
-            es: 'Cliente',
+            id: 1,
+            name: {
+                en: 'Customer',
+                es: 'Cliente',
+            }
         },
         {
-            en: 'Service provider (no cost to the customer)',
-            es: 'Proveedor de servicios (sin costes para el cliente)',
+            id: 2,
+            name: {
+                en: 'Service provider (no cost to the customer)',
+                es: 'Proveedor de servicios (sin costes para el cliente)',
+            }
         },
         {
-            en: 'Service provider (charges for the client afterwards)',
-            es: 'Proveedor de servicios (cargos para el cliente después)',
+            id: 3,
+            name: {
+                en: 'Service provider (charges for the client afterwards)',
+                es: 'Proveedor de servicios (cargos para el cliente después)',
+            }
         },
     ],
     serviceLeves: {
@@ -144,44 +160,69 @@ export const slinkConfig = {
     },
     revisionReports: [
         {
+            id: 1,
             price: 500,
             pricePeriodicity: constantsValues.monthlyPeriodicity,
             priceSometimes: false,
         },
         {
+            id: 2,
             price: 450,
             pricePeriodicity: constantsValues.quarterlyPeriodicity,
             priceSometimes: false,
         },
         {
+            id: 3,
             price: 400,
             pricePeriodicity: constantsValues.semesterPeriodicity,
             priceSometimes: false,
         },
         {
+            id: 4,
             price: 350,
             pricePeriodicity: constantsValues.yearlyPeriodicity,
             priceSometimes: false,
         }
     ],
     billings: [
-        constantsValues.monthlyPeriodicity,
-        constantsValues.quarterlyPeriodicity,
-        constantsValues.semesterPeriodicity,
-        constantsValues.yearlyPeriodicity,
+        {
+            id: 1,
+            periodicity: constantsValues.monthlyPeriodicity,
+        },
+        {
+            id: 2,
+            periodicity: constantsValues.quarterlyPeriodicity,
+        },
+        {
+            id: 3,
+            periodicity: constantsValues.semesterPeriodicity,
+        },
+        {
+            id: 4,
+            periodicity: constantsValues.yearlyPeriodicity,
+        },
     ],
     billingMethods: [
         {
-            en: 'Cryptocurrencies',
-            es: 'Criptomonedas',
+            id: 1,
+            name: {
+                en: 'Cryptocurrencies',
+                es: 'Criptomonedas',
+            },
         },
         {
-            en: 'Bank transfer',
-            es: 'Transferencia bancaria',
+            id: 2,
+            name: {
+                en: 'Bank transfer',
+                es: 'Transferencia bancaria',
+            },
         },
         {
-            en: 'Bank check',
-            es: 'Cheque bancario',
+            id: 3,
+            name: {
+                en: 'Bank check',
+                es: 'Cheque bancario',
+            },
         },
     ]
 };

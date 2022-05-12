@@ -15,11 +15,12 @@ import {languages} from "../../translations/translationConfig";
 
 function Header(props) {
     const navigate = useNavigate();
+    const handleOnEntitiesList = useCallback(() => navigate('/entitiesList', {replace: false}), [navigate]);
     const handleOnDashboard = useCallback(() => navigate('/dashboard', {replace: false}), [navigate]);
     const {t, i18n} = useTranslation();
 
     return (
-        <nav className="navbar navbar-light bg-info fixed-top p-1" style={{height: '60px'}}>
+        <nav className="navbar navbar-light bg-info fixed-top p-1" style={{height: '8vh'}}>
             <div>
                 <a className="navbar-brand text-dark" href="/">
                     <img src={logo} width="30" height="30"
@@ -30,10 +31,16 @@ function Header(props) {
             </div>
 
             {props.isOwner && (
-                <Button startIcon={<DashboardIcon/>} variant='contained' color='warning'
-                        onClick={handleOnDashboard}>
-                    {t('dashboard.dashboard')}
-                </Button>
+                <>
+                    <Button startIcon={<DashboardIcon/>} variant='contained' color='warning'
+                            onClick={handleOnEntitiesList}>
+                        {t('dashboard.dashboard')}
+                    </Button>
+                    <Button startIcon={<DashboardIcon/>} variant='contained' color='warning'
+                            onClick={handleOnDashboard}>
+                        {t('chart.chartScreenName')}
+                    </Button>
+                </>
             )}
             <WalletDialog/>
 

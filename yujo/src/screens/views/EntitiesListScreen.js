@@ -171,7 +171,7 @@ export default function EntitiesListScreen(props) {
     };
 
     return (
-        <div style={{paddingTop: '60px'}} className="min-vh-100 d-flex flex-column">
+        <div style={{paddingTop: '8vh'}} className="min-vh-100 d-flex flex-column">
             {props.customerSelected !== -1 &&
             <CustomerFormDialog
                 open={true}
