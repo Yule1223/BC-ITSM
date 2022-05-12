@@ -160,8 +160,8 @@ export default {
             cancelButton: 'Cancelar',
         },
 
-        dashboard: {
-            dashboard: 'Tablero',
+        entitiesList: {
+            title: 'Lista entidades',
             customers: 'Clientes',
             companies: 'Empresas',
             slas: 'SLAs',
@@ -191,6 +191,7 @@ export default {
         },
 
         chart: {
+            title: 'Tablero',
             chartScreenName: 'Métricas',
             last7Days: '7 días',
             last1Month: '1 mes',

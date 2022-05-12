@@ -199,15 +199,15 @@ export default function EntitiesListScreen(props) {
                 onCancel={props.onUpdateSLA}
             />
             }
-            <Header/>
+            <Header isOwner />
             {!props.loadingCheck && (
                 <>
                     <Container maxWidth='lg'>
                         <Tabs value={props.tabIndex} onChange={handleChange} centered>
-                            <Tab icon={<PersonIcon/>} label={t('dashboard.customers')}/>
-                            <Tab icon={<BusinessIcon/>} label={t('dashboard.companies')}/>
-                            <Tab icon={<ArticleIcon/>} label={t('dashboard.slas')}/>
-                            <Tab icon={<ConnectWithoutContactIcon/>} label={t('dashboard.contactRequests')}/>
+                            <Tab icon={<PersonIcon/>} label={t('entitiesList.customers')}/>
+                            <Tab icon={<BusinessIcon/>} label={t('entitiesList.companies')}/>
+                            <Tab icon={<ArticleIcon/>} label={t('entitiesList.slas')}/>
+                            <Tab icon={<ConnectWithoutContactIcon/>} label={t('entitiesList.contactRequests')}/>
                         </Tabs>
                     </Container>
                     <TableContainer component={Paper}>

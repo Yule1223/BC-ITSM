@@ -159,8 +159,8 @@ export default {
             metamask: 'MetaMask',
         },
 
-        dashboard: {
-            dashboard: 'Dashboard',
+        entitiesList: {
+            title: 'Entities list',
             customers: 'Customers',
             companies: 'Companies',
             slas: 'SLAs',
@@ -190,6 +190,7 @@ export default {
         },
 
         chart: {
+            title: 'Dashboard',
             chartScreenName: 'Metrics',
             last7Days: '7 days',
             last1Month: '1 month',

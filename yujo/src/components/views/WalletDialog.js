@@ -69,7 +69,7 @@ export default function WalletDialog(props) {
     const ethAddressLabel = ethAddress ? ethAddress.substring(0, 5) + '...' + ethAddress.substring(38) : '';
 
     return (
-        <div>
+        <div className="d-flex justify-content-center align-items-center">
             {!loadingCheck &&
                 (<Button endIcon={<AccountBalanceWalletIcon />} variant="contained" color={(!ethAddress && 'success') || (ethAddress && 'error')} onClick={handleClickOpen}>
                     {!ethAddress && t('wallet.connect')}
