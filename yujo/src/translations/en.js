@@ -107,6 +107,7 @@ export default {
             saveButton: 'Save',
             cancelButton: 'Cancel',
             resetButton: 'Reset',
+            closeButton: 'Close',
         },
 
         contact: {

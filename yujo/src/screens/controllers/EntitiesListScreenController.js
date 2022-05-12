@@ -107,20 +107,7 @@ function EntitiesListScreenController() {
         setCompanySelected(-1);
     };
 
-    const onCreateSLA = async (sla) => {
-        await apiCreateSLA(sla);
-        const _slas = [...slas];
-        _slas.push(sla);
-        setSLAs(_slas);
-    };
-
-    const onUpdateSLA = async (sla) => {
-        if (sla) {
-            await apiUpdateSLA(sla);
-            const _slas = [...slas];
-            _slas[slaSelected] = sla;
-            setSLAs(_slas);
-        }
+    const onCloseSLA = () => {
         setSLASelected(-1);
     };
 
@@ -139,12 +126,6 @@ function EntitiesListScreenController() {
                 _companies.splice(index, 1);
                 setCompanies(_companies);
                 setSLAs((await apiGetSLAs()).data);
-                break;
-            case SLA_ENTITY:
-                await apiDeleteSLA(slas[index].id);
-                const _slas = [...slas];
-                _slas.splice(index, 1);
-                setSLAs(_slas);
                 break;
             case CONTACT_REQUEST_ENTITY:
                 await apiDeleteContactRequest(contactRequests[index].id);
@@ -176,10 +157,9 @@ function EntitiesListScreenController() {
             onCompanyPress={setCompanySelected}
             onUpdateCompany={onUpdateCompany}
 
-            onCreateSLA={onCreateSLA}
             slaSelected={slaSelected}
             onSLAPress={setSLASelected}
-            onUpdateSLA={onUpdateSLA}
+            onCloseSLA={onCloseSLA}
 
             onDeleteEntity={onDeleteEntity}
         />;

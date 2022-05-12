@@ -18,21 +18,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function SLAFormDialog(props) {
     const [open, setOpen] = React.useState(false);
-    const [isNew, setIsNew] = React.useState(true);
     const [id, setID] =  React.useState('');
     const [customer, setCustomer] =  React.useState('');
     const [company, setCompany] =  React.useState('');
     const [price, setPrice] =  React.useState('');
     const { t } = useTranslation();
-
-    const reset = () => {
-        if (isNew) {
-            setID('');
-        }
-        setCustomer('');
-        setCompany('');
-        setPrice('');
-    };
 
     useEffect(() => {
         if (props.open !== undefined && !props.isButton) {
@@ -43,7 +33,6 @@ export default function SLAFormDialog(props) {
 
     useEffect(() => {
         if (props.sla) {
-            setIsNew(false);
             setID(props.sla.id);
             setCustomer(props.sla.customer);
             setCompany(props.sla.company);
@@ -55,33 +44,8 @@ export default function SLAFormDialog(props) {
         setOpen(true);
     };
 
-    const handleSave = () => {
-        props.onSave({
-            id: id,
-            customer: customer,
-            company: company,
-            price: price,
-        });
-
-        if (isNew) {
-            reset();
-        }
-
-        if (props.isButton) {
-            setOpen(false);
-        }
-    };
-
     const handleClose = () => {
-        if (isNew) {
-            reset();
-        }
-
-        if (props.isButton) {
-            setOpen(false);
-        } else {
-            props.onCancel();
-        }
+        props.onClose();
     };
 
     let indexOfCustomer = props.customers.findIndex(_customer => _customer.ethAddress === customer);
@@ -96,11 +60,6 @@ export default function SLAFormDialog(props) {
 
     return (
         <div>
-            {props.isButton &&
-                <Button startIcon={<AddIcon />} endIcon={<ArticleIcon />} variant="outlined" onClick={handleClickOpen}>
-                    {t('slaForm.addTitle')}
-                </Button>
-            }
             <Dialog
                 open={open}
                 TransitionComponent={Transition}
@@ -110,7 +69,7 @@ export default function SLAFormDialog(props) {
                 fullWidth
                 maxWidth='xl'
             >
-                <DialogTitle>{isNew && t('slaForm.addTitle')}{!isNew && t('slaForm.updateTitle') + ' - ' + id}</DialogTitle>
+                <DialogTitle>{t('slaForm.title') + ' - ' + id}</DialogTitle>
                 <DialogContent style={{paddingTop: 10}}>
                     <Grid container spacing={2}>
                         <Grid item xs={4}>
@@ -119,10 +78,9 @@ export default function SLAFormDialog(props) {
                                     label={t('slaForm.id')}
                                     fullWidth
                                     value={id}
-                                    onChange={event => setID(event.target.value)}
-                                    disabled={!isNew}
+                                    disabled
                                     InputProps={{
-                                        readOnly: !isNew,
+                                        readOnly: true,
                                     }}
                                 />
                             </Item>
@@ -136,7 +94,10 @@ export default function SLAFormDialog(props) {
                                         label={t('slaForm.customer')}
                                         fullWidth
                                         value={indexOfCustomer}
-                                        onChange={event => setCustomer(props.customers[event.target.value].ethAddress)}
+                                        disabled
+                                        InputProps={{
+                                            readOnly: true,
+                                        }}
                                     >
                                         {props.customers.map((_customer, index) => <MenuItem key={index} value={index}>{_customer.ethAddress + ' (' + _customer.dni + ' - ' + _customer.surname + ')'}</MenuItem>)}
                                     </Select>
@@ -144,7 +105,17 @@ export default function SLAFormDialog(props) {
                             </Item>
                         </Grid>
                         <Grid item xs={4}>
-                            <Item><TextField label={t('slaForm.price')} fullWidth value={price} onChange={event => setPrice(event.target.value)} /></Item>
+                            <Item>
+                                <TextField
+                                    label={t('slaForm.price')}
+                                    fullWidth
+                                    value={price}
+                                    disabled
+                                    InputProps={{
+                                        readOnly: true,
+                                    }}
+                                />
+                            </Item>
                         </Grid>
                         <Grid item xs={8}>
                             <Item>
@@ -155,7 +126,10 @@ export default function SLAFormDialog(props) {
                                         label={t('slaForm.company')}
                                         fullWidth
                                         value={indexOfCompany}
-                                        onChange={event => setCompany(props.companies[event.target.value].cif)}
+                                        disabled
+                                        InputProps={{
+                                            readOnly: true,
+                                        }}
                                     >
                                         {props.companies.map((_company, index) => <MenuItem key={index} value={index}>{_company.cif + ' (' + _company.name + ')'}</MenuItem>)}
                                     </Select>
@@ -165,9 +139,7 @@ export default function SLAFormDialog(props) {
                     </Grid>
                 </DialogContent>
                 <DialogActions>
-                    {isNew && <Button onClick={reset}>{t('form.resetButton')}</Button>}
-                    <Button onClick={handleClose} color='error'>{t('form.cancelButton')}</Button>
-                    <Button onClick={handleSave} color='success'>{t('form.saveButton')}</Button>
+                    <Button onClick={handleClose} color='info'>{t('form.closeButton')}</Button>
                 </DialogActions>
             </Dialog>
         </div>

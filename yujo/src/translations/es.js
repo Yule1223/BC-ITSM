@@ -90,8 +90,7 @@ export default {
             billingMethodOption1: 'criptomonedas',
             billingMethodOption2: 'transferencia bancaria',
             billingMethodOption3: 'cheque bancario',
-            addTitle: 'Crear nuevo SLA',
-            updateTitle: 'Actualizar SLA',
+            title: 'SLA',
         },
 
         form: {
@@ -107,6 +106,7 @@ export default {
             saveButton: 'Guardar',
             cancelButton: 'Cancelar',
             resetButton: 'Reiniciar',
+            closeButton: 'Cerrar',
         },
 
         contact: {

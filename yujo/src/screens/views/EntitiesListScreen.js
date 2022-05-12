@@ -81,7 +81,6 @@ export default function EntitiesListScreen(props) {
                         <StyledTableCell align="center">{t('slaForm.customer')}</StyledTableCell>
                         <StyledTableCell align="center">{t('slaForm.company')}</StyledTableCell>
                         <StyledTableCell align="center">{t('slaForm.price')}</StyledTableCell>
-                        <StyledTableCell align="center"/>
                     </TableRow>
                 );
 
@@ -116,8 +115,11 @@ export default function EntitiesListScreen(props) {
                                          onClick={() => props.onCustomerPress(index)}>{customer.email}</StyledTableCell>
                         <StyledTableCell align="center"
                                          onClick={() => props.onCustomerPress(index)}>{customer.phone}</StyledTableCell>
-                        <StyledTableCell align="center"><DeleteIcon color='error'
-                                                                   onClick={() => props.onDeleteEntity(index)}/></StyledTableCell>
+                        <StyledTableCell align="center">
+                            {!props.slas.find(sla => sla.customer === customer.ethAddress) && (
+                                <DeleteIcon color='error' onClick={() => props.onDeleteEntity(index)}/>
+                            )}
+                        </StyledTableCell>
                     </StyledTableRow>
                 );
 
@@ -131,8 +133,10 @@ export default function EntitiesListScreen(props) {
                                          onClick={() => props.onCompanyPress(index)}>{company.name}</StyledTableCell>
                         <StyledTableCell align="center"
                                          onClick={() => props.onCompanyPress(index)}>{company.address}</StyledTableCell>
-                        <StyledTableCell align="center"><DeleteIcon color='error'
-                                                                   onClick={() => props.onDeleteEntity(index)}/></StyledTableCell>
+                        <StyledTableCell align="center">
+                            {!props.slas.find(sla => sla.company === company.cif) &&
+                            (<DeleteIcon color='error' onClick={() => props.onDeleteEntity(index)}/>)}
+                        </StyledTableCell>
                     </StyledTableRow>
                 );
 
@@ -148,8 +152,6 @@ export default function EntitiesListScreen(props) {
                                          onClick={() => props.onSLAPress(index)}>{sla.company}</StyledTableCell>
                         <StyledTableCell align="center"
                                          onClick={() => props.onSLAPress(index)}>{sla.price}</StyledTableCell>
-                        <StyledTableCell align="center"><DeleteIcon color='error'
-                                                                   onClick={() => props.onDeleteEntity(index)}/></StyledTableCell>
                     </StyledTableRow>
                 );
 
@@ -195,8 +197,7 @@ export default function EntitiesListScreen(props) {
                 companies={props.companies}
                 open={true}
                 sla={props.slas[props.slaSelected]}
-                onSave={props.onUpdateSLA}
-                onCancel={props.onUpdateSLA}
+                onClose={props.onCloseSLA}
             />
             }
             <Header isOwner />
@@ -240,12 +241,6 @@ export default function EntitiesListScreen(props) {
                         <CompanyFormDialog
                             isButton
                             onSave={props.onCreateCompany}
-                        />
-                        <SLAFormDialog
-                            customers={props.customers}
-                            companies={props.companies}
-                            isButton
-                            onSave={props.onCreateSLA}
                         />
                     </div>
                 </>
