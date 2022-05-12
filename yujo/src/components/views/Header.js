@@ -1,6 +1,7 @@
 import '../styles/Header.style.css';
 import * as React from 'react';
 import logo from '../../img/logo.svg';
+import licencia from '../../img/licencia.png'
 import WalletDialog from "./WalletDialog";
 import AddIcon from "@mui/icons-material/Add";
 import PersonIcon from "@mui/icons-material/Person";
@@ -24,7 +25,8 @@ function Header(props) {
                     <img src={logo} width="30" height="30"
                          className="d-inline-block align-top" alt=""/>SLink
                 </a>
-                <p className="d-inline fw-bold text-capitalize fs-5">{t('knowUs.title')}</p>
+                <img src={licencia} className="d-inline-block align-top" alt=""/>
+                <p className="d-inline fw-bold text-capitalize fs-5 m-lg-3">{t('knowUs.title')}</p>
             </div>
 
             {props.isOwner && (

@@ -16,10 +16,10 @@ function KnowUsScreen(props) {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-        }
-        else{
+        } else {
             props.onSendPress();
         }
+
         setValidated(true);
     };
 

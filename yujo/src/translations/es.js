@@ -39,7 +39,7 @@ export default {
             information: 'Información del cliente',
             addTitle: 'Crear nuevo cliente',
             updateTitle: 'Actualizar cliente',
-            ethereumAddress: 'Dirección ethereum (opcional)',
+            ethereumAddress: 'Dirección ethereum',
             company: 'Empresa',
         },
 

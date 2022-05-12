@@ -39,7 +39,7 @@ export default {
             information: 'Customer information',
             addTitle: 'Add new customer',
             updateTitle: 'Update customer',
-            ethereumAddress: 'Ethereum address (optional)',
+            ethereumAddress: 'Ethereum address',
             company: 'Company',
         },
 

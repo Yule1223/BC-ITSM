@@ -55,46 +55,46 @@ export default function EntitiesListScreen(props) {
             case 0:
                 return (
                     <TableRow>
-                        <StyledTableCell>{t('customerForm.ethereumAddress')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('customerForm.dni')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('customerForm.lastName')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('customerForm.email')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('customerForm.phone')}</StyledTableCell>
-                        <StyledTableCell align="right"/>
+                        <StyledTableCell align="center">{t('customerForm.ethereumAddress')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('customerForm.dni')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('customerForm.lastName')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('customerForm.email')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('customerForm.phone')}</StyledTableCell>
+                        <StyledTableCell align="center"/>
                     </TableRow>
                 );
 
             case 1:
                 return (
                     <TableRow>
-                        <StyledTableCell>{t('companyForm.cif')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('companyForm.name')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('companyForm.direction')}</StyledTableCell>
-                        <StyledTableCell align="right"/>
+                        <StyledTableCell align="center">{t('companyForm.cif')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('companyForm.name')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('companyForm.direction')}</StyledTableCell>
+                        <StyledTableCell align="center"/>
                     </TableRow>
                 );
 
             case 2:
                 return (
                     <TableRow>
-                        <StyledTableCell>{t('slaForm.id')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('slaForm.customer')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('slaForm.company')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('slaForm.price')}</StyledTableCell>
-                        <StyledTableCell align="right"/>
+                        <StyledTableCell align="center">{t('slaForm.id')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('slaForm.customer')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('slaForm.company')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('slaForm.price')}</StyledTableCell>
+                        <StyledTableCell align="center"/>
                     </TableRow>
                 );
 
             case 3:
                 return (
                     <TableRow>
-                        <StyledTableCell align="right">{t('contact.firstName')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('contact.lastName')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('contact.email')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('contact.ethAddress')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('contact.subject')}</StyledTableCell>
-                        <StyledTableCell align="right">{t('contact.message')}</StyledTableCell>
-                        <StyledTableCell align="right"/>
+                        <StyledTableCell align="center">{t('contact.firstName')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('contact.lastName')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('contact.email')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('contact.ethAddress')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('contact.subject')}</StyledTableCell>
+                        <StyledTableCell align="center">{t('contact.message')}</StyledTableCell>
+                        <StyledTableCell align="center"/>
                     </TableRow>
                 );
         }
@@ -106,17 +106,17 @@ export default function EntitiesListScreen(props) {
                 const customer = props.customers[index];
                 return (
                     <StyledTableRow key={index} role='button'>
-                        <StyledTableCell component="th" scope="row"
+                        <StyledTableCell align="center" component="th" scope="row"
                                          onClick={() => props.onCustomerPress(index)}>{customer.ethAddress}</StyledTableCell>
-                        <StyledTableCell align="right"
+                        <StyledTableCell align="center"
                                          onClick={() => props.onCustomerPress(index)}>{customer.dni}</StyledTableCell>
-                        <StyledTableCell align="right"
+                        <StyledTableCell align="center"
                                          onClick={() => props.onCustomerPress(index)}>{customer.surname}</StyledTableCell>
-                        <StyledTableCell align="right"
+                        <StyledTableCell align="center"
                                          onClick={() => props.onCustomerPress(index)}>{customer.email}</StyledTableCell>
-                        <StyledTableCell align="right"
+                        <StyledTableCell align="center"
                                          onClick={() => props.onCustomerPress(index)}>{customer.phone}</StyledTableCell>
-                        <StyledTableCell align="right"><DeleteIcon color='error'
+                        <StyledTableCell align="center"><DeleteIcon color='error'
                                                                    onClick={() => props.onDeleteEntity(index)}/></StyledTableCell>
                     </StyledTableRow>
                 );
@@ -125,13 +125,13 @@ export default function EntitiesListScreen(props) {
                 const company = props.companies[index];
                 return (
                     <StyledTableRow key={index} role='button'>
-                        <StyledTableCell component="th" scope="row"
+                        <StyledTableCell align="center" component="th" scope="row"
                                          onClick={() => props.onCompanyPress(index)}>{company.cif}</StyledTableCell>
-                        <StyledTableCell align="right"
+                        <StyledTableCell align="center"
                                          onClick={() => props.onCompanyPress(index)}>{company.name}</StyledTableCell>
-                        <StyledTableCell align="right"
+                        <StyledTableCell align="center"
                                          onClick={() => props.onCompanyPress(index)}>{company.address}</StyledTableCell>
-                        <StyledTableCell align="right"><DeleteIcon color='error'
+                        <StyledTableCell align="center"><DeleteIcon color='error'
                                                                    onClick={() => props.onDeleteEntity(index)}/></StyledTableCell>
                     </StyledTableRow>
                 );
@@ -140,15 +140,15 @@ export default function EntitiesListScreen(props) {
                 const sla = props.slas[index];
                 return (
                     <StyledTableRow key={index} role='button'>
-                        <StyledTableCell component="th" scope="row"
+                        <StyledTableCell align="center" component="th" scope="row"
                                          onClick={() => props.onSLAPress(index)}>{sla.id}</StyledTableCell>
-                        <StyledTableCell align="right"
+                        <StyledTableCell align="center"
                                          onClick={() => props.onSLAPress(index)}>{sla.customer}</StyledTableCell>
-                        <StyledTableCell align="right"
+                        <StyledTableCell align="center"
                                          onClick={() => props.onSLAPress(index)}>{sla.company}</StyledTableCell>
-                        <StyledTableCell align="right"
+                        <StyledTableCell align="center"
                                          onClick={() => props.onSLAPress(index)}>{sla.price}</StyledTableCell>
-                        <StyledTableCell align="right"><DeleteIcon color='error'
+                        <StyledTableCell align="center"><DeleteIcon color='error'
                                                                    onClick={() => props.onDeleteEntity(index)}/></StyledTableCell>
                     </StyledTableRow>
                 );
@@ -157,13 +157,13 @@ export default function EntitiesListScreen(props) {
                 const contactRequest = props.contactRequests[index];
                 return (
                     <StyledTableRow key={index} role='button'>
-                        <StyledTableCell align="right">{contactRequest.firstName}</StyledTableCell>
-                        <StyledTableCell align="right">{contactRequest.lastName}</StyledTableCell>
-                        <StyledTableCell align="right">{contactRequest.email}</StyledTableCell>
-                        <StyledTableCell align="right">{contactRequest.ethAddress}</StyledTableCell>
-                        <StyledTableCell align="right">{contactRequest.subject}</StyledTableCell>
-                        <StyledTableCell align="right">{contactRequest.message}</StyledTableCell>
-                        <StyledTableCell align="right"><DeleteIcon color='error'
+                        <StyledTableCell align="center">{contactRequest.firstName}</StyledTableCell>
+                        <StyledTableCell align="center">{contactRequest.lastName}</StyledTableCell>
+                        <StyledTableCell align="center">{contactRequest.email}</StyledTableCell>
+                        <StyledTableCell align="center">{contactRequest.ethAddress}</StyledTableCell>
+                        <StyledTableCell align="center">{contactRequest.subject}</StyledTableCell>
+                        <StyledTableCell align="center">{contactRequest.message}</StyledTableCell>
+                        <StyledTableCell align="center"><DeleteIcon color='error'
                                                                    onClick={() => props.onDeleteEntity(index)}/></StyledTableCell>
                     </StyledTableRow>
                 );
