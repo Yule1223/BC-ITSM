@@ -31,8 +31,8 @@ const onWeekPress = async (feature) => {
             data.push({name: featureValue.name, count: featureValue.slas.length});
         });
 
-        /*//TODO Mock data just for test!
-        data.map(par => par.count = Math.round(Math.random() * 10 + 1));*/
+        //TODO Mock data just for test!
+        data.map(par => par.count = Math.round(Math.random() * 10 + 1));
 
         return data;
     } else return [];
@@ -63,8 +63,8 @@ const onMonthPress = async (feature) => {
             data.push({name: featureValue.name, count: featureValue.slas.length});
         });
 
-        /*//TODO Mock data just for test!
-        data.map(par => par.count = Math.round(Math.random() * 10 + 1));*/
+        //TODO Mock data just for test!
+        data.map(par => par.count = Math.round(Math.random() * 10 + 1));
 
         return data;
     } else return [];
@@ -93,8 +93,8 @@ const onYearPress = async (feature) => {
             data.push({name: featureValue.name, count: featureValue.slas.length});
         });
 
-        /*//TODO Mock data just for test!
-        data.map(par => par.count = Math.round(Math.random() * 10 + 1));*/
+        //TODO Mock data just for test!
+        data.map(par => par.count = Math.round(Math.random() * 10 + 1));
 
         return data;
     } else return [];
@@ -124,8 +124,8 @@ const onYTDPress = async (feature) => {
             data.push({name: featureValue.name, count: featureValue.slas.length});
         });
 
-        /*//TODO Mock data just for test!
-        data.map(par => par.count = Math.round(Math.random() * 10 + 1));*/
+        //TODO Mock data just for test!
+        data.map(par => par.count = Math.round(Math.random() * 10 + 1));
 
         return data;
     } else return [];

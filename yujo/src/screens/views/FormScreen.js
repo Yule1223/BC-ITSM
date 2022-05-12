@@ -132,7 +132,6 @@ function FormScreen(props) {
                                 <Form.Label>{t('slaForm.initialDate')}</Form.Label>
                                 <DatePicker value={props.startDate} onChange={props.onDateSelected}/>
                             </Form.Group>
-                            {/*Second row*/}
                             <Form.Group as={Col} assName="mb-3" controlId="formCoveredService">
                                 <Form.Label>{t('slaForm.autoRenewal')}</Form.Label>
                                 {['radio'].map((type) => (
@@ -160,15 +159,6 @@ function FormScreen(props) {
                                 ))}
                             </Form.Group>
                         </Row>
-                        {/*Sixth row*/}
-                        <Row className="mb-3">
-                            {/*Related files*/}
-                            <Form.Group as={Col} controlId="formFile">
-                                <Form.Label>{t('slaForm.relatedFiles')}</Form.Label>
-                                <Form.Control type="file"/>
-                            </Form.Group>
-                        </Row>
-                        {/*Seventh row*/}
                         <Row className="g-2 mb-3">
                             <Col md>
                                 {/*Service hours*/}
@@ -194,7 +184,6 @@ function FormScreen(props) {
                                 </FloatingLabel>
                             </Col>
                         </Row>
-                        {/*Eighth row*/}
                         <Row className="g-2">
                             <Col md>
                                 <FloatingLabel className="text-dark" controlId="formCoveredExtraServices" label={t('slaForm.extraServices')}>
@@ -230,7 +219,7 @@ function FormScreen(props) {
                         <Row className="g-2">
                             {/*Report Period*/}
                             <Col md>
-                                <FloatingLabel className="text-dark" controlId="formReportPeriod" label="Report Period" htmlFor='second'>
+                                <FloatingLabel className="text-dark" controlId="formReportPeriod" label={t('slaForm.assuranceReportPeriod')} htmlFor='second'>
                                     <FormSelect
                                         index={props.revisionReportIndex}
                                         options={props.revisionReports}
@@ -254,7 +243,7 @@ function FormScreen(props) {
                         <Row className="g-2">
                             {/*Service Billing*/}
                             <Col md>
-                                <FloatingLabel className="text-dark" controlId="formBillingPeriod" label="Billing Period">
+                                <FloatingLabel className="text-dark" controlId="formBillingPeriod" label={t('slaForm.assuranceServiceBillingPeriod')}>
                                     <FormSelect
                                         index={props.billingIndex}
                                         options={props.billings}
@@ -268,7 +257,7 @@ function FormScreen(props) {
                                 </FloatingLabel>
                             </Col>
                             <Col md>
-                                <FloatingLabel className="text-dark" controlId="formBillingMethod" label="Billing Method">
+                                <FloatingLabel className="text-dark" controlId="formBillingMethod" label={t('slaForm.assuranceBillingMethod')}>
                                     <FormSelect
                                         index={props.billingMethodIndex}
                                         options={props.billingMethods}

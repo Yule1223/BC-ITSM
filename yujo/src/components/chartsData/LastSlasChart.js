@@ -27,7 +27,7 @@ const onWeekPress = async () => {
     if (response.data) {
         const data = []
 
-        /*//TODO Mock data just for test!
+        //TODO Mock data just for test!
         const nMockData = Math.round(Math.random() * 100 + 1);
         const startMock = new Date(start.getTime());
         const endMock = new Date(end.getTime());
@@ -37,7 +37,7 @@ const onWeekPress = async () => {
                 id: Math.round(Math.random() * 10000 + 1),
                 creationDate: Math.round(Math.random() * (endMock.getTime() - startMock.getTime()) + startMock.getTime()),
             });
-        }*/
+        }
 
         while (start.getTime() <= end.getTime()) {
             const stop = new Date(start.getTime());
@@ -74,7 +74,7 @@ const onMonthPress = async () => {
     if (response.data) {
         const data = []
 
-        /*//TODO Mock data just for test!
+        //TODO Mock data just for test!
         const nMockData = Math.round(Math.random() * 100 + 1);
         const startMock = new Date(start.getTime());
         const endMock = new Date(end.getTime());
@@ -84,7 +84,7 @@ const onMonthPress = async () => {
                 id: Math.round(Math.random() * 10000 + 1),
                 creationDate: Math.round(Math.random() * (endMock.getTime() - startMock.getTime()) + startMock.getTime()),
             });
-        }*/
+        }
 
         while (start.getTime() <= end.getTime()) {
             const stop = new Date(start.getTime());
@@ -119,7 +119,7 @@ const onYearPress = async () => {
     if (response.data) {
         const data = []
 
-        /*//TODO Mock data just for test!
+        //TODO Mock data just for test!
         const nMockData = Math.round(Math.random() * 100 + 1);
         const startMock = new Date(start.getTime());
         const endMock = new Date(end.getTime());
@@ -129,7 +129,7 @@ const onYearPress = async () => {
                 id: Math.round(Math.random() * 10000 + 1),
                 creationDate: Math.round(Math.random() * (endMock.getTime() - startMock.getTime()) + startMock.getTime()),
             });
-        }*/
+        }
 
         console.log(response.data.slas);
         while (start.getTime() <= end.getTime()) {
@@ -166,7 +166,7 @@ const onYTDPress = async () => {
     if (response.data) {
         const data = []
 
-        /*//TODO Mock data just for test!
+        //TODO Mock data just for test!
         const nMockData = Math.round(Math.random() * 100 + 1);
         const startMock = new Date(start.getTime());
         const endMock = new Date(end.getTime());
@@ -176,7 +176,7 @@ const onYTDPress = async () => {
                 id: Math.round(Math.random() * 10000 + 1),
                 creationDate: Math.round(Math.random() * (endMock.getTime() - startMock.getTime()) + startMock.getTime()),
             });
-        }*/
+        }
 
         while (start.getTime() <= end.getTime()) {
             const stop = new Date(start.getTime());
@@ -225,7 +225,7 @@ export default function LastSlasChart() {
     return (
         <Chart
             title={t('chart.lastSLAs')}
-            chartType={1}
+            chartType={0}
             data={data}
             xAxisDataKey={'name'}
             dataKey={'count'}

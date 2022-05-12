@@ -57,9 +57,6 @@ function FormScreenController() {
     });
     slinkConfigWithTranslate.licences.map(license => license.name = license.name[i18n.language]);
     slinkConfigWithTranslate.serviceLeves = slinkConfig.serviceLeves[i18n.language];
-    //slinkConfigWithTranslate.billingMethods.map(billing => billing[i18n.language]);
-    //slinkConfigWithTranslate.billingMethods = [];
-    //slinkConfig.billingMethods.forEach(billingMethod => slinkConfigWithTranslate.billingMethods.push(billingMethod[i18n.language]));
     slinkConfigWithTranslate.billingMethods.map(billingMethod => billingMethod.name = billingMethod.name[i18n.language]);
 
 
