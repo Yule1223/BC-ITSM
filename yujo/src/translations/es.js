@@ -194,7 +194,7 @@ export default {
         },
 
         chart: {
-            title: 'Tablero',
+            title: 'Dashboard',
             chartScreenName: 'Métricas',
             last7Days: '7 días',
             last1Month: '1 mes',
