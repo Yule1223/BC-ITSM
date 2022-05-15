@@ -85,6 +85,7 @@ export default {
             assuranceReport: 'Revision report',
             assuranceReportPeriod: 'Report period',
             assuranceChoosePeriod: 'Choose period ...',
+            assuranceReportContent: 'Report content',
             assuranceServiceBilling: 'Service billing',
             assuranceServiceBillingPeriod: 'Billing period',
             assuranceSelectServiceBilling: 'Choose period ...',

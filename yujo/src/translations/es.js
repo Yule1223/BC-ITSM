@@ -85,6 +85,7 @@ export default {
             assuranceReport: 'Reporte de revisión',
             assuranceReportPeriod: 'Periodo de reporte',
             assuranceChoosePeriod: 'Seleccionar periodo ...',
+            assuranceReportContent: 'Contenido de reporte',
             assuranceServiceBilling: 'Facturación de servicios',
             assuranceServiceBillingPeriod: 'Periodo de facturación',
             assuranceSelectServiceBilling: 'Seleccionar periodo ...',
