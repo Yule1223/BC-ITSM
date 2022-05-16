@@ -153,7 +153,8 @@ export default {
             legalNotice3: 'Todos los precios que se muestran en nuestro sitio web son precios generales, si tiene una solicitud específica, no dude en contactarnos. Además, los horarios de servicio son horarios generales, podemos cambiarlos para que se ajusten a sus necesidades.',
             privacy1: 'Nunca compartiremos sus datos confidenciales con nadie más. El contenido de los emails de consulta y cualquier información mencionada en los mismos será leído y analizado únicamente por personal autorizado por SLink.',
             privacy2: 'Información delicada ',
-            privacy3: 'Incluye: DNI, nombre y apellidos, dirección de correo electrónico, número de teléfono, datos de la empresa, dir. de Ethreum',
+            privacy3: 'Incluye: DNI, nombre y apellidos, dirección de correo electrónico, número de teléfono, datos de la empresa, dir. de Ethreum, precio total de SLA.',
+            privacy4: 'Toda la infomración delicada se guardarán en una base de datos privada y no se lanzará en la Blockchain.',
         },
 
         wallet: {

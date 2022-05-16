@@ -155,8 +155,8 @@ export const slinkConfig = {
         },
     ],
     serviceLeves: {
-        en: 'Service levels offered by the company:\nBlablabla...\nBlablabla...\nBlablabla...\nBlablabla...',
-        es: 'Niveles de servicio ofertados por la empresa:\nBlablabla...\nBlablabla...\nBlablabla...\nBlablabla...',
+        en: 'Service levels offered by the company:\n',
+        es: 'Niveles de servicio ofertados por la empresa:\n',
     },
     revisionReports: [
         {

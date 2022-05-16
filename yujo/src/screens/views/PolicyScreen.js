@@ -21,6 +21,9 @@ function PolicyScreen() {
                 <p>{t('policyNotice.privacy1')}</p>
                 <h5 className="d-inline">{t('policyNotice.privacy2')}</h5>
                 <p className="d-inline">{t('policyNotice.privacy3')}</p>
+                <br/>
+                <br/>
+                <h6>{t('policyNotice.privacy4')}</h6>
             </div>
         </div>
     )

@@ -153,7 +153,8 @@ export default {
             legalNotice3: 'All the prices showed on our website are general prices, if you have specific request, do not hesitate to contact us. Also the service hours are general hours, we can change them to fit your needs.',
             privacy1: 'We will never share your sensitive data with anyone else. The content of the consultation emails and any information mentioned in them will be read and analyzed only by personnel authorized by SLink.',
             privacy2: 'Sensitive data ',
-            privacy3: 'includes: DNI, first name and last name, email address, phone number, company information, Ethreum dir.',
+            privacy3: 'includes: DNI, first name and last name, email address, phone number, company information, Ethreum dir, total price of SLA.',
+            privacy4: 'All of the sensitive data will be saved at a private database and will not be launched to the Blockchain.',
         },
 
         wallet: {
