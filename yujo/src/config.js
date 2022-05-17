@@ -33,6 +33,7 @@ export const getStringFromConstantValue = (constantValue, t) => {
 };
 
 export const slinkConfig = {
+    provider: '0x1663b5f5A048B8bc99449Ff3E2A6E0fbfe8069ac',
     serviceSpaces: [
         {
             id: 1,

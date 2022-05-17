@@ -197,12 +197,12 @@ export default {
 
         chart: {
             title: 'Dashboard',
-            chartScreenName: 'Métricas',
+            chartScreenName: 'KPIs',
             last7Days: '7 días',
             last1Month: '1 mes',
             last1Year: '1 año',
             lastYTD: 'YTD',
-            leftMenuTitle: 'Métricas',
+            leftMenuTitle: 'KPIs',
             leftMenuGeneralData: 'General',
             leftMenuServiceData: 'Servicios',
             leftMenuExtraServiceData: 'Servicios extra',

@@ -1,17 +1,17 @@
 import {useCallback, useEffect, useState} from "react";
 import {
     apiCreateCompany,
-    apiCreateCustomer, apiCreateSLA,
+    apiCreateCustomer,
     apiDeleteCompany, apiDeleteContactRequest,
-    apiDeleteCustomer, apiDeleteSLA,
+    apiDeleteCustomer,
     apiGetCompanies, apiGetContactRequests,
     apiGetCustomer,
-    apiGetCustomers, apiGetProvider,
+    apiGetCustomers, apiGetSLAByID,
     apiGetSLAs, apiUpdateCompany,
-    apiUpdateCustomer, apiUpdateSLA
+    apiUpdateCustomer,
 } from "../../API";
 import EntitiesListScreen from "../views/EntitiesListScreen";
-import {COMPANY_ENTITY, CONTACT_REQUEST_ENTITY, CUSTOMER_ENTITY, SLA_ENTITY} from "../../config";
+import {COMPANY_ENTITY, CONTACT_REQUEST_ENTITY, CUSTOMER_ENTITY, SLA_ENTITY, slinkConfig} from "../../config";
 import * as React from "react";
 import {isMetaMaskConnected} from "../../Contract";
 import {useNavigate} from "react-router-dom";
@@ -28,7 +28,7 @@ function EntitiesListScreenController() {
     const [contactRequests, setContactRequests] = useState([]);
     const [customerSelected, setCustomerSelected] = useState(-1);
     const [companySelected, setCompanySelected] = useState(-1);
-    const [slaSelected, setSLASelected] = useState(-1);
+    const [slaSelected, setSLASelected] = useState();
 
 
     useEffect(() => {
@@ -49,8 +49,8 @@ function EntitiesListScreenController() {
     useEffect(() => {
         if (customer) {
             const checkIfIsOwner = async () => {
-                const ownerAddress = await apiGetProvider();
-                if (ownerAddress.data !== customer.ethAddress) {
+                const ownerAddress = slinkConfig.provider;
+                if (ownerAddress !== customer.ethAddress) {
                     navigate('/', {replace: true});
                 } else {
                     setLoadingCheck(false);
@@ -108,7 +108,7 @@ function EntitiesListScreenController() {
     };
 
     const onCloseSLA = () => {
-        setSLASelected(-1);
+        setSLASelected(undefined);
     };
 
     const onDeleteEntity = async (index) => {
@@ -136,33 +136,48 @@ function EntitiesListScreenController() {
         }
     }
 
-        return <EntitiesListScreen
-            loadingCheck={loadingCheck}
+    const onSLAPress = (async index => {
+        const blockchainData = await apiGetSLAByID(slas[index].id);
+        const sla = JSON.parse(JSON.stringify(slas[index]));
+        console.log(blockchainData.data);
+        sla.automaticRenewal = blockchainData.data.automaticRenewal;
+        sla.serviceId = Number(blockchainData.data.service.id);
+        sla.extraServiceId = Number(blockchainData.data.extraService.id);
+        sla.serviceSpaceId = Number(blockchainData.data.serviceSpace.id);
+        sla.licenseId = Number(blockchainData.data.license.id);
+        sla.revisionReportId = Number(blockchainData.data.revisionReport.id);
+        sla.billingId = Number(blockchainData.data.billing.id);
+        sla.billingMethodId = Number(blockchainData.data.billingMethod.id);
+        setSLASelected(sla);
+    });
 
-            tabIndex={tabIndex}
-            onTabIndexSelected={(index) => setTabIndex(index)}
+    return <EntitiesListScreen
+        loadingCheck={loadingCheck}
 
-            customers={customers}
-            companies={companies}
-            slas={slas}
-            contactRequests={contactRequests}
+        tabIndex={tabIndex}
+        onTabIndexSelected={(index) => setTabIndex(index)}
 
-            onCreateCustomer={onCreateCustomer}
-            customerSelected={customerSelected}
-            onCustomerPress={setCustomerSelected}
-            onUpdateCustomer={onUpdateCustomer}
+        customers={customers}
+        companies={companies}
+        slas={slas}
+        contactRequests={contactRequests}
 
-            onCreateCompany={onCreateCompany}
-            companySelected={companySelected}
-            onCompanyPress={setCompanySelected}
-            onUpdateCompany={onUpdateCompany}
+        onCreateCustomer={onCreateCustomer}
+        customerSelected={customerSelected}
+        onCustomerPress={setCustomerSelected}
+        onUpdateCustomer={onUpdateCustomer}
 
-            slaSelected={slaSelected}
-            onSLAPress={setSLASelected}
-            onCloseSLA={onCloseSLA}
+        onCreateCompany={onCreateCompany}
+        companySelected={companySelected}
+        onCompanyPress={setCompanySelected}
+        onUpdateCompany={onUpdateCompany}
 
-            onDeleteEntity={onDeleteEntity}
-        />;
-    }
+        slaSelected={slaSelected}
+        onSLAPress={onSLAPress}
+        onCloseSLA={onCloseSLA}
+
+        onDeleteEntity={onDeleteEntity}
+    />;
+}
 
 export default EntitiesListScreenController;

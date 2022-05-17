@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
 import {isMetaMaskConnected} from "../../Contract";
-import {apiGetCustomer, apiGetProvider, apiGetSLAsByDateRange} from "../../API";
-import {useTranslation} from "react-i18next";
+import {apiGetCustomer} from "../../API";
 import DashboardScreen from "../views/DashboardScreen";
 import {useNavigate} from "react-router-dom";
+import {slinkConfig} from "../../config";
 
 function DashboardScreenController() {
     const navigate = useNavigate();
@@ -28,8 +28,8 @@ function DashboardScreenController() {
     useEffect(() => {
         if (customer) {
             const checkIfIsOwner = async () => {
-                const ownerAddress = await apiGetProvider();
-                if (ownerAddress.data !== customer.ethAddress) {
+                const ownerAddress = slinkConfig.provider;
+                if (ownerAddress !== customer.ethAddress) {
                     navigate('/', {replace: true});
                 } else {
                     setLoadingCheck(false);

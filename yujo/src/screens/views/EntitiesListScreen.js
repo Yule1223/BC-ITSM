@@ -191,12 +191,12 @@ export default function EntitiesListScreen(props) {
                 onCancel={props.onUpdateCompany}
             />
             }
-            {props.slaSelected !== -1 &&
+            {props.slaSelected &&
             <SLAFormDialog
                 customers={props.customers}
                 companies={props.companies}
                 open={true}
-                sla={props.slas[props.slaSelected]}
+                sla={props.slaSelected}
                 onClose={props.onCloseSLA}
             />
             }

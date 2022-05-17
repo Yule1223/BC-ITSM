@@ -1,9 +1,8 @@
 import KnowUsScreen from "../views/KnowUsScreen";
-import {useCallback, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {isMetaMaskConnected} from "../../Contract";
-import {apiCreateContactRequest, apiGetCustomer, apiGetProvider} from "../../API";
-import {useNavigate} from "react-router-dom";
-import {useTranslation} from "react-i18next";
+import {apiCreateContactRequest, apiGetCustomer} from "../../API";
+import {slinkConfig} from "../../config";
 
 function KnowUsScreenController() {
     const [contactRequestCreated, setContactRequestCreated] = useState(false);
@@ -30,8 +29,8 @@ function KnowUsScreenController() {
     useEffect(() => {
         if (customer) {
             const checkIfIsOwner = async () => {
-                const ownerAddress = await apiGetProvider();
-                setIsOwner(ownerAddress.data === customer.ethAddress);
+                const ownerAddress = slinkConfig.provider;
+                setIsOwner(ownerAddress === customer.ethAddress);
             };
 
             checkIfIsOwner();

@@ -131,7 +131,6 @@ const onYearPress = async () => {
             });
         }
 
-        console.log(response.data.slas);
         while (start.getTime() <= end.getTime()) {
             const stop = new Date(start.getTime());
             start.setMonth(start.getMonth() + 1);

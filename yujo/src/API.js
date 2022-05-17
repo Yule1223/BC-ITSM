@@ -9,11 +9,6 @@ const slasURL = url + '/slas';
 const contactRequestsURL = url + '/contactRequests';
 const theGraphURL = url + '/theGraph';
 
-// Blockchain
-const apiGetProvider = async () => {
-    return await axios.get(`${blockchainURL}/provider`);
-}
-
 // CRUD Customers
 const apiCreateCustomer = async (customer) => {
     return await axios.post(`${customersURL}?ethAddress=${customer.ethAddress}&dni=${customer.dni}&name=${customer.name}&surname=${customer.surname}&gender=${customer.gender}&email=${customer.email}&phone=${customer.phone}&province=${customer.province}&city=${customer.city}&country=${customer.country}&company=${customer.company}`);
@@ -69,14 +64,6 @@ const apiGetSLAs = async () => {
     return await axios.get(`${slasURL}`);
 }
 
-const apiUpdateSLA = async (sla) => {
-    return await axios.put(`${slasURL}/${sla.id}?customer=${sla.customer}&company=${sla.company}&price=${sla.price}`);
-}
-
-const apiDeleteSLA = async (id) => {
-    return await axios.delete(`${slasURL}/${id}`);
-}
-
 //CRUD Contact requests
 const apiCreateContactRequest = async (contactRequest) => {
     return await axios.post(`${contactRequestsURL}?firstName=${contactRequest.firstName}&lastName=${contactRequest.lastName}&email=${contactRequest.email}&ethAddress=${contactRequest.ethAddress}&subject=${contactRequest.subject}&message=${contactRequest.message}`);
@@ -91,6 +78,10 @@ const apiDeleteContactRequest = async (id) => {
 }
 
 //THE GRAPH
+const apiGetSLAByID = async (id) => {
+    return await axios.get(`${theGraphURL}/slas/${id}`);
+}
+
 const apiGetSLAsByDateRange = async (start, end) => {
     if (start && end) return await axios.get(`${theGraphURL}/slas?start=${start?.getTime()}&end=${end?.getTime()}`);
     else if (start) return await axios.get(`${theGraphURL}/slas?start=${start?.getTime()}`);
@@ -113,9 +104,6 @@ const apiGetFeaturesBySLADateRange = async (feature, start, end) => {
 }
 
 export {
-    // Blockchain
-    apiGetProvider,
-
     // CRUD Customers
     apiCreateCustomer,
     apiGetCustomer,
@@ -134,8 +122,6 @@ export {
     apiCreateSLA,
     apiGetSLA,
     apiGetSLAs,
-    apiUpdateSLA,
-    apiDeleteSLA,
 
     // CRUD Contact requests
     apiCreateContactRequest,
@@ -143,6 +129,7 @@ export {
     apiDeleteContactRequest,
 
     //THE GRAPH
+    apiGetSLAByID,
     apiGetSLAsByDateRange,
     apiGetSLAsWithFeatureBySLADateRange,
     apiGetFeaturesBySLADateRange,

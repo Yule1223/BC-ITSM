@@ -6,12 +6,9 @@ import {useEffect, useState} from "react";
 import detectEthereumProvider from "@metamask/detect-provider";
 import {isMetaMaskConnected, loadMetaMaskContract} from "../../Contract";
 import {
-    apiCreateCompany,
-    apiCreateCustomer,
     apiCreateSLA,
     apiGetCompanies, apiGetCompany,
     apiGetCustomer,
-    apiGetProvider
 } from "../../API";
 import * as React from "react";
 import {useTranslation} from "react-i18next";
@@ -75,8 +72,8 @@ function FormScreenController() {
     useEffect(() => {
         if (customer) {
             const checkIfIsOwner = async () => {
-                const ownerAddress = await apiGetProvider();
-                setIsOwner(ownerAddress.data === customer.ethAddress);
+                const ownerAddress = slinkConfig.provider;
+                setIsOwner(ownerAddress === customer.ethAddress);
             };
             const getCompany = async () => {
                 const company = await apiGetCompany(customer.company);

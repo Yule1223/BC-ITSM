@@ -232,11 +232,6 @@ function FormScreen(props) {
                                     />
                                 </FloatingLabel>
                             </Col>
-                            <Col md>
-                                <FloatingLabel className="text-dark" controlId="floatingReportContent" label={t('slaForm.assuranceReportContent')}>
-                                    <Form.Control type="text"/>
-                                </FloatingLabel>
-                            </Col>
                         </Row>
                         {/*Eighth row*/}
                         <Form.Label className="mt-3">{t('slaForm.assuranceServiceBilling')}</Form.Label>

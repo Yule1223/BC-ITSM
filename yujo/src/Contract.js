@@ -5,6 +5,276 @@ const abi = [
     {
         "inputs": [
             {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "billingId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Slink.Billing",
+                "name": "billing",
+                "type": "tuple"
+            }
+        ],
+        "name": "addBilling",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "billingMethodId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Slink.BillingMethod",
+                "name": "billingMethod",
+                "type": "tuple"
+            }
+        ],
+        "name": "addBillingMethod",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "serviceId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "description",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Slink.Service",
+                "name": "extraService",
+                "type": "tuple"
+            }
+        ],
+        "name": "addExtraService",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "licenseId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Slink.License",
+                "name": "license",
+                "type": "tuple"
+            }
+        ],
+        "name": "addLicense",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "revisionReportId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Slink.RevisionReport",
+                "name": "revisionReport",
+                "type": "tuple"
+            }
+        ],
+        "name": "addRevisionReport",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "serviceId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "description",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Slink.Service",
+                "name": "service",
+                "type": "tuple"
+            }
+        ],
+        "name": "addService",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "serviceSpaceId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "startTime",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "endTime",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct Slink.ServiceSpace",
+                "name": "serviceSpace",
+                "type": "tuple"
+            }
+        ],
+        "name": "addServiceSpace",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "id",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "customer",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "startDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "automaticRenewal",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "service",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "extraService",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "serviceSpace",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "license",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "revisionReport",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "billing",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "billingMethod",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "totalPrice",
+                        "type": "uint256"
+                    }
+                ],
+                "internalType": "struct Slink.SLA",
+                "name": "sla",
+                "type": "tuple"
+            }
+        ],
+        "name": "addSLA",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "string",
                 "name": "_serviceLevel",
                 "type": "string"
@@ -19,7 +289,7 @@ const abi = [
             {
                 "indexed": false,
                 "internalType": "uint256",
-                "name": "licenseId",
+                "name": "id",
                 "type": "uint256"
             },
             {
@@ -38,7 +308,7 @@ const abi = [
             {
                 "indexed": false,
                 "internalType": "uint256",
-                "name": "licenseId",
+                "name": "id",
                 "type": "uint256"
             },
             {
@@ -57,7 +327,7 @@ const abi = [
             {
                 "indexed": false,
                 "internalType": "uint256",
-                "name": "extraServiceId",
+                "name": "id",
                 "type": "uint256"
             },
             {
@@ -82,7 +352,7 @@ const abi = [
             {
                 "indexed": false,
                 "internalType": "uint256",
-                "name": "licenseId",
+                "name": "id",
                 "type": "uint256"
             },
             {
@@ -101,7 +371,7 @@ const abi = [
             {
                 "indexed": false,
                 "internalType": "uint256",
-                "name": "licenseId",
+                "name": "id",
                 "type": "uint256"
             },
             {
@@ -199,7 +469,7 @@ const abi = [
             {
                 "indexed": false,
                 "internalType": "uint256",
-                "name": "serviceId",
+                "name": "id",
                 "type": "uint256"
             },
             {
@@ -224,7 +494,7 @@ const abi = [
             {
                 "indexed": false,
                 "internalType": "uint256",
-                "name": "serviceSpaceId",
+                "name": "id",
                 "type": "uint256"
             },
             {
@@ -248,276 +518,6 @@ const abi = [
         ],
         "name": "ServiceSpaceCreated",
         "type": "event"
-    },
-    {
-        "inputs": [
-            {
-                "components": [
-                    {
-                        "internalType": "uint256",
-                        "name": "billingId",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "name",
-                        "type": "string"
-                    }
-                ],
-                "internalType": "struct SlinkV2.Billing",
-                "name": "billing",
-                "type": "tuple"
-            }
-        ],
-        "name": "addBilling",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "components": [
-                    {
-                        "internalType": "uint256",
-                        "name": "billingMethodId",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "name",
-                        "type": "string"
-                    }
-                ],
-                "internalType": "struct SlinkV2.BillingMethod",
-                "name": "billingMethod",
-                "type": "tuple"
-            }
-        ],
-        "name": "addBillingMethod",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "components": [
-                    {
-                        "internalType": "uint256",
-                        "name": "serviceId",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "name",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "description",
-                        "type": "string"
-                    }
-                ],
-                "internalType": "struct SlinkV2.Service",
-                "name": "extraService",
-                "type": "tuple"
-            }
-        ],
-        "name": "addExtraService",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "components": [
-                    {
-                        "internalType": "uint256",
-                        "name": "licenseId",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "name",
-                        "type": "string"
-                    }
-                ],
-                "internalType": "struct SlinkV2.License",
-                "name": "license",
-                "type": "tuple"
-            }
-        ],
-        "name": "addLicense",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "components": [
-                    {
-                        "internalType": "uint256",
-                        "name": "revisionReportId",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "name",
-                        "type": "string"
-                    }
-                ],
-                "internalType": "struct SlinkV2.RevisionReport",
-                "name": "revisionReport",
-                "type": "tuple"
-            }
-        ],
-        "name": "addRevisionReport",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "components": [
-                    {
-                        "internalType": "uint256",
-                        "name": "id",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "customer",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "startDate",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "bool",
-                        "name": "automaticRenewal",
-                        "type": "bool"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "service",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "extraService",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "serviceSpace",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "license",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "revisionReport",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "billing",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "billingMethod",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "totalPrice",
-                        "type": "uint256"
-                    }
-                ],
-                "internalType": "struct SlinkV2.SLA",
-                "name": "sla",
-                "type": "tuple"
-            }
-        ],
-        "name": "addSLA",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "components": [
-                    {
-                        "internalType": "uint256",
-                        "name": "serviceId",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "name",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "description",
-                        "type": "string"
-                    }
-                ],
-                "internalType": "struct SlinkV2.Service",
-                "name": "service",
-                "type": "tuple"
-            }
-        ],
-        "name": "addService",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "components": [
-                    {
-                        "internalType": "uint256",
-                        "name": "serviceSpaceId",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "name",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "startTime",
-                        "type": "string"
-                    },
-                    {
-                        "internalType": "string",
-                        "name": "endTime",
-                        "type": "string"
-                    }
-                ],
-                "internalType": "struct SlinkV2.ServiceSpace",
-                "name": "serviceSpace",
-                "type": "tuple"
-            }
-        ],
-        "name": "addServiceSpace",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
     },
     {
         "inputs": [
@@ -669,7 +669,7 @@ const abi = [
                         "type": "uint256"
                     }
                 ],
-                "internalType": "struct SlinkV2.SLA",
+                "internalType": "struct Slink.SLA",
                 "name": "",
                 "type": "tuple"
             }
@@ -759,6 +759,35 @@ const abi = [
                 "type": "uint256"
             }
         ],
+        "name": "services",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "serviceId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
         "name": "serviceSpaces",
         "outputs": [
             {
@@ -784,43 +813,11 @@ const abi = [
         ],
         "stateMutability": "view",
         "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "services",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "serviceId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "string",
-                "name": "name",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "description",
-                "type": "string"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
     }
 ];
 
-const contractAddress = '0xC0B35B62b5E66b0103f60e79700163686caCAB60';
+const contractAddress = '0x03eeC2cc89624169951C03d2379fefBd5fc060BB';
 
-const web3Infura = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/81180162079b4ba49d02599e949fff5a"));
-
-const infuraContract = new web3Infura.eth.Contract(abi, contractAddress);
 
 const isMetaMaskConnected = async () => {
     const metaMaskProvider = await detectEthereumProvider({mustBeMetaMask: true});
@@ -858,7 +855,6 @@ const loadMetaMaskContract = async () => {
 };
 
 export {
-    infuraContract,
     isMetaMaskConnected,
     connectMetaMask,
     addMetaMaskAccountsChangedObserver,
