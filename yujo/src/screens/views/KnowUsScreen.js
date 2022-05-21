@@ -26,10 +26,10 @@ function KnowUsScreen(props) {
     return (
         <div>
             <Header isOwner={props.isOwner}/>
-            <div className="Contact-content">
-
+            <div className="Contact-content"></div>
+            <div className="w-75 m-lg-auto">
                 {/*First row*/}
-                <Row className="w-75 m-lg-auto">
+                <Row>
                     <Form.Group as={Col} controlId="formProviderFirstColumn">
                         <Form.Label className='d-block mb-3'>
                             <BsHouseFill style={{fontSize: '4vh'}}/>
@@ -144,7 +144,6 @@ function KnowUsScreen(props) {
                         </Form>
                     </Form.Group>
                 </Row>
-
             </div>
         </div>
     )
