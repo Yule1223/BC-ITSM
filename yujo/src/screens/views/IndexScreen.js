@@ -39,7 +39,7 @@ function IndexScreen() {
                                 .typeString(t('index.openYourSLANow3'))
                                 .start();
                         }}/></div>
-                <div className="d-flex w-25 justify-content-between mt-3">
+                <div className="d-flex w-100 justify-content-evenly mt-3">
                     <Button startIcon={<BorderColorIcon />} variant='contained' className='btn-index text-dark fw-bold' onClick={handleOnForm}>
                         {t('index.iWantIt')}
                     </Button>

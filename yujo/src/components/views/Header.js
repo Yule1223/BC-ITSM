@@ -13,24 +13,28 @@ import {useCallback} from "react";
 import {useNavigate} from "react-router-dom";
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {languages} from "../../translations/translationConfig";
+import {useMediaQuery} from 'react-responsive'
 
 function Header(props) {
     const navigate = useNavigate();
     const handleOnEntitiesList = useCallback(() => navigate('/entitiesList', {replace: false}), [navigate]);
     const handleOnDashboard = useCallback(() => navigate('/dashboard', {replace: false}), [navigate]);
     const {t, i18n} = useTranslation();
+    const isSmallScreen = useMediaQuery({query: '(min-width: 1500px)'})
+    const isTinyScreen = useMediaQuery({query: '(min-width: 1000px)'})
+    const notScreen = useMediaQuery({ query: '(min-width: 800px)'})
+    const youAreKidding = useMediaQuery({ query: '(min-width: 770px)'})
 
     return (
         <nav className="navbar navbar-light bg-info fixed-top p-1 d-flex flex-row" style={{height: '8vh'}}>
+            {notScreen &&
             <div>
-                <a className="navbar-brand text-dark" href="/">
-                    <img src={logo} width="30" height="30"
-                         className="d-inline-block align-top" alt=""/>SLink
+                <a className="navbar-brand text-dark m-lg-3" href="/">
+                    SLink
                 </a>
-                <img src={licencia} className="d-inline-block align-top" alt=""/>
-                <p className="d-inline fw-bold text-capitalize fs-5 m-lg-3">{t('knowUs.title')}</p>
-            </div>
-
+                {isTinyScreen && <img src={licencia} className="d-inline-block align-top" alt=""/>}
+                {isSmallScreen && <p className="d-inline fw-bold text-capitalize fs-5 m-lg-3">{t('knowUs.title')}</p>}
+            </div>}
             <div className="container" style={{flex: 1}}>
                 <div className="d-flex justify-content-around w-100">
                     {props.isOwner && (
@@ -41,15 +45,17 @@ function Header(props) {
                                     {t('entitiesList.title')}
                                 </Button>
                             </div>
+                            {youAreKidding &&
                             <div className="d-flex justify-content-center align-items-center">
                                 <Button startIcon={<DashboardIcon/>} variant='contained' color='warning'
                                         onClick={handleOnDashboard}>
                                     {t('chart.title')}
                                 </Button>
-                            </div>
+                            </div>}
                         </>
                     )}
                     <WalletDialog/>
+                    {isTinyScreen &&
                     <FormControl>
                         <InputLabel
                             id="demo-simple-select-label">{t('footer.languages.selectLanguageTitle')}</InputLabel>
@@ -63,7 +69,7 @@ function Header(props) {
                             {languages.map(language => <MenuItem
                                 value={language}>{t('footer.languages.' + language)}</MenuItem>)}
                         </Select>
-                    </FormControl>
+                    </FormControl>}
                 </div>
             </div>
         </nav>
