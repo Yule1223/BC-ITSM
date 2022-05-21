@@ -12,11 +12,7 @@ function Header2(props) {
     return (
         <nav className="navbar navbar-light bg-info fixed-top p-1" style={{height: '60px'}}>
             <div>
-                <a className="navbar-brand text-dark" href="/">
-                    <img src={logo} width="30" height="30"
-                         className="d-inline-block align-top" alt=""/>SLink
-
-                </a>
+                <a className="navbar-brand text-dark m-lg-3" href="/">SLink</a>
                 <img src={licencia} className="d-inline-block align-top" alt=""/>
                 {youAreKidding &&
                 <p className="d-inline fw-bold text-capitalize fs-5 m-lg-3">{t('knowUs.title')}</p>}
