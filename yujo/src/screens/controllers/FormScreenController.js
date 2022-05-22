@@ -39,6 +39,7 @@ function FormScreenController() {
     const [billingMethodIndex, setBillingMethodIndex] = useState(-1);
 
     const [slaDto, setSlaDto] = useState();
+    const [slaReceiptDto, setSlaReceiptDto] = useState();
     const { i18n } = useTranslation();
 
     const slinkConfigWithTranslate = JSON.parse(JSON.stringify(slinkConfig));
@@ -157,18 +158,20 @@ function FormScreenController() {
                 billingMethod: slinkConfigWithTranslate.billingMethods[billingMethodIndex].id,
                 totalPrice: price,
             };
-            contract.methods.addSLA(sla).send({from: customer.ethAddress}, (error, result) => {
-                if (error) {
-                    alert(error);
-                    console.log(error);
-                }
-                else {
+            contract.methods.addSLA(sla).send({from: customer.ethAddress})
+                .on('transactionHash', (hash) => {
                     setSlaDto({
                         id: slaId,
-                        transactionHash: result
+                        transactionHash: hash
                     });
-                }
-            });
+                })
+                .on('receipt', (receipt) => {
+                    setSlaReceiptDto(receipt);
+                })
+                .on('error', (error) => {
+                    alert(error);
+                    console.log(error);
+                });
         } catch (e) {
             alert(e);
             console.log(e);
@@ -185,6 +188,7 @@ function FormScreenController() {
             loadingCheck={loadingCheck}
 
             slaDto={slaDto}
+            slaReceiptDto={slaReceiptDto}
 
             customerBusinessName={customerBusinessName}
             onCustomerBusinessNameChange={setCustomerBusinessName}

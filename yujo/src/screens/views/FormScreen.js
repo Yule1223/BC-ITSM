@@ -17,7 +17,6 @@ function FormScreen(props) {
     const { t } = useTranslation();
 
     const handleSubmit = (event) => {
-        const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
         setValidated(true);
@@ -28,13 +27,25 @@ function FormScreen(props) {
         <div className="App">
             <Header isOwner={props.isOwner} />
             <section>
-                {props.slaDto && (
+                {props.slaDto && !props.slaReceiptDto && (
+                    <Alert severity="warning">
+                        <AlertTitle><strong>{t('form.slaCreatedTitle')}</strong></AlertTitle>
+                        {t('form.slaCreatedMessage1') + ' '}<strong>{props.slaDto.id}</strong>
+                        <br />
+                        <br />
+                        {t('form.slaCreatedMessage2a') + ' '}<strong><a target='_blank' className="d-inline" href={'https://rinkeby.etherscan.io/tx/' + props.slaDto.transactionHash}>{props.slaDto.transactionHash}</a></strong>
+                        <br />
+                        <br />
+                        <a className="d-inline" href='/form'>{t('form.slaCreatedMessage3')}</a>
+                    </Alert>
+                )}
+                {props.slaDto && props.slaReceiptDto && (
                     <Alert severity="success">
                         <AlertTitle><strong>{t('form.slaCreatedTitle')}</strong></AlertTitle>
                         {t('form.slaCreatedMessage1') + ' '}<strong>{props.slaDto.id}</strong>
                         <br />
                         <br />
-                        {t('form.slaCreatedMessage2') + ' '}<strong><a target='_blank' className="d-inline" href={'https://rinkeby.etherscan.io/tx/' + props.slaDto.transactionHash}>{props.slaDto.transactionHash}</a></strong>
+                        {t('form.slaCreatedMessage2b') + ' '}<strong><a target='_blank' className="d-inline" href={'https://rinkeby.etherscan.io/tx/' + props.slaDto.transactionHash}>{props.slaDto.transactionHash}</a></strong>
                         <br />
                         <br />
                         <a className="d-inline" href='/form'>{t('form.slaCreatedMessage3')}</a>
