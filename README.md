@@ -62,7 +62,7 @@ Next, you need to have Node.js installed on your machine. If you don't have it, 
 
 Then, from a console, run the following commands to start at 3000 port:
 ```
-npm install
 cd yujo/
+npm install
 npm start
 ```
